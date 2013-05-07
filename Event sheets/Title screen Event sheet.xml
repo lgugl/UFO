@@ -3,20 +3,20 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Title screen Event sheet</name>
     <events>
-        <event-block>
+        <event-block sid="5869304014715984">
             <conditions>
-                <condition behavior="Fade" id="0" name="On fade out finished" type="pressToStart" />
+                <condition behavior="Fade" id="0" name="On fade out finished" sid="4315430399362641" type="pressToStart" />
             </conditions>
             <actions>
-                <action behavior="Fade" id="0" name="Restart fade" type="pressToStart" />
+                <action behavior="Fade" id="0" name="Restart fade" sid="6139868935217943" type="pressToStart" />
             </actions>
         </event-block>
-        <event-block>
+        <event-block sid="8201218451290914">
             <conditions>
-                <condition id="1" name="On any key pressed" type="Keyboard" />
+                <condition id="1" name="On any key pressed" sid="3577737610638657" type="Keyboard" />
             </conditions>
             <actions>
-                <action id="-2" name="Go to layout" type="System">
+                <action id="-2" name="Go to layout" sid="8427578720965208" type="System">
                     <param id="0" name="Layout">Game screen</param>
                 </action>
             </actions>

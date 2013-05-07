@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
     <name>Title screen</name>
+    <sid>2816960265282682</sid>
     <event-sheet>Title screen Event sheet</event-sheet>
     <size>
         <width>640</width>
@@ -12,7 +13,7 @@
     </margins>
     <unbounded-scrolling>1</unbounded-scrolling>
     <layers>
-        <layer name="Layer 0">
+        <layer name="Layer 0" sid="9866750670201292">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>0</transparent>
@@ -26,7 +27,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="Title">
+                <instance type="Title" uid="0">
                     <properties>
                         <text>UFO</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -53,7 +54,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="pressToStart">
+                <instance type="pressToStart" uid="1">
                     <properties>
                         <text>Press any key</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -96,21 +97,21 @@
         </layer>
     </layers>
     <nonworld-instances>
-        <instance type="wCabbageDic">
+        <instance type="wCabbageDic" uid="2">
             <instance-variables>
                 <reload>false</reload>
                 <reloadTime>0</reloadTime>
                 <ammunition>0</ammunition>
             </instance-variables>
         </instance>
-        <instance type="wPotatoDic">
+        <instance type="wPotatoDic" uid="3">
             <instance-variables>
                 <reload>false</reload>
                 <reloadTime>0</reloadTime>
                 <ammunition>0</ammunition>
             </instance-variables>
         </instance>
-        <instance type="wCarrotDic">
+        <instance type="wCarrotDic" uid="4">
             <instance-variables>
                 <reload>false</reload>
                 <reloadTime>0</reloadTime>

@@ -4,65 +4,68 @@
     <name>Game screen Event sheet</name>
     <events>
         <comment>Global variables:</comment>
-        <variable constant="0" name="currentWeapon" static="0" type="text"></variable>
-        <variable constant="0" name="defaultWeapon" static="0" type="text"></variable>
-        <event-group description="" title="Start events">
+        <variable constant="0" name="currentWeapon" sid="9559297127745932" static="0" type="text"></variable>
+        <variable constant="0" name="defaultWeapon" sid="184043535974327" static="0" type="text"></variable>
+        <event-group description="" sid="6188615120386475" title="Start events">
             <sub-events>
-                <event-block>
+                <event-block sid="4339001097011007">
                     <conditions>
-                        <condition id="-2" name="On start of layout" type="System" />
+                        <condition id="-2" name="On start of layout" sid="7455988836602765" type="System" />
                     </conditions>
                     <actions>
-                        <action id="-9" name="Destroy" type="Bullets" />
-                        <action id="-9" name="Destroy" type="Enemies" />
-                        <action id="-9" name="Destroy" type="CarrotAmmunition" />
-                        <action id="-9" name="Set value" type="System">
+                        <action id="-9" name="Destroy" sid="2076570983371339" type="Bullets" />
+                        <action id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
+                        <action id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
+                        <action id="-9" name="Set value" sid="2777576573844807" type="System">
                             <param id="0" name="Variable">defaultWeapon</param>
                             <param id="1" name="Value">&quot;potato&quot;</param>
                         </action>
-                        <action id="-9" name="Set value" type="System">
+                        <action id="-9" name="Set value" sid="8136963829920563" type="System">
                             <param id="0" name="Variable">currentWeapon</param>
                             <param id="1" name="Value">defaultWeapon</param>
                         </action>
+                        <action id="10" name="Request fullscreen" sid="69202366978312" type="Browser">
+                            <param id="0" name="Mode">0</param>
+                        </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="8333154621574713">
                     <conditions>
-                        <condition id="4" name="Is empty" type="wPotatoDic" />
+                        <condition id="4" name="Is empty" sid="7562633811211047" type="wPotatoDic" />
                     </conditions>
                     <actions>
-                        <action id="0" name="Add key" type="wPotatoDic">
+                        <action id="0" name="Add key" sid="6092132135326429" type="wPotatoDic">
                             <param id="0" name="Key">&quot;name&quot;</param>
                             <param id="1" name="Value">&quot;potato&quot;</param>
                         </action>
-                        <action id="0" name="Add key" type="wPotatoDic">
+                        <action id="0" name="Add key" sid="9943004984892179" type="wPotatoDic">
                             <param id="0" name="Key">&quot;fireRate&quot;</param>
                             <param id="1" name="Value">0.5</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="8262879960600391">
                     <conditions>
-                        <condition id="4" name="Is empty" type="wCarrotDic" />
+                        <condition id="4" name="Is empty" sid="200468099391844" type="wCarrotDic" />
                     </conditions>
                     <actions>
-                        <action id="0" name="Add key" type="wCarrotDic">
+                        <action id="0" name="Add key" sid="4347315583773377" type="wCarrotDic">
                             <param id="0" name="Key">&quot;name&quot;</param>
                             <param id="1" name="Value">&quot;carrot&quot;</param>
                         </action>
-                        <action id="0" name="Add key" type="wCarrotDic">
+                        <action id="0" name="Add key" sid="13403684440753" type="wCarrotDic">
                             <param id="0" name="Key">&quot;ammunitionMax&quot;</param>
                             <param id="1" name="Value">3</param>
                         </action>
-                        <action id="0" name="Add key" type="wCarrotDic">
+                        <action id="0" name="Add key" sid="7563611633118273" type="wCarrotDic">
                             <param id="0" name="Key">&quot;timeToReload&quot;</param>
                             <param id="1" name="Value">4</param>
                         </action>
-                        <action id="0" name="Add key" type="wCarrotDic">
+                        <action id="0" name="Add key" sid="2422193115350478" type="wCarrotDic">
                             <param id="0" name="Key">&quot;fireRate&quot;</param>
                             <param id="1" name="Value">0.25</param>
                         </action>
-                        <action id="-10" name="Set value" type="wCarrotDic">
+                        <action id="-10" name="Set value" sid="7522956513040036" type="wCarrotDic">
                             <param id="0" name="Instance variable">ammunition</param>
                             <param id="1" name="Value">wCarrotDic.Get(&quot;ammunitionMax&quot;)</param>
                         </action>
@@ -70,63 +73,63 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" title="Input events">
+        <event-group description="" sid="4002922252956018" title="Input events">
             <sub-events>
-                <event-group description="" title="Movement">
+                <event-group collapsed="1" description="" sid="8521614036322924" title="Movement">
                     <sub-events>
-                        <event-block>
+                        <event-block sid="7293353535326637">
                             <conditions>
-                                <condition id="2" name="Key is down" type="Keyboard">
+                                <condition id="2" name="Key is down" sid="13949240045147" type="Keyboard">
                                     <param id="0" name="Key">37 (Left arrow)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="7" name="Set mirrored" type="Player">
+                                <action id="7" name="Set mirrored" sid="9985381715864524" type="Player">
                                     <param id="0" name="State">0</param>
                                 </action>
-                                <action id="-1" name="Set X" type="Player">
+                                <action id="-1" name="Set X" sid="5325907147612891" type="Player">
                                     <param id="0" name="X">self.X - dt * self.speed</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block>
+                        <event-block sid="2023794891777697">
                             <conditions>
-                                <condition id="2" name="Key is down" type="Keyboard">
+                                <condition id="2" name="Key is down" sid="9499786620090667" type="Keyboard">
                                     <param id="0" name="Key">39 (Right arrow)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="7" name="Set mirrored" type="Player">
+                                <action id="7" name="Set mirrored" sid="617234669084554" type="Player">
                                     <param id="0" name="State">1</param>
                                 </action>
-                                <action id="-1" name="Set X" type="Player">
+                                <action id="-1" name="Set X" sid="423603958546718" type="Player">
                                     <param id="0" name="X">self.X + dt * self.speed</param>
                                 </action>
                             </actions>
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" title="Fire">
+                <event-group collapsed="1" description="" sid="4927751051606347" title="Fire">
                     <sub-events>
-                        <event-block>
+                        <event-block sid="7981904484682303">
                             <conditions>
-                                <condition id="0" name="On key pressed" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="5732030026764851" type="Keyboard">
                                     <param id="0" name="Key">32 (Espace)</param>
                                 </condition>
-                                <condition id="-8" inverted="1" name="Is boolean instance variable set" type="Player">
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8983181072078732" type="Player">
                                     <param id="0" name="Instance variable">fire</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-13" name="Set boolean" type="Player">
+                                <action id="-13" name="Set boolean" sid="3922242462585679" type="Player">
                                     <param id="0" name="Instance variable">fire</param>
                                     <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block>
+                                <event-block sid="3186371023679463">
                                     <conditions>
-                                        <condition id="0" name="Compare value" type="Weapons">
+                                        <condition id="0" name="Compare value" sid="2024352824359602" type="Weapons">
                                             <param id="0" name="Key">&quot;name&quot;</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">currentWeapon</param>
@@ -134,26 +137,26 @@
                                     </conditions>
                                     <actions />
                                     <sub-events>
-                                        <event-block>
+                                        <event-block sid="4304239989874508">
                                             <conditions>
-                                                <condition id="0" name="Compare value" type="Weapons">
+                                                <condition id="0" name="Compare value" sid="144599718881525" type="Weapons">
                                                     <param id="0" name="Key">&quot;name&quot;</param>
                                                     <param id="1" name="Comparison">0</param>
                                                     <param id="2" name="Value">&quot;potato&quot;</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="0" name="Spawn another object" type="Player">
+                                                <action id="0" name="Spawn another object" sid="3267814415418126" type="Player">
                                                     <param id="0" name="Object">bPotato</param>
                                                     <param id="1" name="Layer">0</param>
                                                     <param id="2" name="Image point">&quot;bullet origin&quot;</param>
                                                 </action>
                                             </actions>
                                         </event-block>
-                                        <event-block>
+                                        <event-block sid="4556947196730306">
                                             <conditions>
-                                                <condition id="-22" name="Else" type="System" />
-                                                <condition id="-7" name="Compare instance variable" type="Weapons">
+                                                <condition id="-22" name="Else" sid="9166795645790015" type="System" />
+                                                <condition id="-7" name="Compare instance variable" sid="2330252652128231" type="Weapons">
                                                     <param id="0" name="Instance variable">ammunition</param>
                                                     <param id="1" name="Comparison">4</param>
                                                     <param id="2" name="Value">0</param>
@@ -161,26 +164,26 @@
                                             </conditions>
                                             <actions />
                                             <sub-events>
-                                                <event-block>
+                                                <event-block sid="5952281657192533">
                                                     <conditions>
-                                                        <condition id="0" name="Compare value" type="Weapons">
+                                                        <condition id="0" name="Compare value" sid="4716915515555059" type="Weapons">
                                                             <param id="0" name="Key">&quot;name&quot;</param>
                                                             <param id="1" name="Comparison">0</param>
                                                             <param id="2" name="Value">&quot;carrot&quot;</param>
                                                         </condition>
                                                     </conditions>
                                                     <actions>
-                                                        <action id="0" name="Spawn another object" type="Player">
+                                                        <action id="0" name="Spawn another object" sid="9005373194197886" type="Player">
                                                             <param id="0" name="Object">bCarrot</param>
                                                             <param id="1" name="Layer">0</param>
                                                             <param id="2" name="Image point">&quot;bullet origin&quot;</param>
                                                         </action>
                                                     </actions>
                                                 </event-block>
-                                                <event-block>
+                                                <event-block sid="7159523349822378">
                                                     <conditions />
                                                     <actions>
-                                                        <action id="-12" name="Subtract from" type="Weapons">
+                                                        <action id="-12" name="Subtract from" sid="397028682841457" type="Weapons">
                                                             <param id="0" name="Instance variable">ammunition</param>
                                                             <param id="1" name="Value">1</param>
                                                         </action>
@@ -188,13 +191,13 @@
                                                 </event-block>
                                             </sub-events>
                                         </event-block>
-                                        <event-block>
+                                        <event-block sid="9070006292999598">
                                             <conditions />
                                             <actions>
-                                                <action id="-16" name="Wait" type="System">
+                                                <action id="-16" name="Wait" sid="7866020612817317" type="System">
                                                     <param id="0" name="Seconds">Weapons.Get(&quot;fireRate&quot;)</param>
                                                 </action>
-                                                <action id="-13" name="Set boolean" type="Player">
+                                                <action id="-13" name="Set boolean" sid="6058272224564516" type="Player">
                                                     <param id="0" name="Instance variable">fire</param>
                                                     <param id="1" name="Value">0</param>
                                                 </action>
@@ -206,29 +209,29 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" title="Change weapon">
+                <event-group collapsed="1" description="" sid="7739485826158529" title="Change weapon">
                     <sub-events>
-                        <event-block>
+                        <event-block sid="8845709705958467">
                             <conditions>
-                                <condition id="0" name="On key pressed" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="5233667706916522" type="Keyboard">
                                     <param id="0" name="Key">49 (&amp;)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" type="System">
+                                <action id="-9" name="Set value" sid="2917314347821973" type="System">
                                     <param id="0" name="Variable">currentWeapon</param>
                                     <param id="1" name="Value">wPotatoDic.Get(&quot;name&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block>
+                        <event-block sid="2712106135524455">
                             <conditions>
-                                <condition id="0" name="On key pressed" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="9600043716167231" type="Keyboard">
                                     <param id="0" name="Key">50 (é)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" type="System">
+                                <action id="-9" name="Set value" sid="4268045651172492" type="System">
                                     <param id="0" name="Variable">currentWeapon</param>
                                     <param id="1" name="Value">wCarrotDic.Get(&quot;name&quot;)</param>
                                 </action>
@@ -236,90 +239,100 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-            </sub-events>
-        </event-group>
-        <event-group description="" title="General events">
-            <sub-events>
-                <event-block>
+                <event-block sid="2616960827077569">
                     <conditions>
-                        <condition id="-1" name="Every tick" type="System" />
+                        <condition id="3" name="On key released" sid="4995788785060402" type="Keyboard">
+                            <param id="0" name="Key">27 (Echap)</param>
+                        </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Set text" type="Debug">
+                        <action id="1" name="Close" sid="4322235404167552" type="Browser" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group collapsed="1" description="" sid="4820918851855756" title="General events">
+            <sub-events>
+                <event-block sid="9109083165995255">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="1223553142144005" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="8862016126950413" type="Debug">
                             <param id="0" name="Text">&quot;FPS: &quot; &amp; fps</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="7101875705467223">
                     <conditions>
-                        <condition id="0" name="On collision with another object" type="Bullets">
+                        <condition id="0" name="On collision with another object" sid="7663679962005732" type="Bullets">
                             <param id="0" name="Object">Enemies</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" type="Enemies">
+                        <condition id="-7" name="Compare instance variable" sid="6517846375572345" type="Enemies">
                             <param id="0" name="Instance variable">health</param>
                             <param id="1" name="Comparison">4</param>
                             <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-12" name="Subtract from" type="Enemies">
+                        <action id="-12" name="Subtract from" sid="4836677387377446" type="Enemies">
                             <param id="0" name="Instance variable">health</param>
                             <param id="1" name="Value">Bullets.hitDamage</param>
                         </action>
-                        <action id="-9" name="Destroy" type="Bullets" />
+                        <action id="-9" name="Destroy" sid="5025907036075087" type="Bullets" />
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="8147368240708341">
                     <conditions>
-                        <condition id="-1" name="Every tick" type="System" />
-                        <condition id="-7" name="Compare instance variable" type="Enemies">
+                        <condition id="-1" name="Every tick" sid="3543962415463643" type="System" />
+                        <condition id="-7" name="Compare instance variable" sid="7973361581702482" type="Enemies">
                             <param id="0" name="Instance variable">health</param>
                             <param id="1" name="Comparison">3</param>
                             <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-18" name="Rotate clockwise" type="Enemies">
+                        <action id="-18" name="Rotate clockwise" sid="6528004194395932" type="Enemies">
                             <param id="0" name="Degrees">dt * 720</param>
                         </action>
-                        <action id="-7" name="Set size" type="Enemies">
+                        <action id="-7" name="Set size" sid="6005445261962137" type="Enemies">
                             <param id="0" name="Width">self.Width - self.Width * dt </param>
                             <param id="1" name="Height">self.Height - self.Height * dt</param>
                         </action>
-                        <action id="-16" name="Wait" type="System">
+                        <action id="-16" name="Wait" sid="3711272186721962" type="System">
                             <param id="0" name="Seconds">1.0</param>
                         </action>
-                        <action id="-9" name="Destroy" type="Enemies" />
+                        <action id="-9" name="Destroy" sid="309074877300847" type="Enemies" />
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="4260109070004518">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" type="Weapons">
+                        <condition id="-7" name="Compare instance variable" sid="3770890171458288" type="Weapons">
                             <param id="0" name="Instance variable">ammunition</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-13" name="Set boolean" type="Weapons">
+                        <action id="-13" name="Set boolean" sid="6547328042573998" type="Weapons">
                             <param id="0" name="Instance variable">reload</param>
                             <param id="1" name="Value">1</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block>
+                        <event-block sid="9456411102443813">
                             <conditions>
-                                <condition id="0" name="Compare value" type="Weapons">
+                                <condition id="0" name="Compare value" sid="3516724001495264" type="Weapons">
                                     <param id="0" name="Key">&quot;name&quot;</param>
                                     <param id="1" name="Comparison">0</param>
                                     <param id="2" name="Value">currentWeapon</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-16" name="Wait" type="System">
+                                <action id="-16" name="Wait" sid="3904491727342749" type="System">
                                     <param id="0" name="Seconds">0.5</param>
                                 </action>
-                                <action id="-9" name="Set value" type="System">
+                                <action id="-9" name="Set value" sid="8998635276182967" type="System">
                                     <param id="0" name="Variable">currentWeapon</param>
                                     <param id="1" name="Value">defaultWeapon</param>
                                 </action>
@@ -327,51 +340,51 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block>
+                <event-block sid="3396940294713651">
                     <conditions>
-                        <condition id="-8" name="Is boolean instance variable set" type="Weapons">
+                        <condition id="-8" name="Is boolean instance variable set" sid="1366683595862882" type="Weapons">
                             <param id="0" name="Instance variable">reload</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-11" name="Add to" type="Weapons">
+                        <action id="-11" name="Add to" sid="2484579807255294" type="Weapons">
                             <param id="0" name="Instance variable">reloadTime</param>
                             <param id="1" name="Value">dt</param>
                         </action>
-                        <action id="0" name="Set text" type="reload">
+                        <action id="0" name="Set text" sid="59664250422972" type="reload">
                             <param id="0" name="Text">Weapons.reloadTime</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block>
+                        <event-block sid="8373114907002388">
                             <conditions>
-                                <condition id="-7" name="Compare instance variable" type="Weapons">
+                                <condition id="-7" name="Compare instance variable" sid="6021164128515576" type="Weapons">
                                     <param id="0" name="Instance variable">reloadTime</param>
                                     <param id="1" name="Comparison">5</param>
                                     <param id="2" name="Value">Weapons.Get(&quot;timeToReload&quot;)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-11" name="Add to" type="Weapons">
+                                <action id="-11" name="Add to" sid="3733393644228445" type="Weapons">
                                     <param id="0" name="Instance variable">ammunition</param>
                                     <param id="1" name="Value">1</param>
                                 </action>
-                                <action id="-10" name="Set value" type="Weapons">
+                                <action id="-10" name="Set value" sid="1688963010087737" type="Weapons">
                                     <param id="0" name="Instance variable">reloadTime</param>
                                     <param id="1" name="Value">0</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block>
+                        <event-block sid="1606898785739234">
                             <conditions>
-                                <condition id="-7" name="Compare instance variable" type="Weapons">
+                                <condition id="-7" name="Compare instance variable" sid="1113705021151297" type="Weapons">
                                     <param id="0" name="Instance variable">ammunition</param>
                                     <param id="1" name="Comparison">5</param>
                                     <param id="2" name="Value">Weapons.Get(&quot;ammunitionMax&quot;)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-13" name="Set boolean" type="Weapons">
+                                <action id="-13" name="Set boolean" sid="6121775146764893" type="Weapons">
                                     <param id="0" name="Instance variable">reload</param>
                                     <param id="1" name="Value">0</param>
                                 </action>
@@ -381,24 +394,24 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block>
+        <event-block sid="5959850976863137">
             <conditions>
-                <condition id="-19" name="Pick all" type="System">
+                <condition id="-19" name="Pick all" sid="8521713686273943" type="System">
                     <param id="0" name="Object">CarrotAmmunition</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Destroy" type="CarrotAmmunition" />
+                <action id="-9" name="Destroy" sid="601425482570556" type="CarrotAmmunition" />
             </actions>
         </event-block>
-        <event-block>
+        <event-block sid="8326172127385367">
             <conditions>
-                <condition id="-12" name="Repeat" type="System">
+                <condition id="-12" name="Repeat" sid="4589614422536301" type="System">
                     <param id="0" name="Count">wCarrotDic.ammunition</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-3" name="Create object" type="System">
+                <action id="-3" name="Create object" sid="1729240112507937" type="System">
                     <param id="0" name="Object to create">CarrotAmmunition</param>
                     <param id="1" name="Layer">0</param>
                     <param id="2" name="X">620 - loopindex * 10</param>
@@ -406,16 +419,16 @@
                 </action>
             </actions>
         </event-block>
-        <event-group description="" title="Enemies events">
+        <event-group collapsed="1" description="" sid="593834434841065" title="Enemies events">
             <sub-events>
-                <event-block>
+                <event-block sid="9161417591077772">
                     <conditions>
-                        <condition id="-6" name="Every X seconds" type="System">
+                        <condition id="-6" name="Every X seconds" sid="3721996492083176" type="System">
                             <param id="0" name="Interval (seconds)">2</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-3" name="Create object" type="System">
+                        <action id="-3" name="Create object" sid="1253224613223196" type="System">
                             <param id="0" name="Object to create">eUFO_01</param>
                             <param id="1" name="Layer">0</param>
                             <param id="2" name="X">random(50, LayoutWidth-50)</param>
@@ -423,84 +436,84 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="4950871651049371">
                     <conditions>
-                        <condition id="-18" name="On created" type="eUFO_01" />
+                        <condition id="-18" name="On created" sid="825077901833102" type="eUFO_01" />
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" type="eUFO_01">
+                        <action id="-10" name="Set value" sid="1745303064608955" type="eUFO_01">
                             <param id="0" name="Instance variable">state</param>
                             <param id="1" name="Value">&quot;attack&quot;</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="3277907608506295">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" type="eUFO_01">
+                        <condition id="-7" name="Compare instance variable" sid="2414709671992924" type="eUFO_01">
                             <param id="0" name="Instance variable">state</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">&quot;attack&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-2" name="Set Y" type="eUFO_01">
+                        <action id="-2" name="Set Y" sid="4660809164548808" type="eUFO_01">
                             <param id="0" name="Y">self.Y + dt * 80</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="565740120718576">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" type="eUFO_01">
+                        <condition id="-7" name="Compare instance variable" sid="4360783002893099" type="eUFO_01">
                             <param id="0" name="Instance variable">state</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">&quot;attack&quot;</param>
                         </condition>
-                        <condition id="-2" name="Compare Y" type="eUFO_01">
+                        <condition id="-2" name="Compare Y" sid="9073598346992212" type="eUFO_01">
                             <param id="0" name="Comparison">5</param>
                             <param id="1" name="Y co-ordinate">targetLineBottom.Y</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" type="eUFO_01">
+                        <action id="-10" name="Set value" sid="9513370329694287" type="eUFO_01">
                             <param id="0" name="Instance variable">state</param>
                             <param id="1" name="Value">&quot;land&quot;</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="9971388849471899">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" type="eUFO_01">
+                        <condition id="-7" name="Compare instance variable" sid="2445024940891516" type="eUFO_01">
                             <param id="0" name="Instance variable">state</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">&quot;land&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action behavior="Sine" id="0" name="Set active" type="eUFO_01">
+                        <action behavior="Sine" id="0" name="Set active" sid="7500251632060801" type="eUFO_01">
                             <param id="0" name="State">0</param>
                         </action>
-                        <action behavior="Sine2" id="0" name="Set active" type="eUFO_01">
+                        <action behavior="Sine2" id="0" name="Set active" sid="9307675082293151" type="eUFO_01">
                             <param id="0" name="State">0</param>
                         </action>
-                        <action id="-16" name="Wait" type="System">
+                        <action id="-16" name="Wait" sid="3013277684583944" type="System">
                             <param id="0" name="Seconds">2</param>
                         </action>
-                        <action id="-10" name="Set value" type="eUFO_01">
+                        <action id="-10" name="Set value" sid="108405046702502" type="eUFO_01">
                             <param id="0" name="Instance variable">state</param>
                             <param id="1" name="Value">&quot;flee&quot;</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block>
+                <event-block sid="8398968793433955">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" type="eUFO_01">
+                        <condition id="-7" name="Compare instance variable" sid="3626393257938511" type="eUFO_01">
                             <param id="0" name="Instance variable">state</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">&quot;flee&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-2" name="Set Y" type="eUFO_01">
+                        <action id="-2" name="Set Y" sid="8936851690604877" type="eUFO_01">
                             <param id="0" name="Y">self.Y - dt * 160</param>
                         </action>
                     </actions>

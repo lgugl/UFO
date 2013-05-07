@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
     <name>Game screen</name>
+    <sid>5213305719664198</sid>
     <event-sheet>Game screen Event sheet</event-sheet>
     <size>
         <width>640</width>
@@ -12,7 +13,7 @@
     </margins>
     <unbounded-scrolling>1</unbounded-scrolling>
     <layers>
-        <layer name="Layer 1">
+        <layer name="Layer 1" sid="8091146278132929">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>0</transparent>
@@ -26,22 +27,22 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="TiledBackground">
+                <instance type="TiledBackground" uid="5">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
-                        <hotspot>Top-left</hotspot>
+                        <hotspot>Center</hotspot>
                     </properties>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>0</x>
-                        <y>0</y>
+                        <x>320</x>
+                        <y>240</y>
                         <z>0</z>
-                        <width>640</width>
-                        <height>480</height>
+                        <width>1280</width>
+                        <height>960</height>
                         <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -49,7 +50,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Layer 0">
+        <layer name="Layer 0" sid="4305757345062312">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -63,7 +64,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="Player">
+                <instance type="Player" uid="6">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -95,7 +96,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="bPotato">
+                <instance type="bPotato" uid="7">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -132,7 +133,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="bCarrot">
+                <instance type="bCarrot" uid="8">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -169,7 +170,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="eUFO_01">
+                <instance type="eUFO_01" uid="9">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -222,7 +223,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="targetLineBottom">
+                <instance type="targetLineBottom" uid="10">
                     <properties>
                         <initial-visibility>Invisible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -243,7 +244,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="eUFO_02">
+                <instance type="eUFO_02" uid="11">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -296,7 +297,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Debug">
+                <instance type="Debug" uid="12">
                     <properties>
                         <text></text>
                         <initial-visibility>Visible</initial-visibility>
@@ -323,7 +324,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="CarrotAmmunition">
+                <instance type="CarrotAmmunition" uid="13">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -344,7 +345,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="reload">
+                <instance type="reload" uid="14">
                     <properties>
                         <text>Text</text>
                         <initial-visibility>Visible</initial-visibility>
