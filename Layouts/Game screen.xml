@@ -13,7 +13,7 @@
     </margins>
     <unbounded-scrolling>1</unbounded-scrolling>
     <layers>
-        <layer name="Layer 1" sid="8091146278132929">
+        <layer name="Bkg" sid="8091146278132929">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>0</transparent>
@@ -38,8 +38,8 @@
                         <x>320</x>
                         <y>240</y>
                         <z>0</z>
-                        <width>1280</width>
-                        <height>960</height>
+                        <width>640</width>
+                        <height>480</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -50,7 +50,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Layer 0" sid="4305757345062312">
+        <layer name="Main" sid="4305757345062312">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -178,12 +178,15 @@
                     </properties>
                     <instance-variables>
                         <health>100</health>
+                        <scale>1</scale>
                         <state></state>
+                        <speed>80</speed>
+                        <cowUID>0</cowUID>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="Sine">
                             <properties>
-                                <active-on-start>Yes</active-on-start>
+                                <active-on-start>No</active-on-start>
                                 <movement>Horizontal</movement>
                                 <wave>Sine</wave>
                                 <period>1</period>
@@ -196,7 +199,7 @@
                         </behavior-instance>
                         <behavior-instance type="Sine2">
                             <properties>
-                                <active-on-start>Yes</active-on-start>
+                                <active-on-start>No</active-on-start>
                                 <movement>Horizontal</movement>
                                 <wave>Sine</wave>
                                 <period>1</period>
@@ -252,12 +255,14 @@
                     </properties>
                     <instance-variables>
                         <health>200</health>
+                        <scale>1</scale>
                         <state></state>
+                        <speed>0</speed>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="Sine">
                             <properties>
-                                <active-on-start>Yes</active-on-start>
+                                <active-on-start>No</active-on-start>
                                 <movement>Horizontal</movement>
                                 <wave>Sine</wave>
                                 <period>4</period>
@@ -270,7 +275,7 @@
                         </behavior-instance>
                         <behavior-instance type="Sine2">
                             <properties>
-                                <active-on-start>Yes</active-on-start>
+                                <active-on-start>No</active-on-start>
                                 <movement>Horizontal</movement>
                                 <wave>Sine</wave>
                                 <period>4</period>
@@ -368,6 +373,35 @@
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Cow" uid="18">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <instance-variables>
+                        <moveBy>0</moveBy>
+                        <speed>20</speed>
+                        <state>free</state>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-178</x>
+                        <y>306</y>
+                        <z>0</z>
+                        <width>32</width>
+                        <height>32</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
