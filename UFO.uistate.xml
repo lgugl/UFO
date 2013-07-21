@@ -11,11 +11,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </configurations>
     <open-tabs>
         <layout>Title screen</layout>
-        <layout>Game screen</layout>
+        <layout active="1">Game screen</layout>
         <event-sheet>Title screen Event sheet</event-sheet>
-        <event-sheet active="1">Game screen Event sheet</event-sheet>
+        <event-sheet>Game screen Event sheet</event-sheet>
     </open-tabs>
     <properties>
+        <property expanded="1" name="About" />
         <property expanded="1" name="Project settings" />
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />

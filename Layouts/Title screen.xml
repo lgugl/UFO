@@ -118,6 +118,13 @@
                 <ammunition>0</ammunition>
             </instance-variables>
         </instance>
+        <instance type="wStrawDic" uid="19">
+            <instance-variables>
+                <reload>false</reload>
+                <reloadTime>0</reloadTime>
+                <ammunition>0</ammunition>
+            </instance-variables>
+        </instance>
     </nonworld-instances>
     <effects />
 </c2layout>
