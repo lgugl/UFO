@@ -6,7 +6,8 @@
         <comment>Global variables:</comment>
         <variable constant="0" name="currentWeapon" sid="9559297127745932" static="0" type="text"></variable>
         <variable constant="0" name="defaultWeapon" sid="184043535974327" static="0" type="text"></variable>
-        <variable constant="0" name="enemyTargetY" sid="4151041664764379" static="0" type="number">0</variable>
+        <variable constant="0" name="enemiesStartY" sid="2428974338007729" static="0" type="number">0</variable>
+        <variable constant="0" name="enemiesTargetY" sid="4151041664764379" static="0" type="number">0</variable>
         <variable comment="coordonnée Y de base des vaches" constant="0" name="cowsY" sid="7747105720467489" static="0" type="number">0</variable>
         <variable constant="0" name="deadFallY" sid="2119204343672286" static="0" type="number">0</variable>
         <event-group description="" sid="6188615120386475" title="Start events">
@@ -28,17 +29,21 @@
                             <param id="0" name="Variable">currentWeapon</param>
                             <param id="1" name="Value">defaultWeapon</param>
                         </action>
+                        <action id="-9" name="Set value" sid="9493707449401636" type="System">
+                            <param id="0" name="Variable">enemiesStartY</param>
+                            <param id="1" name="Value">marklineEnemyStart.Y</param>
+                        </action>
                         <action id="-9" name="Set value" sid="1524681855463672" type="System">
-                            <param id="0" name="Variable">enemyTargetY</param>
-                            <param id="1" name="Value">targetLineBottom.Y</param>
+                            <param id="0" name="Variable">enemiesTargetY</param>
+                            <param id="1" name="Value">marklineEnemyTarget.Y</param>
                         </action>
                         <action id="-9" name="Set value" sid="750771302694917" type="System">
                             <param id="0" name="Variable">cowsY</param>
-                            <param id="1" name="Value">enemyTargetY + 50</param>
+                            <param id="1" name="Value">enemiesTargetY + 50</param>
                         </action>
                         <action id="-9" name="Set value" sid="5131772079190257" type="System">
                             <param id="0" name="Variable">deadFallY</param>
-                            <param id="1" name="Value">targetLineDeadFall.Y</param>
+                            <param id="1" name="Value">marklineDeadFall.Y</param>
                         </action>
                         <action id="10" name="Request fullscreen" sid="69202366978312" type="Browser">
                             <param id="0" name="Mode">0</param>
@@ -112,7 +117,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="4002922252956018" title="Input events">
+        <event-group collapsed="1" description="" sid="4002922252956018" title="Input events">
             <sub-events>
                 <event-group collapsed="1" description="" sid="8521614036322924" title="Movement">
                     <sub-events>
@@ -335,7 +340,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="4820918851855756" title="General events">
+        <event-group collapsed="1" description="" sid="4820918851855756" title="General events">
             <sub-events>
                 <event-block sid="9109083165995255">
                     <conditions>
@@ -530,7 +535,7 @@
                             <param id="0" name="Object to create">eUFO_01</param>
                             <param id="1" name="Layer">&quot;Main&quot;</param>
                             <param id="2" name="X">random(50, LayoutWidth-50)</param>
-                            <param id="3" name="Y">16</param>
+                            <param id="3" name="Y">marklineEnemyStart.Y</param>
                         </action>
                     </actions>
                 </event-block>
@@ -618,7 +623,7 @@
                                     <conditions>
                                         <condition id="-2" name="Compare Y" sid="9073598346992212" type="eUFO_01">
                                             <param id="0" name="Comparison">5</param>
-                                            <param id="1" name="Y co-ordinate">enemyTargetY</param>
+                                            <param id="1" name="Y co-ordinate">enemiesTargetY</param>
                                         </condition>
                                     </conditions>
                                     <actions>
@@ -857,7 +862,7 @@
                 </event-group>
             </sub-events>
         </event-group>
-        <event-group description="" sid="6538091107210889" title="Cows events">
+        <event-group collapsed="1" description="" sid="6538091107210889" title="Cows events">
             <sub-events>
                 <event-block sid="7589439604443175">
                     <conditions>

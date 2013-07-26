@@ -232,7 +232,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="targetLineBottom" uid="10">
+                <instance type="marklineEnemyTarget" uid="10">
                     <properties>
                         <initial-visibility>Invisible</initial-visibility>
                         <initial-animation>Default</initial-animation>
@@ -450,9 +450,9 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="targetLineDeadFall" uid="21">
+                <instance type="marklineDeadFall" uid="21">
                     <properties>
-                        <initial-visibility>Visible</initial-visibility>
+                        <initial-visibility>Invisible</initial-visibility>
                         <initial-animation>Default</initial-animation>
                         <initial-frame>0</initial-frame>
                         <collisions>Disabled</collisions>
@@ -462,6 +462,28 @@
                     <world>
                         <x>320</x>
                         <y>200</y>
+                        <z>0</z>
+                        <width>700</width>
+                        <height>1</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="marklineEnemyStart" uid="22">
+                    <properties>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Disabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>320</x>
+                        <y>16</y>
                         <z>0</z>
                         <width>700</width>
                         <height>1</height>

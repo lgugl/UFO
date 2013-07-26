@@ -12,8 +12,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <open-tabs>
         <layout>Title screen</layout>
         <layout active="1">Game screen</layout>
-        <event-sheet>Title screen Event sheet</event-sheet>
         <event-sheet>Game screen Event sheet</event-sheet>
+        <event-sheet>Title screen Event sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -22,8 +22,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="1" name="Configuration Settings" />
     </properties>
     <families-expanded root="1">
-        <family expanded="1" name="Bullets" />
+        <family expanded="0" name="Bullets" />
         <family expanded="0" name="Enemies" />
-        <family expanded="1" name="Weapons" />
+        <family expanded="0" name="Weapons" />
     </families-expanded>
 </c2uistate>
