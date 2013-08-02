@@ -14,6 +14,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <layout>Game screen</layout>
         <event-sheet active="1">Game screen Event sheet</event-sheet>
         <event-sheet>Title screen Event sheet</event-sheet>
+        <event-sheet>Global Event sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -21,7 +22,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
-    <families-expanded root="1">
+    <families-expanded root="0">
         <family expanded="0" name="Bullets" />
         <family expanded="0" name="Enemies" />
         <family expanded="0" name="Weapons" />

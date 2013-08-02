@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Game screen Event sheet</name>
     <events>
+        <include>Global Event sheet</include>
         <comment>Global variables:</comment>
         <variable constant="0" name="currentWeapon" sid="9559297127745932" static="0" type="text"></variable>
         <variable constant="0" name="defaultWeapon" sid="184043535974327" static="0" type="text"></variable>
@@ -10,7 +11,7 @@
         <variable constant="0" name="enemiesTargetY" sid="4151041664764379" static="0" type="number">0</variable>
         <variable comment="coordonnée Y de base des vaches" constant="0" name="cowsY" sid="7747105720467489" static="0" type="number">0</variable>
         <variable constant="0" name="deadFallY" sid="2119204343672286" static="0" type="number">0</variable>
-        <event-group description="" sid="6188615120386475" title="Start events">
+        <event-group collapsed="1" description="" sid="6188615120386475" title="Start events">
             <sub-events>
                 <event-block sid="4339001097011007">
                     <conditions>
@@ -44,9 +45,6 @@
                         <action id="-9" name="Set value" sid="5131772079190257" type="System">
                             <param id="0" name="Variable">deadFallY</param>
                             <param id="1" name="Value">marklineDeadFall.Y</param>
-                        </action>
-                        <action id="10" name="Request fullscreen" sid="69202366978312" type="Browser">
-                            <param id="0" name="Mode">0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -117,7 +115,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="4002922252956018" title="Input events">
+        <event-group collapsed="1" description="" sid="4002922252956018" title="Input events">
             <sub-events>
                 <event-group collapsed="1" description="" sid="8521614036322924" title="Movement">
                     <sub-events>
@@ -153,7 +151,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="4927751051606347" title="Fire">
+                <event-group description="" sid="4927751051606347" title="Fire">
                     <sub-events>
                         <event-block sid="7981904484682303">
                             <conditions>
@@ -328,33 +326,6 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-block sid="2616960827077569">
-                    <conditions>
-                        <condition id="3" name="On key released" sid="4995788785060402" type="Keyboard">
-                            <param id="0" name="Key">27 (Echap)</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="11" name="Cancel fullscreen" sid="1152987217423438" type="Browser" />
-                    </actions>
-                </event-block>
-                <comment>Cancel fullscreen before Close to avoid node-webkit crashes, or use javascript &quot;window.close()&quot;</comment>
-                <event-block sid="4231583856224303">
-                    <conditions>
-                        <condition id="6" name="On object clicked" sid="2011955249851951" type="Mouse">
-                            <param id="0" name="Mouse button">0</param>
-                            <param id="1" name="Click type">0</param>
-                            <param id="2" name="Object clicked">btnClose</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action disabled="1" id="11" name="Cancel fullscreen" sid="8783785612108982" type="Browser" />
-                        <action disabled="1" id="1" name="Close" sid="8780177988914544" type="Browser" />
-                        <action id="17" name="Execute Javascript" sid="9941705218287689" type="Browser">
-                            <param id="0" name="Javascript">&quot;window.close();&quot;</param>
-                        </action>
-                    </actions>
-                </event-block>
             </sub-events>
         </event-group>
         <event-group collapsed="1" description="" sid="4820918851855756" title="General events">
@@ -860,7 +831,7 @@
                                                             <param id="0" name="Instance variable">state</param>
                                                             <param id="1" name="Value">&quot;falling&quot;</param>
                                                         </action>
-                                                        <action behavior="MoveTo" id="4" name="Set target position" sid="6208329710210655" type="Cow">
+                                                        <action behavior="MoveTo" id="4" name="Move to XY" sid="6208329710210655" type="Cow">
                                                             <param id="0" name="X">Self.X</param>
                                                             <param id="1" name="Y">cowsY</param>
                                                         </action>

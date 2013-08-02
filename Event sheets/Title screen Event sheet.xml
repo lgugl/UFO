@@ -3,6 +3,16 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Title screen Event sheet</name>
     <events>
+        <event-block sid="7339759803496673">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="9385116417493015" type="System" />
+            </conditions>
+            <actions>
+                <action id="10" name="Request fullscreen" sid="9141087991808893" type="Browser">
+                    <param id="0" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="5869304014715984">
             <conditions>
                 <condition behavior="Fade" id="0" name="On fade out finished" sid="4315430399362641" type="pressToStart" />
