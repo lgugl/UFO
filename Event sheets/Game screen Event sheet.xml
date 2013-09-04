@@ -115,7 +115,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="4002922252956018" title="Input events">
+        <event-group description="" sid="4002922252956018" title="Input events">
             <sub-events>
                 <event-group collapsed="1" description="" sid="8521614036322924" title="Movement">
                     <sub-events>
@@ -151,7 +151,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="4927751051606347" title="Fire">
+                <event-group collapsed="1" description="" sid="4927751051606347" title="Fire">
                     <sub-events>
                         <event-block sid="7981904484682303">
                             <conditions>
@@ -178,7 +178,12 @@
                                             <param id="2" name="Value">currentWeapon</param>
                                         </condition>
                                     </conditions>
-                                    <actions />
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="2382933922014368" type="System">
+                                            <param id="0" name="Variable">fireRate</param>
+                                            <param id="1" name="Value">Weapons.Get(&quot;fireRate&quot;)</param>
+                                        </action>
+                                    </actions>
                                     <sub-events>
                                         <event-block sid="4304239989874508">
                                             <conditions>
@@ -205,7 +210,12 @@
                                                     <param id="2" name="Value">0</param>
                                                 </condition>
                                             </conditions>
-                                            <actions />
+                                            <actions>
+                                                <action id="-12" name="Subtract from" sid="397028682841457" type="Weapons">
+                                                    <param id="0" name="Instance variable">ammunition</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
                                             <sub-events>
                                                 <event-block sid="5952281657192533">
                                                     <conditions>
@@ -240,25 +250,7 @@
                                                         </action>
                                                     </actions>
                                                 </event-block>
-                                                <event-block sid="7159523349822378">
-                                                    <conditions />
-                                                    <actions>
-                                                        <action id="-12" name="Subtract from" sid="397028682841457" type="Weapons">
-                                                            <param id="0" name="Instance variable">ammunition</param>
-                                                            <param id="1" name="Value">1</param>
-                                                        </action>
-                                                    </actions>
-                                                </event-block>
                                             </sub-events>
-                                        </event-block>
-                                        <event-block sid="9070006292999598">
-                                            <conditions />
-                                            <actions>
-                                                <action id="-9" name="Set value" sid="2382933922014368" type="System">
-                                                    <param id="0" name="Variable">fireRate</param>
-                                                    <param id="1" name="Value">Weapons.Get(&quot;fireRate&quot;)</param>
-                                                </action>
-                                            </actions>
                                         </event-block>
                                     </sub-events>
                                 </event-block>
@@ -371,7 +363,6 @@
                 </event-block>
                 <event-block sid="8147368240708341">
                     <conditions>
-                        <condition id="-1" name="Every tick" sid="3543962415463643" type="System" />
                         <condition id="-7" name="Compare instance variable" sid="7973361581702482" type="Enemies">
                             <param id="0" name="Instance variable">health</param>
                             <param id="1" name="Comparison">3</param>

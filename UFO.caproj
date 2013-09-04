@@ -8,21 +8,22 @@
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>13900</saved-with-version>
+    <saved-with-version>14300</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
-        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
-        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="NodeWebkit" version="1">Node-Webkit</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
@@ -49,7 +50,7 @@
         <prop name="Sampling">Linear</prop>
         <prop name="Use iOS retina display">Yes</prop>
     </configuration-settings>
-    <object-folder expanded="0">
+    <object-folder expanded="1">
         <object-type name="Keyboard" sid="9730438358899044">
             <plugin id="Keyboard" />
         </object-type>
@@ -264,6 +265,34 @@
         <object-type name="Mouse" sid="3343800162672739">
             <plugin id="Mouse" />
         </object-type>
+        <object-type name="NodeWebkit" sid="4329930614643245">
+            <plugin id="NodeWebkit" />
+        </object-type>
+        <object-type name="Text2" sid="6590615137890845">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="btnPlay" sid="6335303698339761">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="9867689200423495" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="6310790574207072" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="btnOptions" sid="663112324491307">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="6513963311827012" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="5039172403782131" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Bullets" plugin-id="Sprite" sid="3722142017417203">
@@ -306,21 +335,35 @@
                 <instance-variable name="ammunition" sid="1472019344871948" type="number" />
             </instance-variables>
         </family>
+        <family name="MainMenu" plugin-id="Sprite" sid="3559508668224159">
+            <members>
+                <member>btnOptions</member>
+                <member>btnPlay</member>
+            </members>
+            <instance-variables>
+                <instance-variable name="order" sid="5266024067546183" type="number" />
+                <instance-variable name="name" sid="794377243613853" type="string" />
+                <instance-variable name="layout" sid="3691773627227841" type="string" />
+            </instance-variables>
+        </family>
     </families>
     <layout-folder expanded="1">
         <layout>Title screen.xml</layout>
+        <layout>Menu screen.xml</layout>
         <layout>Game screen.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Title screen Event sheet.xml</event-sheet>
         <event-sheet>Game screen Event sheet.xml</event-sheet>
         <event-sheet>Global Event sheet.xml</event-sheet>
+        <event-sheet>Menu screen Event sheet.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Keyboard" uid="15" />
         <global-instance type="Function" uid="16" />
         <global-instance type="Browser" uid="17" />
         <global-instance type="Mouse" uid="24" />
+        <global-instance type="NodeWebkit" uid="25" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1" />
