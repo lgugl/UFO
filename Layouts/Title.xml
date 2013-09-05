@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
-    <name>Title screen</name>
+    <name>Title</name>
     <sid>2816960265282682</sid>
-    <event-sheet>Title screen Event sheet</event-sheet>
+    <event-sheet>Title Event sheet</event-sheet>
     <size>
         <width>640</width>
         <height>480</height>

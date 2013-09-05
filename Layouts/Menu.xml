@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
-    <name>Menu screen</name>
+    <name>Menu</name>
     <sid>6981337400920367</sid>
-    <event-sheet>Menu screen Event sheet</event-sheet>
+    <event-sheet>Menu Event sheet</event-sheet>
     <size>
         <width>1280</width>
         <height>1024</height>
@@ -11,7 +11,7 @@
         <horizontal>500</horizontal>
         <vertical>500</vertical>
     </margins>
-    <unbounded-scrolling>0</unbounded-scrolling>
+    <unbounded-scrolling>1</unbounded-scrolling>
     <layers>
         <layer name="Layer 0" sid="7136237100814388">
             <initially-visible>1</initially-visible>
@@ -64,7 +64,7 @@
                     <instance-variables>
                         <order>1</order>
                         <name>play</name>
-                        <layout>Game screen</layout>
+                        <layout>Game</layout>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -91,7 +91,7 @@
                     <instance-variables>
                         <order>2</order>
                         <name>options</name>
-                        <layout></layout>
+                        <layout>Options</layout>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>

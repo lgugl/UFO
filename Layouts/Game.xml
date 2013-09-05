@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
-    <name>Game screen</name>
+    <name>Game</name>
     <sid>5213305719664198</sid>
-    <event-sheet>Game screen Event sheet</event-sheet>
+    <event-sheet>Game Event sheet</event-sheet>
     <size>
         <width>640</width>
         <height>480</height>
@@ -187,6 +187,8 @@
                         <scale>1</scale>
                         <state></state>
                         <speed>80</speed>
+                        <scorePoints>100</scorePoints>
+                        <dead>false</dead>
                         <cowUID>-1</cowUID>
                     </instance-variables>
                     <behavior-instances>
@@ -244,6 +246,8 @@
                         <scale>1</scale>
                         <state></state>
                         <speed>0</speed>
+                        <scorePoints>200</scorePoints>
+                        <dead>false</dead>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="Sine">

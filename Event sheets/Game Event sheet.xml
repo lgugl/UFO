@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
-    <name>Game screen Event sheet</name>
+    <name>Game Event sheet</name>
     <events>
         <include>Global Event sheet</include>
         <comment>Global variables:</comment>
@@ -9,9 +9,11 @@
         <variable constant="0" name="defaultWeapon" sid="184043535974327" static="0" type="text"></variable>
         <variable constant="0" name="enemiesStartY" sid="2428974338007729" static="0" type="number">0</variable>
         <variable constant="0" name="enemiesTargetY" sid="4151041664764379" static="0" type="number">0</variable>
+        <variable constant="0" name="lives" sid="1411858114687103" static="0" type="number">0</variable>
         <variable comment="coordonnée Y de base des vaches" constant="0" name="cowsY" sid="7747105720467489" static="0" type="number">0</variable>
+        <variable constant="0" name="score" sid="2131043004181187" static="0" type="number">0</variable>
         <variable constant="0" name="deadFallY" sid="2119204343672286" static="0" type="number">0</variable>
-        <event-group collapsed="1" description="" sid="6188615120386475" title="Start events">
+        <event-group description="" sid="6188615120386475" title="Start events">
             <sub-events>
                 <event-block sid="4339001097011007">
                     <conditions>
@@ -45,6 +47,10 @@
                         <action id="-9" name="Set value" sid="5131772079190257" type="System">
                             <param id="0" name="Variable">deadFallY</param>
                             <param id="1" name="Value">marklineDeadFall.Y</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="2029570836734617" type="System">
+                            <param id="0" name="Variable">lives</param>
+                            <param id="1" name="Value">3</param>
                         </action>
                     </actions>
                 </event-block>
@@ -112,6 +118,29 @@
                             <param id="1" name="Value">3</param>
                         </action>
                     </actions>
+                </event-block>
+                <event-block sid="1160973327073361">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="3683280247388231" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="4890233056435157">
+                            <conditions>
+                                <condition id="-12" name="Repeat" sid="254957124053581" type="System">
+                                    <param id="0" name="Count">lives</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="3991148715872499" type="System">
+                                    <param id="0" name="Object to create">Cow</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="X">random(50, LayoutWidth-50)</param>
+                                    <param id="3" name="Y">cowsY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
@@ -320,18 +349,8 @@
                 </event-group>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="4820918851855756" title="General events">
+        <event-group description="" sid="4820918851855756" title="General events">
             <sub-events>
-                <event-block sid="9109083165995255">
-                    <conditions>
-                        <condition id="-1" name="Every tick" sid="1223553142144005" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="8862016126950413" type="Debug">
-                            <param id="0" name="Text">&quot;FPS: &quot; &amp; fps</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="7101875705467223">
                     <conditions>
                         <condition id="0" name="On collision with another object" sid="7663679962005732" type="Bullets">
@@ -361,33 +380,7 @@
                         <action id="-9" name="Destroy" sid="5025907036075087" type="Bullets" />
                     </actions>
                 </event-block>
-                <event-block sid="8147368240708341">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="7973361581702482" type="Enemies">
-                            <param id="0" name="Instance variable">health</param>
-                            <param id="1" name="Comparison">3</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" sid="184849001432164" type="Enemies">
-                            <param id="0" name="Instance variable">state</param>
-                            <param id="1" name="Value">&quot;destroy&quot;</param>
-                        </action>
-                        <action id="-18" name="Rotate clockwise" sid="6528004194395932" type="Enemies">
-                            <param id="0" name="Degrees">dt * 720</param>
-                        </action>
-                        <action id="-7" name="Set size" sid="6005445261962137" type="Enemies">
-                            <param id="0" name="Width">self.Width - self.Width * dt </param>
-                            <param id="1" name="Height">self.Height - self.Height * dt</param>
-                        </action>
-                        <action id="-16" name="Wait" sid="3711272186721962" type="System">
-                            <param id="0" name="Seconds">1.0</param>
-                        </action>
-                        <action id="-9" name="Destroy" sid="309074877300847" type="Enemies" />
-                    </actions>
-                </event-block>
-                <event-block sid="4260109070004518">
+                <event-block collapsed="1" sid="4260109070004518">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="3770890171458288" type="Weapons">
                             <param id="0" name="Instance variable">ammunition</param>
@@ -422,7 +415,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="3396940294713651">
+                <event-block collapsed="1" sid="3396940294713651">
                     <conditions>
                         <condition id="-8" name="Is boolean instance variable set" sid="1366683595862882" type="Weapons">
                             <param id="0" name="Instance variable">reload</param>
@@ -474,39 +467,75 @@
                         </event-block>
                     </sub-events>
                 </event-block>
+                <event-block sid="5959850976863137">
+                    <conditions>
+                        <condition id="-19" name="Pick all" sid="8521713686273943" type="System">
+                            <param id="0" name="Object">CarrotAmmunition</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="601425482570556" type="CarrotAmmunition" />
+                    </actions>
+                </event-block>
+                <event-block sid="8326172127385367">
+                    <conditions>
+                        <condition id="-12" name="Repeat" sid="4589614422536301" type="System">
+                            <param id="0" name="Count">wCarrotDic.ammunition</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="1729240112507937" type="System">
+                            <param id="0" name="Object to create">CarrotAmmunition</param>
+                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                            <param id="2" name="X">620 - loopindex * 10</param>
+                            <param id="3" name="Y">460</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5611197310771212">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="7941076874931295" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="7599985929653386" type="System">
+                            <param id="0" name="Variable">lives</param>
+                            <param id="1" name="Value">Cow.PickedCount</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="709984976008216">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="1985019972214705" type="System">
+                            <param id="0" name="First value">lives</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="4474428690191775" type="System">
+                            <param id="0" name="Layout">End Game</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8126614364360775">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="1319336250270306" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="5997658563335046" type="Debug">
+                            <param id="0" name="Text">&quot;Score: &quot; &amp; score</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="5959850976863137">
-            <conditions>
-                <condition id="-19" name="Pick all" sid="8521713686273943" type="System">
-                    <param id="0" name="Object">CarrotAmmunition</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Destroy" sid="601425482570556" type="CarrotAmmunition" />
-            </actions>
-        </event-block>
-        <event-block sid="8326172127385367">
-            <conditions>
-                <condition id="-12" name="Repeat" sid="4589614422536301" type="System">
-                    <param id="0" name="Count">wCarrotDic.ammunition</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-3" name="Create object" sid="1729240112507937" type="System">
-                    <param id="0" name="Object to create">CarrotAmmunition</param>
-                    <param id="1" name="Layer">&quot;Main&quot;</param>
-                    <param id="2" name="X">620 - loopindex * 10</param>
-                    <param id="3" name="Y">460</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-group collapsed="1" description="" sid="593834434841065" title="Enemies events">
+        <event-group description="" sid="593834434841065" title="Enemies events">
             <sub-events>
+                <variable constant="0" name="captureTolerance" sid="6428054404375282" static="0" type="number">100</variable>
                 <event-block sid="9161417591077772">
                     <conditions>
                         <condition id="-6" name="Every X seconds" sid="3721996492083176" type="System">
-                            <param id="0" name="Interval (seconds)">2</param>
+                            <param id="0" name="Interval (seconds)">1</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -518,7 +547,49 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-group description="" sid="585674923018483" title="eUFO_01">
+                <event-block sid="9782187558983824">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="7973361581702482" type="Enemies">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5376500559734931" type="Enemies">
+                            <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="184849001432164" type="Enemies">
+                            <param id="0" name="Instance variable">dead</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="4416405992844218" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Value">Enemies.scorePoints</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2063020677987179">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="7360813373627804" type="Enemies">
+                            <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-18" name="Rotate clockwise" sid="6528004194395932" type="Enemies">
+                            <param id="0" name="Degrees">dt * 720</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6005445261962137" type="Enemies">
+                            <param id="0" name="Width">self.Width - self.Width * dt </param>
+                            <param id="1" name="Height">self.Height - self.Height * dt</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="3711272186721962" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="309074877300847" type="Enemies" />
+                    </actions>
+                </event-block>
+                <event-group collapsed="1" description="" sid="585674923018483" title="eUFO_01">
                     <sub-events>
                         <event-block sid="4950871651049371">
                             <conditions>
@@ -640,8 +711,8 @@
                                         </condition>
                                         <condition id="-21" name="Is between values" sid="4257997386941602" type="System">
                                             <param id="0" name="Value">eUFO_01.X</param>
-                                            <param id="1" name="Lower bound">Cow.X -100</param>
-                                            <param id="2" name="Upper bound">Cow.X +100</param>
+                                            <param id="1" name="Lower bound">Cow.X - captureTolerance</param>
+                                            <param id="2" name="Upper bound">Cow.X + captureTolerance</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="8410792149816856" type="Cow">
                                             <param id="0" name="Instance variable">state</param>
@@ -768,7 +839,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block collapsed="1" sid="9365310533613789">
+                        <event-block sid="9365310533613789">
                             <conditions>
                                 <condition id="-19" name="On destroyed" sid="9317889539707269" type="eUFO_01" />
                             </conditions>
@@ -843,30 +914,7 @@
         </event-group>
         <event-group collapsed="1" description="" sid="6538091107210889" title="Cows events">
             <sub-events>
-                <event-block sid="7589439604443175">
-                    <conditions>
-                        <condition id="-2" name="On start of layout" sid="2798507115914145" type="System" />
-                    </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="2395372198534413">
-                            <conditions>
-                                <condition id="-12" name="Repeat" sid="3966313644633963" type="System">
-                                    <param id="0" name="Count">3</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="1322582522197892" type="System">
-                                    <param id="0" name="Object to create">Cow</param>
-                                    <param id="1" name="Layer">&quot;Main&quot;</param>
-                                    <param id="2" name="X">random(50, LayoutWidth-50)</param>
-                                    <param id="3" name="Y">cowsY</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <comment>Chaque seconde, on prend une des vaches qui ne se déplace pas, et on lui donne EVENTUELLEMENT une distance à parcourir (négative pour aller à gauche, positive pour aller à droite).</comment>
+                <comment>Chaque seconde, on prend une des vaches qui ne se déplacent pas, et on lui donne EVENTUELLEMENT une distance à parcourir (négative pour aller à gauche, positive à droite).</comment>
                 <event-block sid="6145284520325428">
                     <conditions>
                         <condition id="-6" name="Every X seconds" sid="9155054551384602" type="System">
