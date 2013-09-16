@@ -10,19 +10,27 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout>Title screen</layout>
-        <layout>Game screen</layout>
-        <event-sheet>Title screen Event sheet</event-sheet>
-        <event-sheet active="1">Game screen Event sheet</event-sheet>
+        <layout active="1">Title</layout>
+        <layout>Game</layout>
+        <layout>Menu</layout>
+        <layout>End Game</layout>
+        <layout>Options</layout>
+        <event-sheet>Game Event sheet</event-sheet>
+        <event-sheet>Title Event sheet</event-sheet>
+        <event-sheet>Global Event sheet</event-sheet>
+        <event-sheet>Menu Event sheet</event-sheet>
+        <event-sheet>End Game Event sheet</event-sheet>
     </open-tabs>
     <properties>
+        <property expanded="1" name="About" />
         <property expanded="1" name="Project settings" />
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
     <families-expanded root="1">
-        <family expanded="1" name="Bullets" />
-        <family expanded="0" name="Enemies" />
-        <family expanded="1" name="Weapons" />
+        <family expanded="0" name="Bullets" />
+        <family expanded="1" name="Enemies" />
+        <family expanded="0" name="Weapons" />
+        <family expanded="0" name="MainMenu" />
     </families-expanded>
 </c2uistate>

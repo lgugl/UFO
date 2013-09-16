@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Global Event sheet</name>
+    <events>
+        <event-block sid="156477194585085">
+            <conditions>
+                <condition id="3" name="On key released" sid="6312855250270794" type="Keyboard">
+                    <param id="0" name="Key">27 (Echap)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="11" name="Cancel fullscreen" sid="9918477366289011" type="Browser" />
+            </actions>
+        </event-block>
+        <event-block sid="6854134515966789">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="9791599752350765" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">btnClose</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Close" sid="4690196787745172" type="Browser" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

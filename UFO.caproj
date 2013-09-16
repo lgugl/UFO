@@ -3,13 +3,19 @@
     <name>UFO</name>
     <description></description>
     <version>0.1</version>
-    <author>logik</author>
+    <author>Logik</author>
+    <author-email></author-email>
+    <author-website></author-website>
+    <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>12200</saved-with-version>
+    <saved-with-version>14300</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="NodeWebkit" version="1">Node-Webkit</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
-        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
@@ -17,6 +23,8 @@
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
@@ -30,46 +38,46 @@
         <height>480</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
-    <first-layout>Title screen</first-layout>
+    <first-layout>Title</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
         <prop name="Enable WebGL">On</prop>
-        <prop name="Fullscreen in browser">Scale</prop>
+        <prop name="Fullscreen in browser">Scale outer</prop>
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
-        <prop name="Preview browser">Chrome</prop>
+        <prop name="Preview browser">Node-Webkit</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use iOS retina display">Yes</prop>
     </configuration-settings>
     <object-folder expanded="1">
-        <object-type name="Keyboard">
+        <object-type name="Keyboard" sid="9730438358899044">
             <plugin id="Keyboard" />
         </object-type>
-        <object-type name="Title">
+        <object-type name="Title" sid="2530869413787535">
             <plugin id="Text" />
         </object-type>
-        <object-type name="pressToStart">
+        <object-type name="pressToStart" sid="6216389418765843">
             <plugin id="Text" />
             <behaviors>
-                <behavior-type name="Fade">
+                <behavior-type name="Fade" sid="9136061934777582">
                     <behavior id="Fade" />
                 </behavior-type>
             </behaviors>
         </object-type>
-        <object-type name="Player">
+        <object-type name="Player" sid="5257528985067146">
             <plugin id="Sprite" />
             <instance-variables>
-                <instance-variable name="speed" type="number" />
-                <instance-variable name="fire" type="boolean" />
+                <instance-variable name="speed" sid="5328353950270134" type="number" />
+                <instance-variable name="fire" sid="2814660161721292" type="boolean" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="BoundToLayout">
+                <behavior-type name="BoundToLayout" sid="5629905899285742">
                     <behavior id="bound" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1881789851996376" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                         <image-point name="bullet origin" x="0.5" y="0" />
                         <collision-poly>
@@ -82,160 +90,302 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="bPotato">
+        <object-type name="bPotato" sid="6550406967179273">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="Bullet">
+                <behavior-type name="Bullet" sid="5938817925643788">
                     <behavior id="Bullet" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1778975614898242" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Function">
+        <object-type name="Function" sid="4121815645598667">
             <plugin id="Function" />
         </object-type>
-        <object-type name="bCarrot">
+        <object-type name="bCarrot" sid="225433549598638">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="Bullet">
+                <behavior-type name="Bullet" sid="1668949006618582">
                     <behavior id="Bullet" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3012292315570702" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="eUFO_01">
+        <object-type name="eUFO_01" sid="2793531640999212">
             <plugin id="Sprite" />
             <instance-variables>
-                <instance-variable name="state" type="string" />
+                <instance-variable name="cowUID" sid="7721527054113385" type="number" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="Sine">
+                <behavior-type name="Sine" sid="7309268113414598">
                     <behavior id="Sin" />
                 </behavior-type>
-                <behavior-type name="Sine2">
+                <behavior-type name="Sine2" sid="5326519987157908">
                     <behavior id="Sin" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="563103445527685" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="targetLineBottom">
+        <object-type name="marklineEnemyTarget" sid="3605386561185212">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6794906658217743" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="eUFO_02">
+        <object-type name="eUFO_02" sid="2986681687716372">
             <plugin id="Sprite" />
-            <instance-variables>
-                <instance-variable name="state" type="string" />
-            </instance-variables>
             <behaviors>
-                <behavior-type name="Sine">
+                <behavior-type name="Sine" sid="7370965962253978">
                     <behavior id="Sin" />
                 </behavior-type>
-                <behavior-type name="Sine2">
+                <behavior-type name="Sine2" sid="4424631873067911">
                     <behavior id="Sin" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7496842231631303" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Debug">
+        <object-type name="Debug" sid="9369045166060802">
             <plugin id="Text" />
         </object-type>
-        <object-type name="CarrotAmmunition">
+        <object-type name="CarrotAmmunition" sid="8812339258338949">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6245530298349297" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type global="1" name="wCabbageDic">
+        <object-type global="1" name="wCabbageDic" sid="5217116458522595">
             <plugin id="Dictionary" />
         </object-type>
-        <object-type global="1" name="wPotatoDic">
+        <object-type global="1" name="wPotatoDic" sid="479602599588256">
             <plugin id="Dictionary" />
         </object-type>
-        <object-type global="1" name="wCarrotDic">
+        <object-type global="1" name="wCarrotDic" sid="2041661232052976">
             <plugin id="Dictionary" />
         </object-type>
-        <object-type name="reload">
+        <object-type name="reload" sid="7075926397625432">
             <plugin id="Text" />
         </object-type>
-        <object-type name="TiledBackground">
+        <object-type name="TiledBackground" sid="6627619325840681">
             <plugin id="TiledBg" />
             <texture />
         </object-type>
+        <object-type name="Browser" sid="2963380838715931">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type name="Cow" sid="9497452459875406">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="moveBy" sid="1035086504207223" type="number" />
+                <instance-variable name="speed" sid="5348303845669196" type="number" />
+                <instance-variable name="state" sid="5528624450358903" type="string" />
+                <instance-variable name="deadFall" sid="8658532220814332" type="boolean" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Pin" sid="6723082646876358">
+                    <behavior id="Pin" />
+                </behavior-type>
+                <behavior-type name="MoveTo" sid="9042303215257271">
+                    <behavior id="Rex_MoveTo" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1787699971199453" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Text" sid="3952680463135405">
+            <plugin id="Text" />
+        </object-type>
+        <object-type global="1" name="wStrawDic" sid="6778774231263833">
+            <plugin id="Dictionary" />
+        </object-type>
+        <object-type name="straw" sid="7072506346352018">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="quantity" sid="5655214861852214" type="number" />
+            </instance-variables>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3529524928232211" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="marklineDeadFall" sid="5950029805436382">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2966199753819672" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="marklineEnemyStart" sid="42847037058542">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8269847001653937" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="btnClose" sid="3008928201550478">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2528718994139214" speed="5">
+                    <frame duration="1" hotspotX="0.583333" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Mouse" sid="3343800162672739">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="NodeWebkit" sid="4329930614643245">
+            <plugin id="NodeWebkit" />
+        </object-type>
+        <object-type name="Text2" sid="6590615137890845">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="btnPlay" sid="6335303698339761">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="9867689200423495" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="6310790574207072" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="btnOptions" sid="663112324491307">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="6513963311827012" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="5039172403782131" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Text3" sid="6065714577737845">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Text4" sid="5235666184742681">
+            <plugin id="Text" />
+        </object-type>
     </object-folder>
     <families>
-        <family name="Bullets" plugin-id="Sprite">
+        <family name="Bullets" plugin-id="Sprite" sid="3722142017417203">
             <members>
                 <member>bCarrot</member>
                 <member>bPotato</member>
             </members>
             <instance-variables>
-                <instance-variable name="fireRate" type="number" />
-                <instance-variable name="hitDamage" type="number" />
+                <instance-variable name="fireRate" sid="9254459494919309" type="number" />
+                <instance-variable name="hitDamage" sid="6178036938010168" type="number" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="DestroyOutsideLayout2">
+                <behavior-type name="DestroyOutsideLayout2" sid="9474911221987895">
                     <behavior id="destroy" />
                 </behavior-type>
             </behaviors>
         </family>
-        <family name="Enemies" plugin-id="Sprite">
+        <family name="Enemies" plugin-id="Sprite" sid="5480977275324818">
             <members>
                 <member>eUFO_01</member>
                 <member>eUFO_02</member>
             </members>
             <instance-variables>
-                <instance-variable name="health" type="number" />
+                <instance-variable name="health" sid="557595607820949" type="number" />
+                <instance-variable name="scale" sid="6788757056393752" type="number" />
+                <instance-variable name="state" sid="815766260512475" type="string" />
+                <instance-variable name="speed" sid="5843354487672234" type="number" />
+                <instance-variable name="scorePoints" sid="816615783073646" type="number" />
+                <instance-variable name="dead" sid="4947128842940831" type="boolean" />
             </instance-variables>
         </family>
-        <family name="Weapons" plugin-id="Dictionary">
+        <family name="Weapons" plugin-id="Dictionary" sid="97892015379847">
             <members>
                 <member>wCabbageDic</member>
                 <member>wCarrotDic</member>
                 <member>wPotatoDic</member>
+                <member>wStrawDic</member>
             </members>
             <instance-variables>
-                <instance-variable name="reload" type="boolean" />
-                <instance-variable name="reloadTime" type="number" />
-                <instance-variable name="ammunition" type="number" />
+                <instance-variable name="reload" sid="8973556131194288" type="boolean" />
+                <instance-variable name="reloadTime" sid="9230047823900071" type="number" />
+                <instance-variable name="ammunition" sid="1472019344871948" type="number" />
+            </instance-variables>
+        </family>
+        <family name="MainMenu" plugin-id="Sprite" sid="3559508668224159">
+            <members>
+                <member>btnOptions</member>
+                <member>btnPlay</member>
+            </members>
+            <instance-variables>
+                <instance-variable name="order" sid="5266024067546183" type="number" />
+                <instance-variable name="name" sid="794377243613853" type="string" />
+                <instance-variable name="layout" sid="3691773627227841" type="string" />
             </instance-variables>
         </family>
     </families>
     <layout-folder expanded="1">
-        <layout>Title screen.xml</layout>
-        <layout>Game screen.xml</layout>
+        <layout>Title.xml</layout>
+        <layout>Menu.xml</layout>
+        <layout>Game.xml</layout>
+        <layout>End Game.xml</layout>
+        <layout>Options.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
-        <event-sheet>Title screen Event sheet.xml</event-sheet>
-        <event-sheet>Game screen Event sheet.xml</event-sheet>
+        <event-sheet>Title Event sheet.xml</event-sheet>
+        <event-sheet>Game Event sheet.xml</event-sheet>
+        <event-sheet>Global Event sheet.xml</event-sheet>
+        <event-sheet>Menu Event sheet.xml</event-sheet>
+        <event-sheet>End Game Event sheet.xml</event-sheet>
+        <event-sheet>Options Event sheet.xml</event-sheet>
     </event-folder>
     <global-instances>
-        <global-instance type="Keyboard" />
-        <global-instance type="Function" />
+        <global-instance type="Keyboard" uid="15" />
+        <global-instance type="Function" uid="16" />
+        <global-instance type="Browser" uid="17" />
+        <global-instance type="Mouse" uid="24" />
+        <global-instance type="NodeWebkit" uid="25" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1" />
-    <files-folder expanded="1" />
+    <files-folder expanded="0">
+        <file-folder expanded="0" name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
 </c2project>
