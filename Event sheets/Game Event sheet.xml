@@ -20,14 +20,15 @@
                         <condition id="-2" name="On start of layout" sid="7455988836602765" type="System" />
                     </conditions>
                     <actions>
+                        <action id="33" name="Stop all" sid="8944064334690327" type="Audio" />
                         <action id="-9" name="Destroy" sid="2076570983371339" type="Bullets" />
-                        <action id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
-                        <action id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
-                        <action id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
                         <action id="-9" name="Set value" sid="2777576573844807" type="System">
                             <param id="0" name="Variable">defaultWeapon</param>
                             <param id="1" name="Value">&quot;potato&quot;</param>
                         </action>
+                        <action id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
+                        <action id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
+                        <action id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
                         <action id="-9" name="Set value" sid="8136963829920563" type="System">
                             <param id="0" name="Variable">currentWeapon</param>
                             <param id="1" name="Value">defaultWeapon</param>

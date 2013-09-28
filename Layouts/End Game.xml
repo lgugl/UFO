@@ -62,7 +62,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
-                        <order>1</order>
+                        <order>0</order>
                         <name>play</name>
                         <layout>Game</layout>
                     </instance-variables>

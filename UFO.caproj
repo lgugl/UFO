@@ -8,14 +8,16 @@
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>14300</saved-with-version>
+    <saved-with-version>14500</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
-        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
-        <plugin author="Scirra" id="NodeWebkit" version="1">Node-Webkit</plugin>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="NodeWebkit" version="1">Node-Webkit</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
@@ -57,7 +59,7 @@
         <object-type name="Title" sid="2530869413787535">
             <plugin id="Text" />
         </object-type>
-        <object-type name="pressToStart" sid="6216389418765843">
+        <object-type name="startMessage" sid="6216389418765843">
             <plugin id="Text" />
             <behaviors>
                 <behavior-type name="Fade" sid="9136061934777582">
@@ -274,10 +276,10 @@
         <object-type name="btnPlay" sid="6335303698339761">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="9867689200423495" speed="5">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="9867689200423495" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
-                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="6310790574207072" speed="5">
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="6310790574207072" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -285,10 +287,10 @@
         <object-type name="btnOptions" sid="663112324491307">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="6513963311827012" speed="5">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="6513963311827012" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
-                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="5039172403782131" speed="5">
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="5039172403782131" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -298,6 +300,52 @@
         </object-type>
         <object-type name="Text4" sid="5235666184742681">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="Audio" sid="6174284860477605">
+            <plugin id="Audio" />
+        </object-type>
+        <object-type name="fondu" sid="4068829512543273">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="Text5" sid="2302911422823272">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="btnBack" sid="6679894165382583">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="4035064822304746" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="592663831827594" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="musicVolumeCtrl" sid="8316370352938464">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="4" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4674036963616223" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="aMenu" sid="6187375173696523">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="btnMusicVolume" sid="9105354462102354">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="6827746336419457" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="4968417139458556" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families>
@@ -343,8 +391,10 @@
                 <instance-variable name="ammunition" sid="1472019344871948" type="number" />
             </instance-variables>
         </family>
-        <family name="MainMenu" plugin-id="Sprite" sid="3559508668224159">
+        <family name="Menu" plugin-id="Sprite" sid="3559508668224159">
             <members>
+                <member>btnBack</member>
+                <member>btnMusicVolume</member>
                 <member>btnOptions</member>
                 <member>btnPlay</member>
             </members>
@@ -376,10 +426,27 @@
         <global-instance type="Browser" uid="17" />
         <global-instance type="Mouse" uid="24" />
         <global-instance type="NodeWebkit" uid="25" />
+        <global-instance type="Audio" uid="32">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+                <speed-of-sound>5000</speed-of-sound>
+                <doppler-factor>1</doppler-factor>
+            </properties>
+        </global-instance>
     </global-instances>
     <sounds-folder expanded="1" />
-    <music-folder expanded="1" />
-    <files-folder expanded="0">
+    <music-folder expanded="1">
+        <file name="01 Main Theme.ogg" />
+    </music-folder>
+    <files-folder expanded="1">
         <file-folder expanded="0" name="Icons">
             <file name="icon-16.png" />
             <file name="icon-32.png" />
