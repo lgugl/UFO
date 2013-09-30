@@ -4,906 +4,1183 @@
     <name>Game Event sheet</name>
     <events>
         <include>Global Event sheet</include>
-        <comment>Global variables:</comment>
-        <variable constant="0" name="currentWeapon" sid="9559297127745932" static="0" type="text"></variable>
-        <variable constant="0" name="defaultWeapon" sid="184043535974327" static="0" type="text"></variable>
-        <variable constant="0" name="enemiesStartY" sid="2428974338007729" static="0" type="number">0</variable>
-        <variable constant="0" name="enemiesTargetY" sid="4151041664764379" static="0" type="number">0</variable>
-        <variable constant="0" name="lives" sid="1411858114687103" static="0" type="number">0</variable>
-        <variable comment="coordonnée Y de base des vaches" constant="0" name="cowsY" sid="7747105720467489" static="0" type="number">0</variable>
         <variable constant="0" name="score" sid="2131043004181187" static="0" type="number">0</variable>
-        <variable constant="0" name="deadFallY" sid="2119204343672286" static="0" type="number">0</variable>
-        <event-group description="" sid="6188615120386475" title="Start events">
+        <event-group description="" sid="5111063320157102" title="Game">
             <sub-events>
-                <event-block sid="4339001097011007">
-                    <conditions>
-                        <condition id="-2" name="On start of layout" sid="7455988836602765" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="33" name="Stop all" sid="8944064334690327" type="Audio" />
-                        <action id="-9" name="Destroy" sid="2076570983371339" type="Bullets" />
-                        <action id="-9" name="Set value" sid="2777576573844807" type="System">
-                            <param id="0" name="Variable">defaultWeapon</param>
-                            <param id="1" name="Value">&quot;potato&quot;</param>
-                        </action>
-                        <action id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
-                        <action id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
-                        <action id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
-                        <action id="-9" name="Set value" sid="8136963829920563" type="System">
-                            <param id="0" name="Variable">currentWeapon</param>
-                            <param id="1" name="Value">defaultWeapon</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="9493707449401636" type="System">
-                            <param id="0" name="Variable">enemiesStartY</param>
-                            <param id="1" name="Value">marklineEnemyStart.Y</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="1524681855463672" type="System">
-                            <param id="0" name="Variable">enemiesTargetY</param>
-                            <param id="1" name="Value">marklineEnemyTarget.Y</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="750771302694917" type="System">
-                            <param id="0" name="Variable">cowsY</param>
-                            <param id="1" name="Value">enemiesTargetY + 50</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="5131772079190257" type="System">
-                            <param id="0" name="Variable">deadFallY</param>
-                            <param id="1" name="Value">marklineDeadFall.Y</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="2029570836734617" type="System">
-                            <param id="0" name="Variable">lives</param>
-                            <param id="1" name="Value">3</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="8333154621574713">
-                    <conditions>
-                        <condition id="4" name="Is empty" sid="7562633811211047" type="wPotatoDic" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Add key" sid="6092132135326429" type="wPotatoDic">
-                            <param id="0" name="Key">&quot;name&quot;</param>
-                            <param id="1" name="Value">&quot;potato&quot;</param>
-                        </action>
-                        <action id="0" name="Add key" sid="9943004984892179" type="wPotatoDic">
-                            <param id="0" name="Key">&quot;fireRate&quot;</param>
-                            <param id="1" name="Value">0.5</param>
-                        </action>
-                        <action disabled="1" id="0" name="Add key" sid="6345739188676076" type="wPotatoDic">
-                            <param id="0" name="Key">&quot;UID&quot;</param>
-                            <param id="1" name="Value">Self.UID</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="8262879960600391">
-                    <conditions>
-                        <condition id="4" name="Is empty" sid="200468099391844" type="wCarrotDic" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Add key" sid="4347315583773377" type="wCarrotDic">
-                            <param id="0" name="Key">&quot;name&quot;</param>
-                            <param id="1" name="Value">&quot;carrot&quot;</param>
-                        </action>
-                        <action id="0" name="Add key" sid="13403684440753" type="wCarrotDic">
-                            <param id="0" name="Key">&quot;ammunitionMax&quot;</param>
-                            <param id="1" name="Value">3</param>
-                        </action>
-                        <action id="0" name="Add key" sid="7563611633118273" type="wCarrotDic">
-                            <param id="0" name="Key">&quot;timeToReload&quot;</param>
-                            <param id="1" name="Value">4</param>
-                        </action>
-                        <action id="0" name="Add key" sid="2422193115350478" type="wCarrotDic">
-                            <param id="0" name="Key">&quot;fireRate&quot;</param>
-                            <param id="1" name="Value">0.25</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="7522956513040036" type="wCarrotDic">
-                            <param id="0" name="Instance variable">ammunition</param>
-                            <param id="1" name="Value">wCarrotDic.Get(&quot;ammunitionMax&quot;)</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="3625474726062093">
-                    <conditions>
-                        <condition id="4" name="Is empty" sid="4027604225548724" type="wStrawDic" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Add key" sid="8862241239375375" type="wStrawDic">
-                            <param id="0" name="Key">&quot;name&quot;</param>
-                            <param id="1" name="Value">&quot;straw&quot;</param>
-                        </action>
-                        <action id="0" name="Add key" sid="7217417584535872" type="wStrawDic">
-                            <param id="0" name="Key">&quot;fireRate&quot;</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="0" name="Add key" sid="3338614782000964" type="wStrawDic">
-                            <param id="0" name="Key">&quot;ammunitionMax&quot;</param>
-                            <param id="1" name="Value">3</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="1160973327073361">
-                    <conditions>
-                        <condition id="-2" name="On start of layout" sid="3683280247388231" type="System" />
-                    </conditions>
-                    <actions />
+                <variable constant="0" name="currentWeapon" sid="9559297127745932" static="1" type="text"></variable>
+                <variable constant="0" name="defaultWeapon" sid="184043535974327" static="1" type="text"></variable>
+                <variable constant="0" name="enemiesStartY" sid="2428974338007729" static="1" type="number">0</variable>
+                <variable constant="0" name="enemiesTargetY" sid="4151041664764379" static="1" type="number">0</variable>
+                <variable constant="0" name="lives" sid="1411858114687103" static="1" type="number">0</variable>
+                <variable comment="coordonnée Y de base des vaches" constant="0" name="cowsY" sid="7747105720467489" static="1" type="number">0</variable>
+                <variable comment="coordonnée Y de la hauteur de chute mortelle des vaches" constant="0" name="deadFallY" sid="2119204343672286" static="1" type="number">0</variable>
+                <event-group description="" sid="6188615120386475" title="Start">
                     <sub-events>
-                        <event-block sid="4890233056435157">
+                        <event-block sid="4339001097011007">
                             <conditions>
-                                <condition id="-12" name="Repeat" sid="254957124053581" type="System">
-                                    <param id="0" name="Count">lives</param>
-                                </condition>
+                                <condition id="-2" name="On start of layout" sid="7455988836602765" type="System" />
                             </conditions>
                             <actions>
-                                <action id="-3" name="Create object" sid="3991148715872499" type="System">
-                                    <param id="0" name="Object to create">Cow</param>
-                                    <param id="1" name="Layer">&quot;Main&quot;</param>
-                                    <param id="2" name="X">random(50, LayoutWidth-50)</param>
-                                    <param id="3" name="Y">cowsY</param>
+                                <action id="33" name="Stop all" sid="8944064334690327" type="Audio" />
+                                <action id="-9" name="Destroy" sid="2076570983371339" type="Bullets" />
+                                <action id="-9" name="Set value" sid="2777576573844807" type="System">
+                                    <param id="0" name="Variable">defaultWeapon</param>
+                                    <param id="1" name="Value">&quot;potato&quot;</param>
+                                </action>
+                                <action id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
+                                <action id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
+                                <action id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
+                                <action id="-9" name="Set value" sid="8136963829920563" type="System">
+                                    <param id="0" name="Variable">currentWeapon</param>
+                                    <param id="1" name="Value">defaultWeapon</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="9493707449401636" type="System">
+                                    <param id="0" name="Variable">enemiesStartY</param>
+                                    <param id="1" name="Value">marklineEnemyStart.Y</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="1524681855463672" type="System">
+                                    <param id="0" name="Variable">enemiesTargetY</param>
+                                    <param id="1" name="Value">marklineEnemyTarget.Y</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="750771302694917" type="System">
+                                    <param id="0" name="Variable">cowsY</param>
+                                    <param id="1" name="Value">enemiesTargetY + 50</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="5131772079190257" type="System">
+                                    <param id="0" name="Variable">deadFallY</param>
+                                    <param id="1" name="Value">marklineDeadFall.Y</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="2029570836734617" type="System">
+                                    <param id="0" name="Variable">lives</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="2055463316756067" type="System">
+                                    <param id="0" name="Variable">score</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-12" name="Set group active" sid="90822985841167" type="System">
+                                    <param id="0" name="Group name">&quot;Pause screen&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-9" name="Destroy" sid="2833495396043119" type="pauseScreenBckg" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="8333154621574713">
+                            <conditions>
+                                <condition id="4" name="Is empty" sid="7562633811211047" type="wPotatoDic" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Add key" sid="6092132135326429" type="wPotatoDic">
+                                    <param id="0" name="Key">&quot;name&quot;</param>
+                                    <param id="1" name="Value">&quot;potato&quot;</param>
+                                </action>
+                                <action id="0" name="Add key" sid="9943004984892179" type="wPotatoDic">
+                                    <param id="0" name="Key">&quot;fireRate&quot;</param>
+                                    <param id="1" name="Value">0.5</param>
+                                </action>
+                                <action disabled="1" id="0" name="Add key" sid="6345739188676076" type="wPotatoDic">
+                                    <param id="0" name="Key">&quot;UID&quot;</param>
+                                    <param id="1" name="Value">Self.UID</param>
                                 </action>
                             </actions>
                         </event-block>
-                    </sub-events>
-                </event-block>
-            </sub-events>
-        </event-group>
-        <event-group description="" sid="4002922252956018" title="Input events">
-            <sub-events>
-                <event-group collapsed="1" description="" sid="8521614036322924" title="Movement">
-                    <sub-events>
-                        <event-block sid="7293353535326637">
+                        <event-block sid="8262879960600391">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="13949240045147" type="Keyboard">
-                                    <param id="0" name="Key">37 (Left arrow)</param>
-                                </condition>
+                                <condition id="4" name="Is empty" sid="200468099391844" type="wCarrotDic" />
                             </conditions>
                             <actions>
-                                <action id="7" name="Set mirrored" sid="9985381715864524" type="Player">
-                                    <param id="0" name="State">0</param>
+                                <action id="0" name="Add key" sid="4347315583773377" type="wCarrotDic">
+                                    <param id="0" name="Key">&quot;name&quot;</param>
+                                    <param id="1" name="Value">&quot;carrot&quot;</param>
                                 </action>
-                                <action id="-1" name="Set X" sid="5325907147612891" type="Player">
-                                    <param id="0" name="X">self.X - dt * self.speed</param>
+                                <action id="0" name="Add key" sid="13403684440753" type="wCarrotDic">
+                                    <param id="0" name="Key">&quot;ammunitionMax&quot;</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                                <action id="0" name="Add key" sid="7563611633118273" type="wCarrotDic">
+                                    <param id="0" name="Key">&quot;timeToReload&quot;</param>
+                                    <param id="1" name="Value">4</param>
+                                </action>
+                                <action id="0" name="Add key" sid="2422193115350478" type="wCarrotDic">
+                                    <param id="0" name="Key">&quot;fireRate&quot;</param>
+                                    <param id="1" name="Value">0.25</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="7522956513040036" type="wCarrotDic">
+                                    <param id="0" name="Instance variable">ammunition</param>
+                                    <param id="1" name="Value">wCarrotDic.Get(&quot;ammunitionMax&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="2023794891777697">
+                        <event-block sid="3625474726062093">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="9499786620090667" type="Keyboard">
-                                    <param id="0" name="Key">39 (Right arrow)</param>
-                                </condition>
+                                <condition id="4" name="Is empty" sid="4027604225548724" type="wStrawDic" />
                             </conditions>
                             <actions>
-                                <action id="7" name="Set mirrored" sid="617234669084554" type="Player">
-                                    <param id="0" name="State">1</param>
+                                <action id="0" name="Add key" sid="8862241239375375" type="wStrawDic">
+                                    <param id="0" name="Key">&quot;name&quot;</param>
+                                    <param id="1" name="Value">&quot;straw&quot;</param>
                                 </action>
-                                <action id="-1" name="Set X" sid="423603958546718" type="Player">
-                                    <param id="0" name="X">self.X + dt * self.speed</param>
+                                <action id="0" name="Add key" sid="7217417584535872" type="wStrawDic">
+                                    <param id="0" name="Key">&quot;fireRate&quot;</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Add key" sid="3338614782000964" type="wStrawDic">
+                                    <param id="0" name="Key">&quot;ammunitionMax&quot;</param>
+                                    <param id="1" name="Value">3</param>
                                 </action>
                             </actions>
+                        </event-block>
+                        <event-block sid="1160973327073361">
+                            <conditions>
+                                <condition id="-2" name="On start of layout" sid="3683280247388231" type="System" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890233056435157">
+                                    <conditions>
+                                        <condition id="-12" name="Repeat" sid="254957124053581" type="System">
+                                            <param id="0" name="Count">lives</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="3991148715872499" type="System">
+                                            <param id="0" name="Object to create">Cow</param>
+                                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                                            <param id="2" name="X">random(50, LayoutWidth-50)</param>
+                                            <param id="3" name="Y">cowsY</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="4927751051606347" title="Fire">
+                <event-group collapsed="1" description="" sid="4002922252956018" title="Input">
                     <sub-events>
-                        <event-block sid="7981904484682303">
+                        <event-group collapsed="1" description="" sid="8521614036322924" title="Movement">
+                            <sub-events>
+                                <event-block sid="7293353535326637">
+                                    <conditions>
+                                        <condition id="2" name="Key is down" sid="13949240045147" type="Keyboard">
+                                            <param id="0" name="Key">37 (Left arrow)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="9985381715864524" type="Player">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="5325907147612891" type="Player">
+                                            <param id="0" name="X">self.X - dt * self.speed</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="2023794891777697">
+                                    <conditions>
+                                        <condition id="2" name="Key is down" sid="9499786620090667" type="Keyboard">
+                                            <param id="0" name="Key">39 (Right arrow)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="617234669084554" type="Player">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="423603958546718" type="Player">
+                                            <param id="0" name="X">self.X + dt * self.speed</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group collapsed="1" description="" sid="4927751051606347" title="Fire">
+                            <sub-events>
+                                <event-block sid="7981904484682303">
+                                    <conditions>
+                                        <condition id="0" name="On key pressed" sid="5732030026764851" type="Keyboard">
+                                            <param id="0" name="Key">32 (Espace)</param>
+                                        </condition>
+                                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8983181072078732" type="Player">
+                                            <param id="0" name="Instance variable">fire</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="3922242462585679" type="Player">
+                                            <param id="0" name="Instance variable">fire</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <variable constant="0" name="fireRate" sid="5315718605570788" static="0" type="number">0</variable>
+                                        <event-block sid="3186371023679463">
+                                            <conditions>
+                                                <condition id="0" name="Compare value" sid="2024352824359602" type="Weapons">
+                                                    <param id="0" name="Key">&quot;name&quot;</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">currentWeapon</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="2382933922014368" type="System">
+                                                    <param id="0" name="Variable">fireRate</param>
+                                                    <param id="1" name="Value">Weapons.Get(&quot;fireRate&quot;)</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="4304239989874508">
+                                                    <conditions>
+                                                        <condition id="0" name="Compare value" sid="144599718881525" type="Weapons">
+                                                            <param id="0" name="Key">&quot;name&quot;</param>
+                                                            <param id="1" name="Comparison">0</param>
+                                                            <param id="2" name="Value">&quot;potato&quot;</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="0" name="Spawn another object" sid="3267814415418126" type="Player">
+                                                            <param id="0" name="Object">bPotato</param>
+                                                            <param id="1" name="Layer">&quot;Main&quot;</param>
+                                                            <param id="2" name="Image point">&quot;bullet origin&quot;</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                                <event-block sid="4556947196730306">
+                                                    <conditions>
+                                                        <condition id="-22" name="Else" sid="9166795645790015" type="System" />
+                                                        <condition id="-7" name="Compare instance variable" sid="2330252652128231" type="Weapons">
+                                                            <param id="0" name="Instance variable">ammunition</param>
+                                                            <param id="1" name="Comparison">4</param>
+                                                            <param id="2" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-12" name="Subtract from" sid="397028682841457" type="Weapons">
+                                                            <param id="0" name="Instance variable">ammunition</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                    <sub-events>
+                                                        <event-block sid="5952281657192533">
+                                                            <conditions>
+                                                                <condition id="0" name="Compare value" sid="4716915515555059" type="Weapons">
+                                                                    <param id="0" name="Key">&quot;name&quot;</param>
+                                                                    <param id="1" name="Comparison">0</param>
+                                                                    <param id="2" name="Value">&quot;carrot&quot;</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="0" name="Spawn another object" sid="9005373194197886" type="Player">
+                                                                    <param id="0" name="Object">bCarrot</param>
+                                                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                                                    <param id="2" name="Image point">&quot;bullet origin&quot;</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-block sid="8001347988910822">
+                                                            <conditions>
+                                                                <condition id="0" name="Compare value" sid="6976797397172678" type="Weapons">
+                                                                    <param id="0" name="Key">&quot;name&quot;</param>
+                                                                    <param id="1" name="Comparison">0</param>
+                                                                    <param id="2" name="Value">&quot;straw&quot;</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="-3" name="Create object" sid="3274288890893906" type="System">
+                                                                    <param id="0" name="Object to create">straw</param>
+                                                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                                                    <param id="2" name="X">Player.X</param>
+                                                                    <param id="3" name="Y">cowsY</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                    </sub-events>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <comment>En dehors de &quot;Weapons Key name = currentWeapon&quot;, pour remettre fire à false, même si l&apos;arme currentWeapon n&apos;existe pas.</comment>
+                                        <event-block sid="5352557166168991">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="7866020612817317" type="System">
+                                                    <param id="0" name="Seconds">fireRate</param>
+                                                </action>
+                                                <action id="-13" name="Set boolean" sid="6058272224564516" type="Player">
+                                                    <param id="0" name="Instance variable">fire</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="3817738809691681" type="System">
+                                                    <param id="0" name="Variable">fireRate</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group collapsed="1" description="" sid="7739485826158529" title="Change weapon">
+                            <sub-events>
+                                <event-block sid="8845709705958467">
+                                    <conditions>
+                                        <condition id="0" name="On key pressed" sid="5233667706916522" type="Keyboard">
+                                            <param id="0" name="Key">49 (&amp;)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="2917314347821973" type="System">
+                                            <param id="0" name="Variable">currentWeapon</param>
+                                            <param id="1" name="Value">wPotatoDic.Get(&quot;name&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="2712106135524455">
+                                    <conditions>
+                                        <condition id="0" name="On key pressed" sid="9600043716167231" type="Keyboard">
+                                            <param id="0" name="Key">50 (é)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="4268045651172492" type="System">
+                                            <param id="0" name="Variable">currentWeapon</param>
+                                            <param id="1" name="Value">wCarrotDic.Get(&quot;name&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="8684687099803742">
+                                    <conditions>
+                                        <condition id="0" name="On key pressed" sid="2652538299986439" type="Keyboard">
+                                            <param id="0" name="Key">48 (à)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="3840993441292031" type="System">
+                                            <param id="0" name="Variable">currentWeapon</param>
+                                            <param id="1" name="Value">wStrawDic.Get(&quot;name&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="7894246814155001" title="Miscellaneous" />
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="" sid="4820918851855756" title="General">
+                    <sub-events>
+                        <event-block sid="7101875705467223">
                             <conditions>
-                                <condition id="0" name="On key pressed" sid="5732030026764851" type="Keyboard">
-                                    <param id="0" name="Key">32 (Espace)</param>
+                                <condition id="0" name="On collision with another object" sid="7663679962005732" type="Bullets">
+                                    <param id="0" name="Object">Enemies</param>
                                 </condition>
-                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8983181072078732" type="Player">
-                                    <param id="0" name="Instance variable">fire</param>
+                                <condition id="-7" name="Compare instance variable" sid="6517846375572345" type="Enemies">
+                                    <param id="0" name="Instance variable">health</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="5794509585724491" type="Enemies">
+                                    <param id="0" name="Instance variable">state</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">&quot;incoming&quot;</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="3285893709671918" type="Enemies">
+                                    <param id="0" name="Instance variable">state</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">&quot;flee&quot;</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-13" name="Set boolean" sid="3922242462585679" type="Player">
-                                    <param id="0" name="Instance variable">fire</param>
+                                <action id="-12" name="Subtract from" sid="4836677387377446" type="Enemies">
+                                    <param id="0" name="Instance variable">health</param>
+                                    <param id="1" name="Value">Bullets.hitDamage</param>
+                                </action>
+                                <action id="-9" name="Destroy" sid="5025907036075087" type="Bullets" />
+                            </actions>
+                        </event-block>
+                        <event-block collapsed="1" sid="4260109070004518">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="3770890171458288" type="Weapons">
+                                    <param id="0" name="Instance variable">ammunition</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="6547328042573998" type="Weapons">
+                                    <param id="0" name="Instance variable">reload</param>
                                     <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                             <sub-events>
-                                <variable constant="0" name="fireRate" sid="5315718605570788" static="0" type="number">0</variable>
-                                <event-block sid="3186371023679463">
+                                <event-block sid="9456411102443813">
                                     <conditions>
-                                        <condition id="0" name="Compare value" sid="2024352824359602" type="Weapons">
+                                        <condition id="0" name="Compare value" sid="3516724001495264" type="Weapons">
                                             <param id="0" name="Key">&quot;name&quot;</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">currentWeapon</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-9" name="Set value" sid="2382933922014368" type="System">
-                                            <param id="0" name="Variable">fireRate</param>
-                                            <param id="1" name="Value">Weapons.Get(&quot;fireRate&quot;)</param>
+                                        <action id="-16" name="Wait" sid="3904491727342749" type="System">
+                                            <param id="0" name="Seconds">0.5</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8998635276182967" type="System">
+                                            <param id="0" name="Variable">currentWeapon</param>
+                                            <param id="1" name="Value">defaultWeapon</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block collapsed="1" sid="3396940294713651">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="1366683595862882" type="Weapons">
+                                    <param id="0" name="Instance variable">reload</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="2484579807255294" type="Weapons">
+                                    <param id="0" name="Instance variable">reloadTime</param>
+                                    <param id="1" name="Value">dt</param>
+                                </action>
+                                <action id="0" name="Set text" sid="59664250422972" type="reload">
+                                    <param id="0" name="Text">Weapons.reloadTime</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="8373114907002388">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6021164128515576" type="Weapons">
+                                            <param id="0" name="Instance variable">reloadTime</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">Weapons.Get(&quot;timeToReload&quot;)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="3733393644228445" type="Weapons">
+                                            <param id="0" name="Instance variable">ammunition</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="1688963010087737" type="Weapons">
+                                            <param id="0" name="Instance variable">reloadTime</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="1606898785739234">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1113705021151297" type="Weapons">
+                                            <param id="0" name="Instance variable">ammunition</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">Weapons.Get(&quot;ammunitionMax&quot;)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="6121775146764893" type="Weapons">
+                                            <param id="0" name="Instance variable">reload</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="5959850976863137">
+                            <conditions>
+                                <condition id="-19" name="Pick all" sid="8521713686273943" type="System">
+                                    <param id="0" name="Object">CarrotAmmunition</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="601425482570556" type="CarrotAmmunition" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="8326172127385367">
+                            <conditions>
+                                <condition id="-12" name="Repeat" sid="4589614422536301" type="System">
+                                    <param id="0" name="Count">wCarrotDic.ammunition</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="1729240112507937" type="System">
+                                    <param id="0" name="Object to create">CarrotAmmunition</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="X">620 - loopindex * 10</param>
+                                    <param id="3" name="Y">460</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5611197310771212">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="7941076874931295" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="7599985929653386" type="System">
+                                    <param id="0" name="Variable">lives</param>
+                                    <param id="1" name="Value">Cow.PickedCount</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="709984976008216">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="1985019972214705" type="System">
+                                    <param id="0" name="First value">lives</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Go to layout" sid="4474428690191775" type="System">
+                                    <param id="0" name="Layout">End Game</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8126614364360775">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="1319336250270306" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="5997658563335046" type="Debug">
+                                    <param id="0" name="Text">&quot;Score: &quot; &amp; score</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="593834434841065" title="Enemies">
+                    <sub-events>
+                        <variable constant="0" name="captureTolerance" sid="6428054404375282" static="0" type="number">50</variable>
+                        <event-block sid="9161417591077772">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="3721996492083176" type="System">
+                                    <param id="0" name="Interval (seconds)">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="1253224613223196" type="System">
+                                    <param id="0" name="Object to create">eUFO_01</param>
+                                    <param id="1" name="Layer">&quot;Main&quot;</param>
+                                    <param id="2" name="X">random(50, LayoutWidth-50)</param>
+                                    <param id="3" name="Y">marklineEnemyStart.Y</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9782187558983824">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="7973361581702482" type="Enemies">
+                                    <param id="0" name="Instance variable">health</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5376500559734931" type="Enemies">
+                                    <param id="0" name="Instance variable">dead</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="184849001432164" type="Enemies">
+                                    <param id="0" name="Instance variable">dead</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-10" name="Add to" sid="4416405992844218" type="System">
+                                    <param id="0" name="Variable">score</param>
+                                    <param id="1" name="Value">Enemies.scorePoints</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2063020677987179">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="7360813373627804" type="Enemies">
+                                    <param id="0" name="Instance variable">dead</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-18" name="Rotate clockwise" sid="6528004194395932" type="Enemies">
+                                    <param id="0" name="Degrees">dt * 720</param>
+                                </action>
+                                <action id="-7" name="Set size" sid="6005445261962137" type="Enemies">
+                                    <param id="0" name="Width">self.Width - self.Width * dt </param>
+                                    <param id="1" name="Height">self.Height - self.Height * dt</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="3711272186721962" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="-9" name="Destroy" sid="309074877300847" type="Enemies" />
+                            </actions>
+                        </event-block>
+                        <event-group description="" sid="585674923018483" title="eUFO_01">
+                            <sub-events>
+                                <event-block sid="4950871651049371">
+                                    <conditions>
+                                        <condition id="-18" name="On created" sid="825077901833102" type="eUFO_01" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="1745303064608955" type="eUFO_01">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Value">&quot;incoming&quot;</param>
+                                        </action>
+                                        <action id="-16" name="Set opacity" sid="7824212010934687" type="eUFO_01">
+                                            <param id="0" name="Opacity">0</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="5197902806123112" type="eUFO_01">
+                                            <param id="0" name="Instance variable">scale</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="9" name="Set scale" sid="9004551583890771" type="eUFO_01">
+                                            <param id="0" name="Scale">self.scale</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block collapsed="1" sid="3277907608506295">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="2414709671992924" type="eUFO_01">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;incoming&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-16" name="Set opacity" sid="4660809164548808" type="eUFO_01">
+                                            <param id="0" name="Opacity">self.Opacity + dt * 50</param>
+                                        </action>
+                                        <action id="-11" name="Add to" sid="8429175125059462" type="eUFO_01">
+                                            <param id="0" name="Instance variable">scale</param>
+                                            <param id="1" name="Value">dt * 0.25</param>
+                                        </action>
+                                        <action id="9" name="Set scale" sid="1347683301694029" type="eUFO_01">
+                                            <param id="0" name="Scale">self.scale</param>
                                         </action>
                                     </actions>
                                     <sub-events>
-                                        <event-block sid="4304239989874508">
+                                        <event-block sid="1799123064258379">
                                             <conditions>
-                                                <condition id="0" name="Compare value" sid="144599718881525" type="Weapons">
-                                                    <param id="0" name="Key">&quot;name&quot;</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">&quot;potato&quot;</param>
+                                                <condition id="-10" name="Compare opacity" sid="2943369047988272" type="eUFO_01">
+                                                    <param id="0" name="Comparison">5</param>
+                                                    <param id="1" name="Opacity">100</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="0" name="Spawn another object" sid="3267814415418126" type="Player">
-                                                    <param id="0" name="Object">bPotato</param>
-                                                    <param id="1" name="Layer">&quot;Main&quot;</param>
-                                                    <param id="2" name="Image point">&quot;bullet origin&quot;</param>
+                                                <action id="-10" name="Set value" sid="5368574776378089" type="eUFO_01">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Value">&quot;attack&quot;</param>
+                                                </action>
+                                                <action behavior="Sine" id="0" name="Set active" sid="6030927619145971" type="eUFO_01">
+                                                    <param id="0" name="State">1</param>
+                                                </action>
+                                                <action behavior="Sine2" id="0" name="Set active" sid="4787170143822826" type="eUFO_01">
+                                                    <param id="0" name="State">1</param>
                                                 </action>
                                             </actions>
                                         </event-block>
-                                        <event-block sid="4556947196730306">
+                                    </sub-events>
+                                </event-block>
+                                <event-block collapsed="1" sid="3241883719324708">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1954005753879188" type="eUFO_01">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;attack&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-2" name="Set Y" sid="7312226365229677" type="eUFO_01">
+                                            <param id="0" name="Y">self.Y + dt * Self.speed</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="519495907340413">
                                             <conditions>
-                                                <condition id="-22" name="Else" sid="9166795645790015" type="System" />
-                                                <condition id="-7" name="Compare instance variable" sid="2330252652128231" type="Weapons">
-                                                    <param id="0" name="Instance variable">ammunition</param>
-                                                    <param id="1" name="Comparison">4</param>
+                                                <condition id="-2" name="Compare Y" sid="9073598346992212" type="eUFO_01">
+                                                    <param id="0" name="Comparison">5</param>
+                                                    <param id="1" name="Y co-ordinate">enemiesTargetY</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="9513370329694287" type="eUFO_01">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Value">&quot;land&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block collapsed="1" sid="9971388849471899">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="2445024940891516" type="eUFO_01">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;land&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Sine" id="0" name="Set active" sid="7500251632060801" type="eUFO_01">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                        <action behavior="Sine2" id="0" name="Set active" sid="9307675082293151" type="eUFO_01">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="145304438014745">
+                                            <conditions>
+                                                <condition id="-15" name="Pick nearest/furthest" sid="336503741160365" type="Cow">
+                                                    <param id="0" name="Which">0</param>
+                                                    <param id="1" name="X">eUFO_01.X</param>
+                                                    <param id="2" name="Y">eUFO_01.Y</param>
+                                                </condition>
+                                                <condition id="-21" name="Is between values" sid="4257997386941602" type="System">
+                                                    <param id="0" name="Value">eUFO_01.X</param>
+                                                    <param id="1" name="Lower bound">Cow.X - captureTolerance</param>
+                                                    <param id="2" name="Upper bound">Cow.X + captureTolerance</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="8410792149816856" type="Cow">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;free&quot;</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="9265966347051198" type="eUFO_01">
+                                                    <param id="0" name="Instance variable">cowUID</param>
+                                                    <param id="1" name="Comparison">2</param>
                                                     <param id="2" name="Value">0</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="-12" name="Subtract from" sid="397028682841457" type="Weapons">
-                                                    <param id="0" name="Instance variable">ammunition</param>
-                                                    <param id="1" name="Value">1</param>
+                                                <action id="-10" name="Set value" sid="5799855108012292" type="eUFO_01">
+                                                    <param id="0" name="Instance variable">cowUID</param>
+                                                    <param id="1" name="Value">Cow.UID</param>
+                                                </action>
+                                                <action id="-10" name="Set value" sid="9375972458114947" type="Cow">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Value">&quot;abductee&quot;</param>
+                                                </action>
+                                                <action behavior="Pin" id="0" name="Pin to object" sid="9521992344390423" type="Cow">
+                                                    <param id="0" name="Pin to">eUFO_01</param>
+                                                    <param id="1" name="Mode">3</param>
                                                 </action>
                                             </actions>
-                                            <sub-events>
-                                                <event-block sid="5952281657192533">
-                                                    <conditions>
-                                                        <condition id="0" name="Compare value" sid="4716915515555059" type="Weapons">
-                                                            <param id="0" name="Key">&quot;name&quot;</param>
-                                                            <param id="1" name="Comparison">0</param>
-                                                            <param id="2" name="Value">&quot;carrot&quot;</param>
-                                                        </condition>
-                                                    </conditions>
-                                                    <actions>
-                                                        <action id="0" name="Spawn another object" sid="9005373194197886" type="Player">
-                                                            <param id="0" name="Object">bCarrot</param>
-                                                            <param id="1" name="Layer">&quot;Main&quot;</param>
-                                                            <param id="2" name="Image point">&quot;bullet origin&quot;</param>
-                                                        </action>
-                                                    </actions>
-                                                </event-block>
-                                                <event-block sid="8001347988910822">
-                                                    <conditions>
-                                                        <condition id="0" name="Compare value" sid="6976797397172678" type="Weapons">
-                                                            <param id="0" name="Key">&quot;name&quot;</param>
-                                                            <param id="1" name="Comparison">0</param>
-                                                            <param id="2" name="Value">&quot;straw&quot;</param>
-                                                        </condition>
-                                                    </conditions>
-                                                    <actions>
-                                                        <action id="-3" name="Create object" sid="3274288890893906" type="System">
-                                                            <param id="0" name="Object to create">straw</param>
-                                                            <param id="1" name="Layer">&quot;Main&quot;</param>
-                                                            <param id="2" name="X">Player.X</param>
-                                                            <param id="3" name="Y">cowsY</param>
-                                                        </action>
-                                                    </actions>
-                                                </event-block>
-                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="9021475831646327">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="3013277684583944" type="System">
+                                                    <param id="0" name="Seconds">2</param>
+                                                </action>
+                                                <action id="-10" name="Set value" sid="108405046702502" type="eUFO_01">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Value">&quot;up&quot;</param>
+                                                </action>
+                                            </actions>
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <comment>En dehors de &quot;Weapons Key name = currentWeapon&quot;, pour remettre fire à false, même si l&apos;arme currentWeapon n&apos;existe pas.</comment>
-                                <event-block sid="5352557166168991">
-                                    <conditions />
-                                    <actions>
-                                        <action id="-16" name="Wait" sid="7866020612817317" type="System">
-                                            <param id="0" name="Seconds">fireRate</param>
-                                        </action>
-                                        <action id="-13" name="Set boolean" sid="6058272224564516" type="Player">
-                                            <param id="0" name="Instance variable">fire</param>
-                                            <param id="1" name="Value">0</param>
-                                        </action>
-                                        <action id="-9" name="Set value" sid="3817738809691681" type="System">
-                                            <param id="0" name="Variable">fireRate</param>
-                                            <param id="1" name="Value">0</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                    </sub-events>
-                </event-group>
-                <event-group collapsed="1" description="" sid="7739485826158529" title="Change weapon">
-                    <sub-events>
-                        <event-block sid="8845709705958467">
-                            <conditions>
-                                <condition id="0" name="On key pressed" sid="5233667706916522" type="Keyboard">
-                                    <param id="0" name="Key">49 (&amp;)</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Set value" sid="2917314347821973" type="System">
-                                    <param id="0" name="Variable">currentWeapon</param>
-                                    <param id="1" name="Value">wPotatoDic.Get(&quot;name&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="2712106135524455">
-                            <conditions>
-                                <condition id="0" name="On key pressed" sid="9600043716167231" type="Keyboard">
-                                    <param id="0" name="Key">50 (é)</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Set value" sid="4268045651172492" type="System">
-                                    <param id="0" name="Variable">currentWeapon</param>
-                                    <param id="1" name="Value">wCarrotDic.Get(&quot;name&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="8684687099803742">
-                            <conditions>
-                                <condition id="0" name="On key pressed" sid="2652538299986439" type="Keyboard">
-                                    <param id="0" name="Key">48 (à)</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Set value" sid="3840993441292031" type="System">
-                                    <param id="0" name="Variable">currentWeapon</param>
-                                    <param id="1" name="Value">wStrawDic.Get(&quot;name&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-group>
-            </sub-events>
-        </event-group>
-        <event-group description="" sid="4820918851855756" title="General events">
-            <sub-events>
-                <event-block sid="7101875705467223">
-                    <conditions>
-                        <condition id="0" name="On collision with another object" sid="7663679962005732" type="Bullets">
-                            <param id="0" name="Object">Enemies</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" sid="6517846375572345" type="Enemies">
-                            <param id="0" name="Instance variable">health</param>
-                            <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" sid="5794509585724491" type="Enemies">
-                            <param id="0" name="Instance variable">state</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Value">&quot;incoming&quot;</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" sid="3285893709671918" type="Enemies">
-                            <param id="0" name="Instance variable">state</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Value">&quot;flee&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-12" name="Subtract from" sid="4836677387377446" type="Enemies">
-                            <param id="0" name="Instance variable">health</param>
-                            <param id="1" name="Value">Bullets.hitDamage</param>
-                        </action>
-                        <action id="-9" name="Destroy" sid="5025907036075087" type="Bullets" />
-                    </actions>
-                </event-block>
-                <event-block collapsed="1" sid="4260109070004518">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="3770890171458288" type="Weapons">
-                            <param id="0" name="Instance variable">ammunition</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-13" name="Set boolean" sid="6547328042573998" type="Weapons">
-                            <param id="0" name="Instance variable">reload</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block sid="9456411102443813">
-                            <conditions>
-                                <condition id="0" name="Compare value" sid="3516724001495264" type="Weapons">
-                                    <param id="0" name="Key">&quot;name&quot;</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">currentWeapon</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-16" name="Wait" sid="3904491727342749" type="System">
-                                    <param id="0" name="Seconds">0.5</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="8998635276182967" type="System">
-                                    <param id="0" name="Variable">currentWeapon</param>
-                                    <param id="1" name="Value">defaultWeapon</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <event-block collapsed="1" sid="3396940294713651">
-                    <conditions>
-                        <condition id="-8" name="Is boolean instance variable set" sid="1366683595862882" type="Weapons">
-                            <param id="0" name="Instance variable">reload</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-11" name="Add to" sid="2484579807255294" type="Weapons">
-                            <param id="0" name="Instance variable">reloadTime</param>
-                            <param id="1" name="Value">dt</param>
-                        </action>
-                        <action id="0" name="Set text" sid="59664250422972" type="reload">
-                            <param id="0" name="Text">Weapons.reloadTime</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block sid="8373114907002388">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="6021164128515576" type="Weapons">
-                                    <param id="0" name="Instance variable">reloadTime</param>
-                                    <param id="1" name="Comparison">5</param>
-                                    <param id="2" name="Value">Weapons.Get(&quot;timeToReload&quot;)</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-11" name="Add to" sid="3733393644228445" type="Weapons">
-                                    <param id="0" name="Instance variable">ammunition</param>
-                                    <param id="1" name="Value">1</param>
-                                </action>
-                                <action id="-10" name="Set value" sid="1688963010087737" type="Weapons">
-                                    <param id="0" name="Instance variable">reloadTime</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="1606898785739234">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="1113705021151297" type="Weapons">
-                                    <param id="0" name="Instance variable">ammunition</param>
-                                    <param id="1" name="Comparison">5</param>
-                                    <param id="2" name="Value">Weapons.Get(&quot;ammunitionMax&quot;)</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-13" name="Set boolean" sid="6121775146764893" type="Weapons">
-                                    <param id="0" name="Instance variable">reload</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <event-block sid="5959850976863137">
-                    <conditions>
-                        <condition id="-19" name="Pick all" sid="8521713686273943" type="System">
-                            <param id="0" name="Object">CarrotAmmunition</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="601425482570556" type="CarrotAmmunition" />
-                    </actions>
-                </event-block>
-                <event-block sid="8326172127385367">
-                    <conditions>
-                        <condition id="-12" name="Repeat" sid="4589614422536301" type="System">
-                            <param id="0" name="Count">wCarrotDic.ammunition</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-3" name="Create object" sid="1729240112507937" type="System">
-                            <param id="0" name="Object to create">CarrotAmmunition</param>
-                            <param id="1" name="Layer">&quot;Main&quot;</param>
-                            <param id="2" name="X">620 - loopindex * 10</param>
-                            <param id="3" name="Y">460</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="5611197310771212">
-                    <conditions>
-                        <condition id="-1" name="Every tick" sid="7941076874931295" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="7599985929653386" type="System">
-                            <param id="0" name="Variable">lives</param>
-                            <param id="1" name="Value">Cow.PickedCount</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="709984976008216">
-                    <conditions>
-                        <condition id="-8" name="Compare two values" sid="1985019972214705" type="System">
-                            <param id="0" name="First value">lives</param>
-                            <param id="1" name="Comparison">3</param>
-                            <param id="2" name="Second value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-2" name="Go to layout" sid="4474428690191775" type="System">
-                            <param id="0" name="Layout">End Game</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="8126614364360775">
-                    <conditions>
-                        <condition id="-1" name="Every tick" sid="1319336250270306" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="5997658563335046" type="Debug">
-                            <param id="0" name="Text">&quot;Score: &quot; &amp; score</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-group>
-        <event-group description="" sid="593834434841065" title="Enemies events">
-            <sub-events>
-                <variable constant="0" name="captureTolerance" sid="6428054404375282" static="0" type="number">100</variable>
-                <event-block sid="9161417591077772">
-                    <conditions>
-                        <condition id="-6" name="Every X seconds" sid="3721996492083176" type="System">
-                            <param id="0" name="Interval (seconds)">1</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-3" name="Create object" sid="1253224613223196" type="System">
-                            <param id="0" name="Object to create">eUFO_01</param>
-                            <param id="1" name="Layer">&quot;Main&quot;</param>
-                            <param id="2" name="X">random(50, LayoutWidth-50)</param>
-                            <param id="3" name="Y">marklineEnemyStart.Y</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="9782187558983824">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="7973361581702482" type="Enemies">
-                            <param id="0" name="Instance variable">health</param>
-                            <param id="1" name="Comparison">3</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5376500559734931" type="Enemies">
-                            <param id="0" name="Instance variable">dead</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-13" name="Set boolean" sid="184849001432164" type="Enemies">
-                            <param id="0" name="Instance variable">dead</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="-10" name="Add to" sid="4416405992844218" type="System">
-                            <param id="0" name="Variable">score</param>
-                            <param id="1" name="Value">Enemies.scorePoints</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="2063020677987179">
-                    <conditions>
-                        <condition id="-8" name="Is boolean instance variable set" sid="7360813373627804" type="Enemies">
-                            <param id="0" name="Instance variable">dead</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-18" name="Rotate clockwise" sid="6528004194395932" type="Enemies">
-                            <param id="0" name="Degrees">dt * 720</param>
-                        </action>
-                        <action id="-7" name="Set size" sid="6005445261962137" type="Enemies">
-                            <param id="0" name="Width">self.Width - self.Width * dt </param>
-                            <param id="1" name="Height">self.Height - self.Height * dt</param>
-                        </action>
-                        <action id="-16" name="Wait" sid="3711272186721962" type="System">
-                            <param id="0" name="Seconds">1.0</param>
-                        </action>
-                        <action id="-9" name="Destroy" sid="309074877300847" type="Enemies" />
-                    </actions>
-                </event-block>
-                <event-group collapsed="1" description="" sid="585674923018483" title="eUFO_01">
-                    <sub-events>
-                        <event-block sid="4950871651049371">
-                            <conditions>
-                                <condition id="-18" name="On created" sid="825077901833102" type="eUFO_01" />
-                            </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="1745303064608955" type="eUFO_01">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Value">&quot;incoming&quot;</param>
-                                </action>
-                                <action id="-16" name="Set opacity" sid="7824212010934687" type="eUFO_01">
-                                    <param id="0" name="Opacity">0</param>
-                                </action>
-                                <action id="-10" name="Set value" sid="5197902806123112" type="eUFO_01">
-                                    <param id="0" name="Instance variable">scale</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                                <action id="9" name="Set scale" sid="9004551583890771" type="eUFO_01">
-                                    <param id="0" name="Scale">self.scale</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block collapsed="1" sid="3277907608506295">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="2414709671992924" type="eUFO_01">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">&quot;incoming&quot;</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-16" name="Set opacity" sid="4660809164548808" type="eUFO_01">
-                                    <param id="0" name="Opacity">self.Opacity + dt * 50</param>
-                                </action>
-                                <action id="-11" name="Add to" sid="8429175125059462" type="eUFO_01">
-                                    <param id="0" name="Instance variable">scale</param>
-                                    <param id="1" name="Value">dt * 0.25</param>
-                                </action>
-                                <action id="9" name="Set scale" sid="1347683301694029" type="eUFO_01">
-                                    <param id="0" name="Scale">self.scale</param>
-                                </action>
-                            </actions>
-                            <sub-events>
-                                <event-block sid="1799123064258379">
+                                <event-block collapsed="1" sid="8398968793433955">
                                     <conditions>
-                                        <condition id="-10" name="Compare opacity" sid="2943369047988272" type="eUFO_01">
-                                            <param id="0" name="Comparison">5</param>
-                                            <param id="1" name="Opacity">100</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-10" name="Set value" sid="5368574776378089" type="eUFO_01">
-                                            <param id="0" name="Instance variable">state</param>
-                                            <param id="1" name="Value">&quot;attack&quot;</param>
-                                        </action>
-                                        <action behavior="Sine" id="0" name="Set active" sid="6030927619145971" type="eUFO_01">
-                                            <param id="0" name="State">1</param>
-                                        </action>
-                                        <action behavior="Sine2" id="0" name="Set active" sid="4787170143822826" type="eUFO_01">
-                                            <param id="0" name="State">1</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <event-block collapsed="1" sid="3241883719324708">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="1954005753879188" type="eUFO_01">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">&quot;attack&quot;</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-2" name="Set Y" sid="7312226365229677" type="eUFO_01">
-                                    <param id="0" name="Y">self.Y + dt * Self.speed</param>
-                                </action>
-                            </actions>
-                            <sub-events>
-                                <event-block sid="519495907340413">
-                                    <conditions>
-                                        <condition id="-2" name="Compare Y" sid="9073598346992212" type="eUFO_01">
-                                            <param id="0" name="Comparison">5</param>
-                                            <param id="1" name="Y co-ordinate">enemiesTargetY</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-10" name="Set value" sid="9513370329694287" type="eUFO_01">
-                                            <param id="0" name="Instance variable">state</param>
-                                            <param id="1" name="Value">&quot;land&quot;</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <event-block sid="9971388849471899">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="2445024940891516" type="eUFO_01">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">&quot;land&quot;</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action behavior="Sine" id="0" name="Set active" sid="7500251632060801" type="eUFO_01">
-                                    <param id="0" name="State">0</param>
-                                </action>
-                                <action behavior="Sine2" id="0" name="Set active" sid="9307675082293151" type="eUFO_01">
-                                    <param id="0" name="State">0</param>
-                                </action>
-                            </actions>
-                            <sub-events>
-                                <event-block sid="145304438014745">
-                                    <conditions>
-                                        <condition id="-15" name="Pick nearest/furthest" sid="336503741160365" type="Cow">
-                                            <param id="0" name="Which">0</param>
-                                            <param id="1" name="X">eUFO_01.X</param>
-                                            <param id="2" name="Y">eUFO_01.Y</param>
-                                        </condition>
-                                        <condition id="-21" name="Is between values" sid="4257997386941602" type="System">
-                                            <param id="0" name="Value">eUFO_01.X</param>
-                                            <param id="1" name="Lower bound">Cow.X - captureTolerance</param>
-                                            <param id="2" name="Upper bound">Cow.X + captureTolerance</param>
-                                        </condition>
-                                        <condition id="-7" name="Compare instance variable" sid="8410792149816856" type="Cow">
+                                        <condition id="-7" name="Compare instance variable" sid="3626393257938511" type="eUFO_01">
                                             <param id="0" name="Instance variable">state</param>
                                             <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">&quot;free&quot;</param>
-                                        </condition>
-                                        <condition id="-7" name="Compare instance variable" sid="9265966347051198" type="eUFO_01">
-                                            <param id="0" name="Instance variable">cowUID</param>
-                                            <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-10" name="Set value" sid="5799855108012292" type="eUFO_01">
-                                            <param id="0" name="Instance variable">cowUID</param>
-                                            <param id="1" name="Value">Cow.UID</param>
-                                        </action>
-                                        <action id="-10" name="Set value" sid="9375972458114947" type="Cow">
-                                            <param id="0" name="Instance variable">state</param>
-                                            <param id="1" name="Value">&quot;abductee&quot;</param>
-                                        </action>
-                                        <action behavior="Pin" id="0" name="Pin to object" sid="9521992344390423" type="Cow">
-                                            <param id="0" name="Pin to">eUFO_01</param>
-                                            <param id="1" name="Mode">3</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="9021475831646327">
-                                    <conditions />
-                                    <actions>
-                                        <action id="-16" name="Wait" sid="3013277684583944" type="System">
-                                            <param id="0" name="Seconds">2</param>
-                                        </action>
-                                        <action id="-10" name="Set value" sid="108405046702502" type="eUFO_01">
-                                            <param id="0" name="Instance variable">state</param>
-                                            <param id="1" name="Value">&quot;up&quot;</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <event-block collapsed="1" sid="8398968793433955">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="3626393257938511" type="eUFO_01">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">&quot;up&quot;</param>
-                                </condition>
-                            </conditions>
-                            <actions />
-                            <sub-events>
-                                <event-block sid="1669052326404844">
-                                    <conditions>
-                                        <condition id="-2" name="Compare Y" sid="3667628834574985" type="eUFO_01">
-                                            <param id="0" name="Comparison">3</param>
-                                            <param id="1" name="Y co-ordinate">16</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-10" name="Set value" sid="4771380379042011" type="eUFO_01">
-                                            <param id="0" name="Instance variable">state</param>
-                                            <param id="1" name="Value">&quot;flee&quot;</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="4161159508713868">
-                                    <conditions>
-                                        <condition id="-22" name="Else" sid="3435455245883242" type="System" />
-                                    </conditions>
-                                    <actions>
-                                        <action id="-2" name="Set Y" sid="8936851690604877" type="eUFO_01">
-                                            <param id="0" name="Y">self.Y - dt * Self.speed*2</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <event-block collapsed="1" sid="256877385673797">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="145518102417955" type="eUFO_01">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">&quot;flee&quot;</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-16" name="Set opacity" sid="8423829818383789" type="eUFO_01">
-                                    <param id="0" name="Opacity">self.Opacity - dt * 50</param>
-                                </action>
-                                <action id="-12" name="Subtract from" sid="3571268350051651" type="eUFO_01">
-                                    <param id="0" name="Instance variable">scale</param>
-                                    <param id="1" name="Value">dt * 0.25</param>
-                                </action>
-                                <action id="9" name="Set scale" sid="8831707328602851" type="eUFO_01">
-                                    <param id="0" name="Scale">self.scale</param>
-                                </action>
-                            </actions>
-                            <sub-events>
-                                <event-block sid="6194255407614133">
-                                    <conditions>
-                                        <condition id="-14" name="Pick by unique ID" sid="6174644222001286" type="Cow">
-                                            <param id="0" name="Unique ID">eUFO_01.cowUID</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="9" name="Set scale" sid="8712287793397816" type="Cow">
-                                            <param id="0" name="Scale">eUFO_01.scale</param>
-                                        </action>
-                                        <action id="-16" name="Set opacity" sid="9068105599847674" type="Cow">
-                                            <param id="0" name="Opacity">eUFO_01.Opacity</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="6862749031084662">
-                                    <conditions>
-                                        <condition id="-10" name="Compare opacity" sid="1773517257652009" type="eUFO_01">
-                                            <param id="0" name="Comparison">3</param>
-                                            <param id="1" name="Opacity">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-9" name="Destroy" sid="5061085380444847" type="eUFO_01" />
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <event-block sid="9365310533613789">
-                            <conditions>
-                                <condition id="-19" name="On destroyed" sid="9317889539707269" type="eUFO_01" />
-                            </conditions>
-                            <actions />
-                            <sub-events>
-                                <event-block sid="6365091794537649">
-                                    <conditions>
-                                        <condition id="-14" name="Pick by unique ID" sid="3136845121313602" type="Cow">
-                                            <param id="0" name="Unique ID">eUFO_01.cowUID</param>
+                                            <param id="2" name="Value">&quot;up&quot;</param>
                                         </condition>
                                     </conditions>
                                     <actions />
                                     <sub-events>
-                                        <event-block sid="2402087098987748">
+                                        <event-block sid="1669052326404844">
                                             <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="8197863379220897" type="eUFO_01">
-                                                    <param id="0" name="Instance variable">state</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">&quot;flee&quot;</param>
+                                                <condition id="-2" name="Compare Y" sid="3667628834574985" type="eUFO_01">
+                                                    <param id="0" name="Comparison">3</param>
+                                                    <param id="1" name="Y co-ordinate">16</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="-9" name="Destroy" sid="1578797937373766" type="Cow" />
+                                                <action id="-10" name="Set value" sid="4771380379042011" type="eUFO_01">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Value">&quot;flee&quot;</param>
+                                                </action>
                                             </actions>
                                         </event-block>
-                                        <event-block sid="6774142577731963">
+                                        <event-block sid="4161159508713868">
                                             <conditions>
-                                                <condition id="-22" name="Else" sid="3105595126191878" type="System" />
+                                                <condition id="-22" name="Else" sid="3435455245883242" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-2" name="Set Y" sid="8936851690604877" type="eUFO_01">
+                                                    <param id="0" name="Y">self.Y - dt * Self.speed*2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block collapsed="1" sid="256877385673797">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="145518102417955" type="eUFO_01">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;flee&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-16" name="Set opacity" sid="8423829818383789" type="eUFO_01">
+                                            <param id="0" name="Opacity">self.Opacity - dt * 50</param>
+                                        </action>
+                                        <action id="-12" name="Subtract from" sid="3571268350051651" type="eUFO_01">
+                                            <param id="0" name="Instance variable">scale</param>
+                                            <param id="1" name="Value">dt * 0.25</param>
+                                        </action>
+                                        <action id="9" name="Set scale" sid="8831707328602851" type="eUFO_01">
+                                            <param id="0" name="Scale">self.scale</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="6194255407614133">
+                                            <conditions>
+                                                <condition id="-14" name="Pick by unique ID" sid="6174644222001286" type="Cow">
+                                                    <param id="0" name="Unique ID">eUFO_01.cowUID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="9" name="Set scale" sid="8712287793397816" type="Cow">
+                                                    <param id="0" name="Scale">eUFO_01.scale</param>
+                                                </action>
+                                                <action id="-16" name="Set opacity" sid="9068105599847674" type="Cow">
+                                                    <param id="0" name="Opacity">eUFO_01.Opacity</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="6862749031084662">
+                                            <conditions>
+                                                <condition id="-10" name="Compare opacity" sid="1773517257652009" type="eUFO_01">
+                                                    <param id="0" name="Comparison">3</param>
+                                                    <param id="1" name="Opacity">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Destroy" sid="5061085380444847" type="eUFO_01" />
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="9365310533613789">
+                                    <conditions>
+                                        <condition id="-19" name="On destroyed" sid="9317889539707269" type="eUFO_01" />
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="6365091794537649">
+                                            <conditions>
+                                                <condition id="-14" name="Pick by unique ID" sid="3136845121313602" type="Cow">
+                                                    <param id="0" name="Unique ID">eUFO_01.cowUID</param>
+                                                </condition>
                                             </conditions>
                                             <actions />
                                             <sub-events>
-                                                <event-block sid="6341673579525768">
+                                                <event-block sid="2402087098987748">
                                                     <conditions>
-                                                        <condition id="-2" name="Compare Y" sid="5536690091939651" type="Cow">
-                                                            <param id="0" name="Comparison">3</param>
-                                                            <param id="1" name="Y co-ordinate">deadFallY</param>
+                                                        <condition id="-7" name="Compare instance variable" sid="8197863379220897" type="eUFO_01">
+                                                            <param id="0" name="Instance variable">state</param>
+                                                            <param id="1" name="Comparison">0</param>
+                                                            <param id="2" name="Value">&quot;flee&quot;</param>
                                                         </condition>
                                                     </conditions>
                                                     <actions>
-                                                        <action id="-13" name="Set boolean" sid="1087512941003399" type="Cow">
-                                                            <param id="0" name="Instance variable">deadFall</param>
-                                                            <param id="1" name="Value">1</param>
-                                                        </action>
+                                                        <action id="-9" name="Destroy" sid="1578797937373766" type="Cow" />
                                                     </actions>
                                                 </event-block>
-                                                <event-block sid="3344191801179847">
-                                                    <conditions />
-                                                    <actions>
-                                                        <action behavior="Pin" id="1" name="Unpin" sid="949290330973456" type="Cow" />
-                                                        <action id="-10" name="Set value" sid="4848165042583644" type="Cow">
-                                                            <param id="0" name="Instance variable">state</param>
-                                                            <param id="1" name="Value">&quot;falling&quot;</param>
-                                                        </action>
-                                                        <action behavior="MoveTo" id="4" name="Move to XY" sid="6208329710210655" type="Cow">
-                                                            <param id="0" name="X">Self.X</param>
-                                                            <param id="1" name="Y">cowsY</param>
-                                                        </action>
-                                                        <action behavior="MoveTo" id="2" name="Set acceleration" sid="1070561611664535" type="Cow">
-                                                            <param id="0" name="Acceleration">200</param>
-                                                        </action>
-                                                    </actions>
+                                                <event-block sid="6774142577731963">
+                                                    <conditions>
+                                                        <condition id="-22" name="Else" sid="3105595126191878" type="System" />
+                                                    </conditions>
+                                                    <actions />
+                                                    <sub-events>
+                                                        <event-block sid="6341673579525768">
+                                                            <conditions>
+                                                                <condition id="-2" name="Compare Y" sid="5536690091939651" type="Cow">
+                                                                    <param id="0" name="Comparison">3</param>
+                                                                    <param id="1" name="Y co-ordinate">deadFallY</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="-13" name="Set boolean" sid="1087512941003399" type="Cow">
+                                                                    <param id="0" name="Instance variable">deadFall</param>
+                                                                    <param id="1" name="Value">1</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-block sid="3344191801179847">
+                                                            <conditions />
+                                                            <actions>
+                                                                <action behavior="Pin" id="1" name="Unpin" sid="949290330973456" type="Cow" />
+                                                                <action id="-10" name="Set value" sid="4848165042583644" type="Cow">
+                                                                    <param id="0" name="Instance variable">state</param>
+                                                                    <param id="1" name="Value">&quot;falling&quot;</param>
+                                                                </action>
+                                                                <action behavior="MoveTo" id="4" name="Move to XY" sid="6208329710210655" type="Cow">
+                                                                    <param id="0" name="X">Self.X</param>
+                                                                    <param id="1" name="Y">cowsY</param>
+                                                                </action>
+                                                                <action behavior="MoveTo" id="2" name="Set acceleration" sid="1070561611664535" type="Cow">
+                                                                    <param id="0" name="Acceleration">200</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                    </sub-events>
                                                 </event-block>
                                             </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="6538091107210889" title="Cows">
+                    <sub-events>
+                        <comment>Chaque seconde, on prend une des vaches qui ne se déplacent pas, et on lui donne EVENTUELLEMENT une distance à parcourir (négative pour aller à gauche, positive à droite).</comment>
+                        <event-group collapsed="1" description="" disabled="1" sid="3273011372205513" title="without moveTo">
+                            <sub-events>
+                                <event-block disabled="1" sid="6145284520325428">
+                                    <conditions>
+                                        <condition id="-6" name="Every X seconds" sid="9155054551384602" type="System">
+                                            <param id="0" name="Interval (seconds)">1.0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block disabled="1" sid="9398891325957609">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="9801807629086804" type="Cow">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;free&quot;</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="4081681061553968" type="Cow">
+                                                    <param id="0" name="Instance variable">moveBy</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                                <condition id="-16" name="Pick random instance" sid="8979589128800367" type="System">
+                                                    <param id="0" name="Object">Cow</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="384733263146093" type="Cow">
+                                                    <param id="0" name="Instance variable">moveBy</param>
+                                                    <param id="1" name="Value">random(100)&gt;50 ? round(random(200))-100 : 0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="5927702433606029">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6362128768718561" type="Cow">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;abductee&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="4878446897934789" type="Cow">
+                                            <param id="0" name="Instance variable">moveBy</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <variable constant="0" name="move" sid="4948147444497632" static="0" type="number">0</variable>
+                                <event-block disabled="1" sid="6015728532712751">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="5769233046175635" type="Cow">
+                                            <param id="0" name="Instance variable">moveBy</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="568063403365825" type="System">
+                                            <param id="0" name="Variable">move</param>
+                                            <param id="1" name="Value">dt * Cow.speed</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="2985549213918551" type="Cow">
+                                            <param id="0" name="X">Self.moveBy &gt; 0 ? Self.X+move : Self.X-move</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="7526724012912557" type="Cow">
+                                            <param id="0" name="Instance variable">moveBy</param>
+                                            <param id="1" name="Value">Self.moveBy &gt; 0 ? max(0, Self.moveBy - move) : min(0, Self.moveBy + move)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block disabled="1" sid="3838785831515204">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="9587338609118511" type="Cow">
+                                                    <param id="0" name="Comparison">2</param>
+                                                    <param id="1" name="X co-ordinate">50</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-1" name="Set X" sid="3953775032555117" type="Cow">
+                                                    <param id="0" name="X">50</param>
+                                                </action>
+                                                <action id="-10" name="Set value" sid="7538378259129857" type="Cow">
+                                                    <param id="0" name="Instance variable">moveBy</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block disabled="1" sid="3926405743185568">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="2486689233583183" type="Cow">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">LayoutWidth - 50</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-1" name="Set X" sid="9898409412087961" type="Cow">
+                                                    <param id="0" name="X">LayoutWidth - 50</param>
+                                                </action>
+                                                <action id="-10" name="Set value" sid="3655701498189621" type="Cow">
+                                                    <param id="0" name="Instance variable">moveBy</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="3050386694256256" title="with moveTo">
+                            <sub-events>
+                                <comment>variable moveBy devient obsolète</comment>
+                                <event-block sid="247048334931256">
+                                    <conditions>
+                                        <condition id="-6" name="Every X seconds" sid="5946417743994884" type="System">
+                                            <param id="0" name="Interval (seconds)">1.0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="1442997652800684">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="1067593074648125" type="Cow">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;free&quot;</param>
+                                                </condition>
+                                                <condition behavior="MoveTo" id="3" inverted="1" name="Is moving" sid="5365660088589877" type="Cow" />
+                                                <condition id="-16" name="Pick random instance" sid="8242331571633784" type="System">
+                                                    <param id="0" name="Object">Cow</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="MoveTo" id="7" name="Move to delta XY" sid="1418567354550265" type="Cow">
+                                                    <param id="0" name="dX">random(100)&gt;50 ? round(random(200)-100) : 0</param>
+                                                    <param id="1" name="dY">0</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="5" name="Set current speed" sid="3405570651333221" type="Cow">
+                                                    <param id="0" name="Current speed">Self.speed</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="2" name="Set acceleration" sid="5542899181438682" type="Cow">
+                                                    <param id="0" name="Acceleration">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="803217649378826">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="8141685624516481" type="Cow">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="X co-ordinate">50</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="MoveTo" id="9" name="Stop" sid="376274136896642" type="Cow" />
+                                        <action id="-1" name="Set X" sid="1164972362290223" type="Cow">
+                                            <param id="0" name="X">50</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5321200950568282">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="8137856289871614" type="Cow">
+                                            <param id="0" name="Comparison">4</param>
+                                            <param id="1" name="X co-ordinate">LayoutWidth - 50</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="MoveTo" id="9" name="Stop" sid="6000991719145397" type="Cow" />
+                                        <action id="-1" name="Set X" sid="4058988713926276" type="Cow">
+                                            <param id="0" name="X">LayoutWidth - 50</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9983002976218438">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6403532543320337" type="Cow">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;abductee&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="MoveTo" id="9" name="Stop" sid="7415897816413019" type="Cow" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-block sid="4803947082979572">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="440973300994321" type="Cow">
+                                    <param id="0" name="Instance variable">state</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;falling&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block disabled="1" sid="9437382959918388">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="9694068164157407" type="Cow">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="Y co-ordinate">cowsY</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-2" name="Set Y" sid="4098034326049804" type="Cow">
+                                            <param id="0" name="Y">Self.Y + 50 * dt</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="6614057930305745">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="7874683449526841" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-2" name="Set Y" sid="5471749727551064" type="Cow">
+                                            <param id="0" name="Y">cowsY</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="8598469628554158" type="Cow">
+                                            <param id="0" name="Instance variable">state</param>
+                                            <param id="1" name="Value">&quot;free&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="15841057560094">
+                                    <conditions>
+                                        <condition behavior="MoveTo" id="0" name="On hit target position" sid="7235715995793825" type="Cow" />
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9638136850301583">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="5419809402979454" type="Cow">
+                                                    <param id="0" name="Instance variable">deadFall</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Destroy" sid="2965966594461185" type="Cow" />
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="1147031696514227">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="5564356708670578" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="9302823597151903" type="Cow">
+                                                    <param id="0" name="Instance variable">state</param>
+                                                    <param id="1" name="Value">&quot;free&quot;</param>
+                                                </action>
+                                            </actions>
                                         </event-block>
                                     </sub-events>
                                 </event-block>
@@ -913,180 +1190,168 @@
                 </event-group>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="6538091107210889" title="Cows events">
+        <event-block sid="8432337643154336">
+            <conditions>
+                <condition id="3" name="On key released" sid="4662123288514112" type="Keyboard">
+                    <param id="0" name="Key">27 (Echap)</param>
+                </condition>
+            </conditions>
+            <actions />
             <sub-events>
-                <comment>Chaque seconde, on prend une des vaches qui ne se déplacent pas, et on lui donne EVENTUELLEMENT une distance à parcourir (négative pour aller à gauche, positive à droite).</comment>
-                <event-block sid="6145284520325428">
+                <event-block sid="303998699121679">
                     <conditions>
-                        <condition id="-6" name="Every X seconds" sid="9155054551384602" type="System">
-                            <param id="0" name="Interval (seconds)">1.0</param>
-                        </condition>
-                    </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="9398891325957609">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="9801807629086804" type="Cow">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">&quot;free&quot;</param>
-                                </condition>
-                                <condition id="-7" name="Compare instance variable" sid="4081681061553968" type="Cow">
-                                    <param id="0" name="Instance variable">moveBy</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">0</param>
-                                </condition>
-                                <condition id="-16" name="Pick random instance" sid="8979589128800367" type="System">
-                                    <param id="0" name="Object">Cow</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="384733263146093" type="Cow">
-                                    <param id="0" name="Instance variable">moveBy</param>
-                                    <param id="1" name="Value">random(100)&gt;50 ? round(random(200))-100 : 0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <event-block collapsed="1" sid="6015728532712751">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="5769233046175635" type="Cow">
-                            <param id="0" name="Instance variable">moveBy</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Value">0</param>
+                        <condition id="-15" inverted="1" name="Is group active" sid="3491989068501185" type="System">
+                            <param id="0" name="Group name">&quot;Pause Screen&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-1" name="Set X" sid="2985549213918551" type="Cow">
-                            <param id="0" name="X">Self.moveBy &gt; 0 ? Self.X+dt*Self.speed : Self.X-dt*Self.speed</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="7526724012912557" type="Cow">
-                            <param id="0" name="Instance variable">moveBy</param>
-                            <param id="1" name="Value">Self.moveBy &gt; 0 ? max(0, Self.moveBy - dt *Self.speed) : min(0, Self.moveBy + dt *Self.speed)</param>
+                        <action id="0" name="Call function" sid="8493769778484534" type="Function">
+                            <param id="0" name="Name">&quot;pauseScreenOn&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
                         </action>
                     </actions>
-                    <sub-events>
-                        <event-block sid="3838785831515204">
-                            <conditions>
-                                <condition id="-1" name="Compare X" sid="9587338609118511" type="Cow">
-                                    <param id="0" name="Comparison">2</param>
-                                    <param id="1" name="X co-ordinate">50</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-1" name="Set X" sid="3953775032555117" type="Cow">
-                                    <param id="0" name="X">50</param>
-                                </action>
-                                <action id="-10" name="Set value" sid="7538378259129857" type="Cow">
-                                    <param id="0" name="Instance variable">moveBy</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="3926405743185568">
-                            <conditions>
-                                <condition id="-1" name="Compare X" sid="2486689233583183" type="Cow">
-                                    <param id="0" name="Comparison">4</param>
-                                    <param id="1" name="X co-ordinate">LayoutWidth - 50</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-1" name="Set X" sid="9898409412087961" type="Cow">
-                                    <param id="0" name="X">LayoutWidth - 50</param>
-                                </action>
-                                <action id="-10" name="Set value" sid="3655701498189621" type="Cow">
-                                    <param id="0" name="Instance variable">moveBy</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
                 </event-block>
-                <event-block sid="5927702433606029">
+                <event-block sid="7150831850699996">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="6362128768718561" type="Cow">
-                            <param id="0" name="Instance variable">state</param>
+                        <condition id="-22" name="Else" sid="8362225157442096" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="4207507306374316" type="Function">
+                            <param id="0" name="Name">&quot;pauseScreenOff&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="1974073773351428" title="Pause Screen">
+            <sub-events>
+                <event-block sid="3444067090207292">
+                    <conditions>
+                        <condition id="3" name="On key released" sid="5736499775992399" type="Keyboard">
+                            <param id="0" name="Key">13 (Return)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="5680058088177867" type="System">
+                            <param id="0" name="Variable">lineSelected</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;abductee&quot;</param>
+                            <param id="2" name="Value">btnResume.order</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="4878446897934789" type="Cow">
-                            <param id="0" name="Instance variable">moveBy</param>
-                            <param id="1" name="Value">0</param>
+                        <action id="0" name="Call function" sid="4412252585260619" type="Function">
+                            <param id="0" name="Name">&quot;pauseScreenOff&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block disabled="1" sid="4803947082979572">
+                <event-block sid="9441862375533892">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="440973300994321" type="Cow">
-                            <param id="0" name="Instance variable">state</param>
+                        <condition id="3" name="On key released" sid="5354679106608313" type="Keyboard">
+                            <param id="0" name="Key">13 (Return)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="3207541691989218" type="System">
+                            <param id="0" name="Variable">lineSelected</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;falling&quot;</param>
+                            <param id="2" name="Value">btnMenu.order</param>
                         </condition>
                     </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block disabled="1" sid="9437382959918388">
-                            <conditions>
-                                <condition id="-2" name="Compare Y" sid="9694068164157407" type="Cow">
-                                    <param id="0" name="Comparison">2</param>
-                                    <param id="1" name="Y co-ordinate">cowsY</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-2" name="Set Y" sid="4098034326049804" type="Cow">
-                                    <param id="0" name="Y">Self.Y + 500 * dt</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block disabled="1" sid="6614057930305745">
-                            <conditions>
-                                <condition id="-22" name="Else" sid="7874683449526841" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="-2" name="Set Y" sid="5471749727551064" type="Cow">
-                                    <param id="0" name="Y">cowsY</param>
-                                </action>
-                                <action id="-10" name="Set value" sid="8598469628554158" type="Cow">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Value">&quot;free&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <event-block sid="15841057560094">
-                    <conditions>
-                        <condition behavior="MoveTo" id="0" name="On hit target position" sid="7235715995793825" type="Cow" />
-                    </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="9638136850301583">
-                            <conditions>
-                                <condition id="-8" name="Is boolean instance variable set" sid="5419809402979454" type="Cow">
-                                    <param id="0" name="Instance variable">deadFall</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Destroy" sid="2965966594461185" type="Cow" />
-                            </actions>
-                        </event-block>
-                        <event-block sid="1147031696514227">
-                            <conditions>
-                                <condition id="-22" name="Else" sid="5564356708670578" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="9302823597151903" type="Cow">
-                                    <param id="0" name="Instance variable">state</param>
-                                    <param id="1" name="Value">&quot;free&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
+                    <actions>
+                        <action id="0" name="Call function" sid="6941480249914152" type="Function">
+                            <param id="0" name="Name">&quot;pauseScreenOff&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="8095622373391755" type="System">
+                            <param id="0" name="Layout">Menu</param>
+                        </action>
+                    </actions>
                 </event-block>
             </sub-events>
         </event-group>
+        <event-block sid="1559130046726981">
+            <conditions>
+                <condition id="0" name="On function" sid="7215894990404544" type="Function">
+                    <param id="0" name="Name">&quot;pauseScreenOn&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-14" name="Set object time scale" sid="9365953126342169" type="System">
+                    <param id="0" name="Object">PauseObj</param>
+                    <param id="1" name="Time scale">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="6063646631201613" type="System">
+                    <param id="0" name="Group name">&quot;Game&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="8919204647781845" type="System">
+                    <param id="0" name="Group name">&quot;Pause Screen&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-3" name="Create object" sid="255224296748437" type="System">
+                    <param id="0" name="Object to create">pauseScreenBckg</param>
+                    <param id="1" name="Layer">&quot;HUD&quot;</param>
+                    <param id="2" name="X">10</param>
+                    <param id="3" name="Y">10</param>
+                </action>
+                <action id="-3" name="Set position" sid="8347982806221979" type="btnResume">
+                    <param id="0" name="X">pauseScreenBckg.X + pauseScreenBckg.Width / 2</param>
+                    <param id="1" name="Y">pauseScreenBckg.Y + pauseScreenBckg.Height / 2 - 50</param>
+                </action>
+                <action id="-3" name="Set position" sid="8268927312860703" type="btnMenu">
+                    <param id="0" name="X">pauseScreenBckg.X + pauseScreenBckg.Width / 2</param>
+                    <param id="1" name="Y">pauseScreenBckg.Y + pauseScreenBckg.Height / 2 + 50</param>
+                </action>
+                <action id="-9" name="Destroy" sid="926628173749795" type="aMenu" />
+                <action id="-3" name="Create object" sid="6033654411300333" type="System">
+                    <param id="0" name="Object to create">aMenu</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="5" name="Push" sid="4268564543832105" type="aMenu">
+                    <param id="0" name="Where">0</param>
+                    <param id="1" name="Value">&quot;resume&quot;</param>
+                    <param id="2" name="Axis">0</param>
+                </action>
+                <action id="5" name="Push" sid="9644939300740054" type="aMenu">
+                    <param id="0" name="Where">0</param>
+                    <param id="1" name="Value">&quot;menu&quot;</param>
+                    <param id="2" name="Axis">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="89398588213929" type="System">
+                    <param id="0" name="Variable">groupOnStart</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="9468631868821866" type="System">
+                    <param id="0" name="Group name">&quot;Global Menu&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7145558692557155">
+            <conditions>
+                <condition id="0" name="On function" sid="67665545478609" type="Function">
+                    <param id="0" name="Name">&quot;pauseScreenOff&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Set group active" sid="8358316012237083" type="System">
+                    <param id="0" name="Group name">&quot;Global Menu&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="7813105206447221" type="pauseScreenBckg" />
+                <action id="-12" name="Set group active" sid="9300121382710644" type="System">
+                    <param id="0" name="Group name">&quot;Pause Screen&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="8918601411757313" type="System">
+                    <param id="0" name="Group name">&quot;Game&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-14" name="Set object time scale" sid="8663162665007602" type="System">
+                    <param id="0" name="Object">PauseObj</param>
+                    <param id="1" name="Time scale">1</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

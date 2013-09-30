@@ -66,10 +66,10 @@
                             <param id="1" name="Comparison">4</param>
                             <param id="2" name="Value">0</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" sid="5092556978397958" type="btnMusicVolume">
-                            <param id="0" name="Instance variable">order</param>
+                        <condition id="-14" name="Compare variable" sid="6075304022520832" type="System">
+                            <param id="0" name="Variable">lineSelected</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">lineSelected</param>
+                            <param id="2" name="Value">btnMusicVolume.order</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -93,10 +93,10 @@
                             <param id="1" name="Comparison">2</param>
                             <param id="2" name="Value">MUSIC_VOLUME_MAX</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" sid="7976175085303338" type="btnMusicVolume">
-                            <param id="0" name="Instance variable">order</param>
+                        <condition id="-14" name="Compare variable" sid="8272070894689568" type="System">
+                            <param id="0" name="Variable">lineSelected</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">lineSelected</param>
+                            <param id="2" name="Value">btnMusicVolume.order</param>
                         </condition>
                     </conditions>
                     <actions>

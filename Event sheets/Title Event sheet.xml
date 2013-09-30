@@ -67,6 +67,16 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="8396723883764498">
+                    <conditions>
+                        <condition id="3" name="On key released" sid="1604042650181166" type="Keyboard">
+                            <param id="0" name="Key">27 (Echap)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="11" name="Cancel fullscreen" sid="5003008946794942" type="Browser" />
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
     </events>

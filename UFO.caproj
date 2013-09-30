@@ -10,10 +10,8 @@
     <unique-id>3om4fqck6p5en</unique-id>
     <saved-with-version>14500</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
-        <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
@@ -21,6 +19,8 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
@@ -211,7 +211,7 @@
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1787699971199453" speed="5">
+                <animation framecount="1" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1787699971199453" speed="2">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -347,6 +347,67 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="Sprite" sid="645791011095665">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2357426601897903" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="pauseScreenBckg" sid="5150465051042175">
+            <plugin id="TiledBg" />
+            <container>
+                <type>pauseScreenBckg</type>
+                <type>Text6</type>
+                <type>btnResume</type>
+                <type>btnMenu</type>
+            </container>
+            <texture />
+        </object-type>
+        <object-type name="Text6" sid="9938304945799096">
+            <plugin id="Text" />
+            <container>
+                <type>pauseScreenBckg</type>
+                <type>Text6</type>
+                <type>btnResume</type>
+                <type>btnMenu</type>
+            </container>
+        </object-type>
+        <object-type name="btnResume" sid="1196118867210749">
+            <plugin id="Sprite" />
+            <container>
+                <type>pauseScreenBckg</type>
+                <type>Text6</type>
+                <type>btnResume</type>
+                <type>btnMenu</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="1835102636477013" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="1653490165478265" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="btnMenu" sid="5391518829300407">
+            <plugin id="Sprite" />
+            <container>
+                <type>pauseScreenBckg</type>
+                <type>Text6</type>
+                <type>btnResume</type>
+                <type>btnMenu</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="3892675785371713" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="9404943501590549" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Bullets" plugin-id="Sprite" sid="3722142017417203">
@@ -394,15 +455,24 @@
         <family name="Menu" plugin-id="Sprite" sid="3559508668224159">
             <members>
                 <member>btnBack</member>
+                <member>btnMenu</member>
                 <member>btnMusicVolume</member>
                 <member>btnOptions</member>
                 <member>btnPlay</member>
+                <member>btnResume</member>
             </members>
             <instance-variables>
                 <instance-variable name="order" sid="5266024067546183" type="number" />
                 <instance-variable name="name" sid="794377243613853" type="string" />
                 <instance-variable name="layout" sid="3691773627227841" type="string" />
             </instance-variables>
+        </family>
+        <family name="PauseObj" plugin-id="Sprite" sid="7225822337293539">
+            <members>
+                <member>Cow</member>
+                <member>eUFO_01</member>
+                <member>eUFO_02</member>
+            </members>
         </family>
     </families>
     <layout-folder expanded="1">

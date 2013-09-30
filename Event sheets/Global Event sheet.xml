@@ -4,18 +4,23 @@
     <name>Global Event sheet</name>
     <events>
         <variable constant="0" name="lineSelected" sid="2805800641813666" static="0" type="number">1</variable>
+        <variable constant="0" name="groupOnStart" sid="3210601281630885" static="0" type="number">1</variable>
         <event-group description="" sid="1990023598011927" title="Global">
             <sub-events>
-                <variable constant="0" name="groupActive" sid="3210601281630885" static="1" type="number">0</variable>
                 <variable constant="0" name="lineMax" sid="6322456440765764" static="1" type="number">0</variable>
-                <event-block sid="156477194585085">
+                <event-block sid="289219927859623">
                     <conditions>
-                        <condition id="3" name="On key released" sid="6312855250270794" type="Keyboard">
-                            <param id="0" name="Key">27 (Echap)</param>
-                        </condition>
+                        <condition id="-2" name="On start of layout" sid="7401876039349301" type="System" />
                     </conditions>
                     <actions>
-                        <action id="11" name="Cancel fullscreen" sid="9918477366289011" type="Browser" />
+                        <action id="-12" name="Set group active" sid="4262985531192126" type="System">
+                            <param id="0" name="Group name">&quot;Global Menu&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1919805850290685" type="System">
+                            <param id="0" name="Variable">groupOnStart</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="6854134515966789">
@@ -30,46 +35,28 @@
                         <action id="1" name="Close" sid="4690196787745172" type="Browser" />
                     </actions>
                 </event-block>
-                <event-block sid="289219927859623">
-                    <conditions>
-                        <condition id="-2" name="On start of layout" sid="7401876039349301" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="-12" name="Set group active" sid="4262985531192126" type="System">
-                            <param id="0" name="Group name">&quot;Global Menu&quot;</param>
-                            <param id="1" name="State">0</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="1919805850290685" type="System">
-                            <param id="0" name="Variable">groupActive</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="2231850535857945" type="System">
-                            <param id="0" name="Variable">lineSelected</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-group description="" sid="7733806061159832" title="Global Menu">
                     <sub-events>
                         <event-block sid="4594251404071856">
                             <conditions>
-                                <condition id="-15" name="Is group active" sid="1715954585459683" type="System">
-                                    <param id="0" name="Group name">&quot;Global Menu&quot;</param>
-                                </condition>
                                 <condition id="-14" name="Compare variable" sid="8744013373422044" type="System">
-                                    <param id="0" name="Variable">groupActive</param>
+                                    <param id="0" name="Variable">groupOnStart</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">0</param>
+                                    <param id="2" name="Value">1</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="5425775665278388" type="System">
-                                    <param id="0" name="Variable">groupActive</param>
-                                    <param id="1" name="Value">1</param>
+                                    <param id="0" name="Variable">groupOnStart</param>
+                                    <param id="1" name="Value">0</param>
                                 </action>
                                 <action id="-9" name="Set value" sid="7559209396379454" type="System">
                                     <param id="0" name="Variable">lineMax</param>
                                     <param id="1" name="Value">Menu.PickedCount</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="2231850535857945" type="System">
+                                    <param id="0" name="Variable">lineSelected</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                             <sub-events>
@@ -165,7 +152,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block sid="4177930748929087">
+                        <event-block collapsed="1" sid="4177930748929087">
                             <conditions>
                                 <condition id="0" name="On function" sid="51285655620047" type="Function">
                                     <param id="0" name="Name">&quot;menuChangeSelection&quot;</param>
