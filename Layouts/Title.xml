@@ -54,9 +54,9 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="pressToStart" uid="1">
+                <instance type="startMessage" uid="1">
                     <properties>
-                        <text>Press any key</text>
+                        <text>Loading, please wait</text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial,-32,400,0</font>
                         <color>0,0,0</color>
@@ -80,10 +80,10 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>316</x>
+                        <x>320.5</x>
                         <y>301</y>
                         <z>0</z>
-                        <width>280</width>
+                        <width>625</width>
                         <height>55</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
@@ -124,6 +124,13 @@
                 <reloadTime>0</reloadTime>
                 <ammunition>0</ammunition>
             </instance-variables>
+        </instance>
+        <instance type="aMenu" uid="37">
+            <properties>
+                <width>0</width>
+                <height>1</height>
+                <depth>1</depth>
+            </properties>
         </instance>
     </nonworld-instances>
     <effects />

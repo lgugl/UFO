@@ -2,5 +2,214 @@
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Options Event sheet</name>
-    <events />
+    <events>
+        <include>Global Event sheet</include>
+        <event-group description="" sid="4316354057894235" title="Options">
+            <sub-events>
+                <variable constant="1" name="MUSIC_VOLUME_MAX" sid="3972624486086606" static="0" type="number">3</variable>
+                <variable constant="0" name="musicVolume" sid="5604828622031139" static="1" type="number">3</variable>
+                <variable constant="0" name="musicVolumeChanged" sid="1985295850661692" static="1" type="number">0</variable>
+                <event-block sid="2202484263549786">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="7220704423354389" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="904370671350099" type="System">
+                            <param id="0" name="Object to create">aMenu</param>
+                            <param id="1" name="Layer">0</param>
+                            <param id="2" name="X">0</param>
+                            <param id="3" name="Y">0</param>
+                        </action>
+                        <action id="5" name="Push" sid="9827312218810301" type="aMenu">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Value">&quot;musicVolume&quot;</param>
+                            <param id="2" name="Axis">0</param>
+                        </action>
+                        <action id="5" name="Push" sid="6208629628060558" type="aMenu">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Value">&quot;back&quot;</param>
+                            <param id="2" name="Axis">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3953396172444796" type="System">
+                            <param id="0" name="Group name">&quot;Global Menu&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="1265499677512998" type="musicVolumeCtrl">
+                            <param id="0" name="Frame number">musicVolume</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="981155429974018">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="2136360752484151" type="Menu">
+                                    <param id="0" name="Instance variable">name</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;back&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="901340271740242" type="Menu">
+                                    <param id="0" name="Instance variable">layout</param>
+                                    <param id="1" name="Value">&quot;Menu&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="6748314259901246">
+                    <conditions>
+                        <condition id="3" name="On key released" sid="4417561396169785" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="114987168337289" type="System">
+                            <param id="0" name="Variable">musicVolume</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="6075304022520832" type="System">
+                            <param id="0" name="Variable">lineSelected</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">btnMusicVolume.order</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="1046182864691488" type="System">
+                            <param id="0" name="Variable">musicVolume</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7163862172420058" type="System">
+                            <param id="0" name="Variable">musicVolumeChanged</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1857876578199958">
+                    <conditions>
+                        <condition id="3" name="On key released" sid="3076080055086301" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="6397184410393505" type="System">
+                            <param id="0" name="Variable">musicVolume</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">MUSIC_VOLUME_MAX</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="8272070894689568" type="System">
+                            <param id="0" name="Variable">lineSelected</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">btnMusicVolume.order</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="5614573306118776" type="System">
+                            <param id="0" name="Variable">musicVolume</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1725615737098008" type="System">
+                            <param id="0" name="Variable">musicVolumeChanged</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>valeur précédent à 0, l&apos;audio était donc en mute</comment>
+                        <event-block sid="2450052011008512">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4683370508399231" type="System">
+                                    <param id="0" name="Variable">musicVolume</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Set muted" sid="3856337029774373" type="Audio">
+                                    <param id="0" name="Tag">&quot;music&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>La valeur du volume a changé, on fait les traitements nécessaires</comment>
+                <event-block sid="440207459785781">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="9016788950798208" type="System">
+                            <param id="0" name="Variable">musicVolumeChanged</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="9025994557051698" type="musicVolumeCtrl">
+                            <param id="0" name="Frame number">musicVolume</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="3470160170233896" type="System">
+                            <param id="0" name="Variable">musicVolumeChanged</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="1303328027598926">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8348689676167094" type="System">
+                                    <param id="0" name="Variable">musicVolume</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Set muted" sid="4765970038410561" type="Audio">
+                                    <param id="0" name="Tag">&quot;music&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3008029763898183">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="1993692563282962" type="System">
+                                    <param id="0" name="Variable">musicVolume</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set volume" sid="7972471988583618" type="Audio">
+                                    <param id="0" name="Tag">&quot;music&quot;</param>
+                                    <param id="1" name="dB">-20</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1057682672866404">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="429926960364471" type="System">
+                                    <param id="0" name="Variable">musicVolume</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set volume" sid="9954376619458246" type="Audio">
+                                    <param id="0" name="Tag">&quot;music&quot;</param>
+                                    <param id="1" name="dB">-10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9390180993890216">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="113810630311033" type="System">
+                                    <param id="0" name="Variable">musicVolume</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set volume" sid="2758164235729512" type="Audio">
+                                    <param id="0" name="Tag">&quot;music&quot;</param>
+                                    <param id="1" name="dB">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
 </c2eventsheet>

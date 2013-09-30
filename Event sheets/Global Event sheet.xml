@@ -3,27 +3,274 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Global Event sheet</name>
     <events>
-        <event-block sid="156477194585085">
-            <conditions>
-                <condition id="3" name="On key released" sid="6312855250270794" type="Keyboard">
-                    <param id="0" name="Key">27 (Echap)</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="11" name="Cancel fullscreen" sid="9918477366289011" type="Browser" />
-            </actions>
-        </event-block>
-        <event-block sid="6854134515966789">
-            <conditions>
-                <condition id="6" name="On object clicked" sid="9791599752350765" type="Mouse">
-                    <param id="0" name="Mouse button">0</param>
-                    <param id="1" name="Click type">0</param>
-                    <param id="2" name="Object clicked">btnClose</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="1" name="Close" sid="4690196787745172" type="Browser" />
-            </actions>
-        </event-block>
+        <variable constant="0" name="lineSelected" sid="2805800641813666" static="0" type="number">1</variable>
+        <variable constant="0" name="groupOnStart" sid="3210601281630885" static="0" type="number">1</variable>
+        <event-group description="" sid="1990023598011927" title="Global">
+            <sub-events>
+                <variable constant="0" name="lineMax" sid="6322456440765764" static="1" type="number">0</variable>
+                <event-block sid="289219927859623">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="7401876039349301" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="4262985531192126" type="System">
+                            <param id="0" name="Group name">&quot;Global Menu&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1919805850290685" type="System">
+                            <param id="0" name="Variable">groupOnStart</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6854134515966789">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="9791599752350765" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnClose</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Close" sid="4690196787745172" type="Browser" />
+                    </actions>
+                </event-block>
+                <event-group description="" sid="7733806061159832" title="Global Menu">
+                    <sub-events>
+                        <event-block sid="4594251404071856">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8744013373422044" type="System">
+                                    <param id="0" name="Variable">groupOnStart</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5425775665278388" type="System">
+                                    <param id="0" name="Variable">groupOnStart</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7559209396379454" type="System">
+                                    <param id="0" name="Variable">lineMax</param>
+                                    <param id="1" name="Value">Menu.PickedCount</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="2231850535857945" type="System">
+                                    <param id="0" name="Variable">lineSelected</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="5090524985895841">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="85842067898827" type="aMenu">
+                                            <param id="0" name="Axes">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="1664643304911623">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="3888704917130744" type="Menu">
+                                                    <param id="0" name="Instance variable">name</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">aMenu.CurValue</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="2271898568175512" type="Menu">
+                                                    <param id="0" name="Instance variable">order</param>
+                                                    <param id="1" name="Value">aMenu.CurX +1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="2276921501273791">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1912064255249416" type="Menu">
+                                            <param id="0" name="Instance variable">order</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">lineSelected</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="9198137873689233" type="Menu">
+                                            <param id="0" name="Animation">&quot;On&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="1114545871523095">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="8592734834960402" type="Keyboard">
+                                    <param id="0" name="Key">40 (Down arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="2514512144985356" type="Function">
+                                    <param id="0" name="Name">&quot;menuChangeSelection&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;forward&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1939654223305926">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="6574480733540852" type="Keyboard">
+                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="9006737192803981" type="Function">
+                                    <param id="0" name="Name">&quot;menuChangeSelection&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;backward&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3791522707757679">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="4605178213782712" type="Keyboard">
+                                    <param id="0" name="Key">13 (Return)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="9372684093487722">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="9264762244494503" type="Menu">
+                                            <param id="0" name="Instance variable">order</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">lineSelected</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-25" name="Go to layout (by name)" sid="9241548141737386" type="System">
+                                            <param id="0" name="Layout">Menu.layout</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block collapsed="1" sid="4177930748929087">
+                            <conditions>
+                                <condition id="0" name="On function" sid="51285655620047" type="Function">
+                                    <param id="0" name="Name">&quot;menuChangeSelection&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="1534091372384138">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="4176018245593184" type="Menu">
+                                            <param id="0" name="Instance variable">order</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">lineSelected</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="3693396169671692" type="Menu">
+                                            <param id="0" name="Animation">&quot;Off&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="4120810015427102">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="1456380411755208" type="Function">
+                                            <param id="0" name="Index">0</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;forward&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="5789031178326462">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="6344387621336235" type="System">
+                                                    <param id="0" name="Variable">lineSelected</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Value">lineMax</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Add to" sid="8048670540811806" type="System">
+                                                    <param id="0" name="Variable">lineSelected</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="829321788156251">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="6267752418629012" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="3671632201060108" type="System">
+                                                    <param id="0" name="Variable">lineSelected</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="8635033844803396">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="1123773257076269" type="Function">
+                                            <param id="0" name="Index">0</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;backward&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="8874005750199344">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="8704676265400473" type="System">
+                                                    <param id="0" name="Variable">lineSelected</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-11" name="Subtract from" sid="9758952072888294" type="System">
+                                                    <param id="0" name="Variable">lineSelected</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="6813855490566114">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="2119165476052254" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="5151905743682001" type="System">
+                                                    <param id="0" name="Variable">lineSelected</param>
+                                                    <param id="1" name="Value">lineMax</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="3185950757118607">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="7502482448527466" type="Menu">
+                                            <param id="0" name="Instance variable">order</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">lineSelected</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="7098698104817806" type="Menu">
+                                            <param id="0" name="Animation">&quot;On&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>
