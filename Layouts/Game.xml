@@ -353,6 +353,8 @@
                         <speed>20</speed>
                         <state>free</state>
                         <deadFall>false</deadFall>
+                        <eatWho>0</eatWho>
+                        <eatHow>0</eatHow>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="Pin" />

@@ -8,10 +8,12 @@
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>14500</saved-with-version>
+    <saved-with-version>15300</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
@@ -19,17 +21,15 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
-        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
-        <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
-        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
-        <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
-        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+        <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -48,6 +48,7 @@
         <prop name="Fullscreen in browser">Scale outer</prop>
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Physics engine">Box2D web</prop>
         <prop name="Preview browser">Node-Webkit</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use iOS retina display">Yes</prop>
@@ -201,6 +202,8 @@
                 <instance-variable name="speed" sid="5348303845669196" type="number" />
                 <instance-variable name="state" sid="5528624450358903" type="string" />
                 <instance-variable name="deadFall" sid="8658532220814332" type="boolean" />
+                <instance-variable comment="straw&apos;s uid" name="eatWho" sid="6826248912299696" type="number" />
+                <instance-variable comment="0: à faim (rien dans le ventre)" name="eatHow" sid="2661544351671452" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Pin" sid="6723082646876358">
@@ -523,6 +526,7 @@
             <file name="icon-114.png" />
             <file name="icon-128.png" />
             <file name="loading-logo.png" />
+            <file name="icon-256.png" />
         </file-folder>
     </files-folder>
 </c2project>

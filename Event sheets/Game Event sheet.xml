@@ -30,6 +30,7 @@
                                 <action id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
                                 <action id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
                                 <action id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
+                                <action id="-9" name="Destroy" sid="2433110721045744" type="straw" />
                                 <action id="-9" name="Set value" sid="8136963829920563" type="System">
                                     <param id="0" name="Variable">currentWeapon</param>
                                     <param id="1" name="Value">defaultWeapon</param>
@@ -191,7 +192,7 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
-                        <event-group collapsed="1" description="" sid="4927751051606347" title="Fire">
+                        <event-group description="" sid="4927751051606347" title="Fire">
                             <sub-events>
                                 <event-block sid="7981904484682303">
                                     <conditions>
@@ -294,7 +295,7 @@
                                                 </event-block>
                                             </sub-events>
                                         </event-block>
-                                        <comment>En dehors de &quot;Weapons Key name = currentWeapon&quot;, pour remettre fire à false, même si l&apos;arme currentWeapon n&apos;existe pas.</comment>
+                                        <comment>Placé en dehors de &quot;Weapons Key name = currentWeapon&quot;, pour remettre fire à false, même si l&apos;arme currentWeapon n&apos;existe pas.</comment>
                                         <event-block sid="5352557166168991">
                                             <conditions />
                                             <actions>
@@ -315,7 +316,7 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
-                        <event-group collapsed="1" description="" sid="7739485826158529" title="Change weapon">
+                        <event-group description="" sid="7739485826158529" title="Change weapon">
                             <sub-events>
                                 <event-block sid="8845709705958467">
                                     <conditions>
@@ -346,7 +347,7 @@
                                 <event-block sid="8684687099803742">
                                     <conditions>
                                         <condition id="0" name="On key pressed" sid="2652538299986439" type="Keyboard">
-                                            <param id="0" name="Key">48 (à)</param>
+                                            <param id="0" name="Key">51 (&quot;)</param>
                                         </condition>
                                     </conditions>
                                     <actions>
@@ -551,7 +552,7 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-3" name="Create object" sid="1253224613223196" type="System">
+                                <action disabled="1" id="-3" name="Create object" sid="1253224613223196" type="System">
                                     <param id="0" name="Object to create">eUFO_01</param>
                                     <param id="1" name="Layer">&quot;Main&quot;</param>
                                     <param id="2" name="X">random(50, LayoutWidth-50)</param>
@@ -883,6 +884,7 @@
                                                     </conditions>
                                                     <actions />
                                                     <sub-events>
+                                                        <comment>TODO: VERIFIER SI l&apos;instance de Cow est correcte !</comment>
                                                         <event-block sid="6341673579525768">
                                                             <conditions>
                                                                 <condition id="-2" name="Compare Y" sid="5536690091939651" type="Cow">
@@ -926,6 +928,187 @@
                 </event-group>
                 <event-group description="" sid="6538091107210889" title="Cows">
                     <sub-events>
+                        <comment>chaque vache qui ne mange pas et qui a faim</comment>
+                        <event-block sid="4091867021047634">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="5266832402878464" type="System">
+                                    <param id="0" name="Object">Cow</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="5510741464808341" type="Cow">
+                                    <param id="0" name="Instance variable">eatWho</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="3267022042926788" type="Cow">
+                                    <param id="0" name="Instance variable">eatHow</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="3337041706018764">
+                                    <conditions>
+                                        <condition id="-15" name="Pick nearest/furthest" sid="8911513844475126" type="straw">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="X">Cow.X</param>
+                                            <param id="2" name="Y">Cow.Y</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="2444149329201957">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="3837701777085883" type="System">
+                                                    <param id="0" name="First value">abs(Cow.X - straw.X)</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Second value">20</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="4392500154584019" type="Cow">
+                                                    <param id="0" name="Instance variable">eatWho</param>
+                                                    <param id="1" name="Value">straw.UID</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="4846866479613217">
+                                                    <conditions>
+                                                        <condition id="-8" name="Compare two values" sid="9158458863574319" type="System">
+                                                            <param id="0" name="First value">Cow.X</param>
+                                                            <param id="1" name="Comparison">3</param>
+                                                            <param id="2" name="Second value">straw.X</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="7" name="Set mirrored" sid="6450409346236298" type="Cow">
+                                                            <param id="0" name="State">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                                <event-block sid="75207987305183">
+                                                    <conditions>
+                                                        <condition id="-22" name="Else" sid="6205952927258793" type="System" />
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="7" name="Set mirrored" sid="8424409916236557" type="Cow">
+                                                            <param id="0" name="State">0</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>la vache est en train de manger</comment>
+                        <event-block sid="2818446307389336">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="204425453474919" type="Cow">
+                                    <param id="0" name="Instance variable">eatWho</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="5790554115710752">
+                                    <conditions>
+                                        <condition id="-14" name="Pick by unique ID" sid="7824766468674762" type="straw">
+                                            <param id="0" name="Unique ID">Cow.eatWho</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="8052319649853795">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="6103983394135062" type="straw">
+                                                    <param id="0" name="Instance variable">quantity</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-12" name="Subtract from" sid="187507468582812" type="straw">
+                                                    <param id="0" name="Instance variable">quantity</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="-11" name="Add to" sid="6441608252477604" type="Cow">
+                                                    <param id="0" name="Instance variable">eatHow</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>plus rien à manger ou a assez mangé</comment>
+                                        <event-block any="1" sid="3345696514531119">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="2207813732819898" type="straw">
+                                                    <param id="0" name="Instance variable">quantity</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="8749199323408505" type="Cow">
+                                                    <param id="0" name="Instance variable">eatHow</param>
+                                                    <param id="1" name="Comparison">5</param>
+                                                    <param id="2" name="Value">20</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="6992922903149209" type="Cow">
+                                                    <param id="0" name="Instance variable">eatWho</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="1668254848305264">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="5628479199576663" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="7838624429169538" type="Cow">
+                                            <param id="0" name="Instance variable">eatWho</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="5421341604861368">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="3112613773004998" type="straw">
+                                    <param id="0" name="Instance variable">quantity</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="271474824088004" type="straw" />
+                            </actions>
+                        </event-block>
+                        <comment>la vache digère</comment>
+                        <event-block sid="2706190908167473">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="5215662848187276" type="Cow">
+                                    <param id="0" name="Instance variable">eatWho</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="1258359555826182" type="Cow">
+                                    <param id="0" name="Instance variable">eatHow</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="6491663717059331" type="Cow">
+                                    <param id="0" name="Instance variable">eatHow</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
                         <comment>Chaque seconde, on prend une des vaches qui ne se déplacent pas, et on lui donne EVENTUELLEMENT une distance à parcourir (négative pour aller à gauche, positive à droite).</comment>
                         <event-group collapsed="1" description="" disabled="1" sid="3273011372205513" title="without moveTo">
                             <sub-events>
@@ -1056,6 +1239,11 @@
                                                     <param id="1" name="Comparison">0</param>
                                                     <param id="2" name="Value">&quot;free&quot;</param>
                                                 </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="6594820971283566" type="Cow">
+                                                    <param id="0" name="Instance variable">eatWho</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
                                                 <condition behavior="MoveTo" id="3" inverted="1" name="Is moving" sid="5365660088589877" type="Cow" />
                                                 <condition id="-16" name="Pick random instance" sid="8242331571633784" type="System">
                                                     <param id="0" name="Object">Cow</param>
@@ -1070,7 +1258,7 @@
                                                     <param id="0" name="Current speed">Self.speed</param>
                                                 </action>
                                                 <action behavior="MoveTo" id="2" name="Set acceleration" sid="5542899181438682" type="Cow">
-                                                    <param id="0" name="Acceleration">0</param>
+                                                    <param id="0" name="Acceleration">10</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -1118,6 +1306,37 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
+                        <event-block sid="542439098775972">
+                            <conditions>
+                                <condition behavior="MoveTo" id="3" name="Is moving" sid="8892290219958909" type="Cow" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4756096575229986">
+                                    <conditions>
+                                        <condition behavior="MoveTo" id="4" name="Compare moving angle" sid="3837253797677256" type="Cow">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Angle">180</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="797792742163595" type="Cow">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="238934023687763">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="6082242861424709" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="4766436983824716" type="Cow">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
                         <event-block sid="4803947082979572">
                             <conditions>
                                 <condition id="-7" name="Compare instance variable" sid="440973300994321" type="Cow">
@@ -1166,6 +1385,9 @@
                                                 <condition id="-8" name="Is boolean instance variable set" sid="5419809402979454" type="Cow">
                                                     <param id="0" name="Instance variable">deadFall</param>
                                                 </condition>
+                                                <condition id="1" inverted="1" name="Is overlapping another object" sid="9520365706666131" type="Cow">
+                                                    <param id="0" name="Object">straw</param>
+                                                </condition>
                                             </conditions>
                                             <actions>
                                                 <action id="-9" name="Destroy" sid="2965966594461185" type="Cow" />
@@ -1181,6 +1403,18 @@
                                                     <param id="1" name="Value">&quot;free&quot;</param>
                                                 </action>
                                             </actions>
+                                            <sub-events>
+                                                <event-block sid="2601737993801983">
+                                                    <conditions>
+                                                        <condition id="1" name="Is overlapping another object" sid="3287713275011077" type="Cow">
+                                                            <param id="0" name="Object">straw</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-9" name="Destroy" sid="3939270228418774" type="straw" />
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
                                         </event-block>
                                     </sub-events>
                                 </event-block>
