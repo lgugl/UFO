@@ -542,7 +542,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="593834434841065" title="Enemies">
+                <event-group description="" sid="593834434841065" title="Enemies">
                     <sub-events>
                         <variable constant="0" name="captureTolerance" sid="6428054404375282" static="0" type="number">50</variable>
                         <event-block sid="9161417591077772">
@@ -926,7 +926,7 @@
                         </event-group>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="6538091107210889" title="Cows">
+                <event-group description="" sid="6538091107210889" title="Cows">
                     <sub-events>
                         <comment>chaque vache qui ne mange pas et qui a faim</comment>
                         <event-block sid="4091867021047634">
@@ -1401,6 +1401,10 @@
                                                 <action id="-10" name="Set value" sid="9302823597151903" type="Cow">
                                                     <param id="0" name="Instance variable">state</param>
                                                     <param id="1" name="Value">&quot;free&quot;</param>
+                                                </action>
+                                                <action id="-13" name="Set boolean" sid="8847702237052678" type="Cow">
+                                                    <param id="0" name="Instance variable">deadFall</param>
+                                                    <param id="1" name="Value">0</param>
                                                 </action>
                                             </actions>
                                             <sub-events>

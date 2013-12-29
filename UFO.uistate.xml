@@ -15,13 +15,13 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <layout>How to play</layout>
         <layout>About</layout>
         <layout>Title</layout>
-        <event-sheet>Game Event sheet</event-sheet>
+        <event-sheet active="1">Game Event sheet</event-sheet>
         <event-sheet>Menu Event sheet</event-sheet>
         <event-sheet>How to play Event sheet</event-sheet>
         <event-sheet>About Event sheet</event-sheet>
         <event-sheet>Global Event sheet</event-sheet>
         <event-sheet>Options Event sheet</event-sheet>
-        <event-sheet active="1">Title Event sheet</event-sheet>
+        <event-sheet>Title Event sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
