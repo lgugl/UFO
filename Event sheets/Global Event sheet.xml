@@ -52,7 +52,7 @@
                                 </action>
                                 <action id="-9" name="Set value" sid="7559209396379454" type="System">
                                     <param id="0" name="Variable">lineMax</param>
-                                    <param id="1" name="Value">Menu.PickedCount</param>
+                                    <param id="1" name="Value">ButtonsMenu.PickedCount</param>
                                 </action>
                                 <action id="-9" name="Set value" sid="2231850535857945" type="System">
                                     <param id="0" name="Variable">lineSelected</param>
@@ -70,14 +70,14 @@
                                     <sub-events>
                                         <event-block sid="1664643304911623">
                                             <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="3888704917130744" type="Menu">
+                                                <condition id="-7" name="Compare instance variable" sid="3888704917130744" type="ButtonsMenu">
                                                     <param id="0" name="Instance variable">name</param>
                                                     <param id="1" name="Comparison">0</param>
                                                     <param id="2" name="Value">aMenu.CurValue</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="-10" name="Set value" sid="2271898568175512" type="Menu">
+                                                <action id="-10" name="Set value" sid="2271898568175512" type="ButtonsMenu">
                                                     <param id="0" name="Instance variable">order</param>
                                                     <param id="1" name="Value">aMenu.CurX +1</param>
                                                 </action>
@@ -87,14 +87,14 @@
                                 </event-block>
                                 <event-block sid="2276921501273791">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="1912064255249416" type="Menu">
+                                        <condition id="-7" name="Compare instance variable" sid="1912064255249416" type="ButtonsMenu">
                                             <param id="0" name="Instance variable">order</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">lineSelected</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="4" name="Set animation" sid="9198137873689233" type="Menu">
+                                        <action id="4" name="Set animation" sid="9198137873689233" type="ButtonsMenu">
                                             <param id="0" name="Animation">&quot;On&quot;</param>
                                             <param id="1" name="From">1</param>
                                         </action>
@@ -138,7 +138,7 @@
                             <sub-events>
                                 <event-block sid="9372684093487722">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="9264762244494503" type="Menu">
+                                        <condition id="-7" name="Compare instance variable" sid="9264762244494503" type="ButtonsMenu">
                                             <param id="0" name="Instance variable">order</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">lineSelected</param>
@@ -146,7 +146,7 @@
                                     </conditions>
                                     <actions>
                                         <action id="-25" name="Go to layout (by name)" sid="9241548141737386" type="System">
-                                            <param id="0" name="Layout">Menu.layout</param>
+                                            <param id="0" name="Layout">ButtonsMenu.layout</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -162,14 +162,14 @@
                             <sub-events>
                                 <event-block sid="1534091372384138">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="4176018245593184" type="Menu">
+                                        <condition id="-7" name="Compare instance variable" sid="4176018245593184" type="ButtonsMenu">
                                             <param id="0" name="Instance variable">order</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">lineSelected</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="4" name="Set animation" sid="3693396169671692" type="Menu">
+                                        <action id="4" name="Set animation" sid="3693396169671692" type="ButtonsMenu">
                                             <param id="0" name="Animation">&quot;Off&quot;</param>
                                             <param id="1" name="From">1</param>
                                         </action>
@@ -253,14 +253,14 @@
                                 </event-block>
                                 <event-block sid="3185950757118607">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="7502482448527466" type="Menu">
+                                        <condition id="-7" name="Compare instance variable" sid="7502482448527466" type="ButtonsMenu">
                                             <param id="0" name="Instance variable">order</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">lineSelected</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="4" name="Set animation" sid="7098698104817806" type="Menu">
+                                        <action id="4" name="Set animation" sid="7098698104817806" type="ButtonsMenu">
                                             <param id="0" name="Animation">&quot;On&quot;</param>
                                             <param id="1" name="From">1</param>
                                         </action>

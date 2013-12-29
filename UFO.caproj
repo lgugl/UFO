@@ -8,7 +8,7 @@
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>15300</saved-with-version>
+    <saved-with-version>15500</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
@@ -23,13 +23,13 @@
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
-        <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
-        <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
-        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
-        <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
+        <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+        <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -411,6 +411,34 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="Text7" sid="1314808990887821">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="btnHowToPlay" sid="485335134116108">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="3103175633096222" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="5506615627823845" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="btnAbout" sid="6254722247178944">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Off" pingpong="0" repeatcount="1" repeatto="0" sid="1447509693450758" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="On" pingpong="0" repeatcount="1" repeatto="0" sid="5376441293716627" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="aAudiodB" sid="7340043682398589">
+            <plugin id="Arr" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Bullets" plugin-id="Sprite" sid="3722142017417203">
@@ -455,9 +483,11 @@
                 <instance-variable name="ammunition" sid="1472019344871948" type="number" />
             </instance-variables>
         </family>
-        <family name="Menu" plugin-id="Sprite" sid="3559508668224159">
+        <family name="ButtonsMenu" plugin-id="Sprite" sid="3559508668224159">
             <members>
+                <member>btnAbout</member>
                 <member>btnBack</member>
+                <member>btnHowToPlay</member>
                 <member>btnMenu</member>
                 <member>btnMusicVolume</member>
                 <member>btnOptions</member>
@@ -484,6 +514,8 @@
         <layout>Game.xml</layout>
         <layout>End Game.xml</layout>
         <layout>Options.xml</layout>
+        <layout>How to play.xml</layout>
+        <layout>About.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Title Event sheet.xml</event-sheet>
@@ -492,6 +524,8 @@
         <event-sheet>Menu Event sheet.xml</event-sheet>
         <event-sheet>End Game Event sheet.xml</event-sheet>
         <event-sheet>Options Event sheet.xml</event-sheet>
+        <event-sheet>How to play Event sheet.xml</event-sheet>
+        <event-sheet>About Event sheet.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Keyboard" uid="15" />

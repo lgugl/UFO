@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>About Event sheet</name>
+    <events>
+        <include>Global Event sheet</include>
+        <event-group description="" sid="7861782164015567" title="About" />
+        <event-block sid="7748913528819319">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="123004427854497" type="System" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="3186089221970279" type="System">
+                    <param id="0" name="Object to create">aMenu</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="5" name="Push" sid="2716717031805297" type="aMenu">
+                    <param id="0" name="Where">0</param>
+                    <param id="1" name="Value">&quot;back&quot;</param>
+                    <param id="2" name="Axis">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="7681796841063702" type="System">
+                    <param id="0" name="Group name">&quot;Global Menu&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="6000003356521291">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="5774951813176581" type="ButtonsMenu">
+                            <param id="0" name="Instance variable">name</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;back&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="8775772026126662" type="ButtonsMenu">
+                            <param id="0" name="Instance variable">layout</param>
+                            <param id="1" name="Value">&quot;Menu&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

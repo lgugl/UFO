@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Title Event sheet</name>
     <events>
+        <variable constant="0" name="musicVolume" sid="5604828622031139" static="0" type="number">2</variable>
         <event-group description="" sid="5635162647232431" title="Title">
             <sub-events>
                 <variable constant="0" name="preload" sid="7050112426401292" static="1" type="number">0</variable>
@@ -17,10 +18,26 @@
                         <action disabled="1" id="24" name="Set resizable" sid="9235833820165462" type="NodeWebkit">
                             <param id="0" name="Mode">0</param>
                         </action>
+                        <action id="2" name="Set at X" sid="3729843048253142" type="aAudiodB">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Value">-999</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="2606247921292836" type="aAudiodB">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Value">-20</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="4343477472351695" type="aAudiodB">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Value">-10</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="6447243503063962" type="aAudiodB">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
                         <action id="0" name="Play" sid="6400880509980444" type="Audio">
                             <param id="0" name="Audio file">01 Main Theme</param>
                             <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
+                            <param id="3" name="Volume">aAudiodB.At(musicVolume)</param>
                             <param id="1" name="Tag (optional)">&quot;music&quot;</param>
                         </action>
                     </actions>
