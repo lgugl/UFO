@@ -189,6 +189,7 @@
                         <speed>80</speed>
                         <scorePoints>100</scorePoints>
                         <dead>false</dead>
+                        <lootChance>25</lootChance>
                         <cowUID>-1</cowUID>
                     </instance-variables>
                     <behavior-instances>
@@ -248,6 +249,7 @@
                         <speed>0</speed>
                         <scorePoints>200</scorePoints>
                         <dead>false</dead>
+                        <lootChance>0</lootChance>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="Sine">
@@ -400,6 +402,82 @@
                         <z>0</z>
                         <width>32</width>
                         <height>32</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="boScore1" uid="52">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <instance-variables>
+                        <nickname>boScore1</nickname>
+                        <type>score</type>
+                        <value>100</value>
+                        <lootFrequency>30</lootFrequency>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="MoveTo">
+                            <properties>
+                                <activated>Yes</activated>
+                                <max-speed>200</max-speed>
+                                <acceleration>50</acceleration>
+                                <deceleration>0</deceleration>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-246</x>
+                        <y>107</y>
+                        <z>0</z>
+                        <width>16</width>
+                        <height>16</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="boScore2" uid="53">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <instance-variables>
+                        <nickname>boScore2</nickname>
+                        <type>score</type>
+                        <value>300</value>
+                        <lootFrequency>10</lootFrequency>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="MoveTo">
+                            <properties>
+                                <activated>Yes</activated>
+                                <max-speed>200</max-speed>
+                                <acceleration>50</acceleration>
+                                <deceleration>0</deceleration>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-245</x>
+                        <y>71</y>
+                        <z>0</z>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>

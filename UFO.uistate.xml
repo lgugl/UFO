@@ -33,7 +33,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <family expanded="0" name="Bullets" />
         <family expanded="1" name="Enemies" />
         <family expanded="0" name="Weapons" />
-        <family expanded="1" name="ButtonsMenu" />
-        <family expanded="1" name="PauseObj" />
+        <family expanded="0" name="ButtonsMenu" />
+        <family expanded="0" name="PauseObj" />
+        <family expanded="1" name="Bonus" />
     </families-expanded>
 </c2uistate>

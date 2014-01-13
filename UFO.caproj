@@ -8,19 +8,20 @@
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>15500</saved-with-version>
+    <saved-with-version>15700</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="NodeWebkit" version="1">Node-Webkit</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Nickname" version="0.100000001">Nickname</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
@@ -49,7 +50,7 @@
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
         <prop name="Physics engine">Box2D web</prop>
-        <prop name="Preview browser">Node-Webkit</prop>
+        <prop name="Preview browser">Firefox</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use iOS retina display">Yes</prop>
     </configuration-settings>
@@ -439,6 +440,28 @@
         <object-type global="1" name="aAudiodB" sid="7340043682398589">
             <plugin id="Arr" />
         </object-type>
+        <object-type name="boScore1" sid="4016777068726341">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8616868755332379" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="boScore2" sid="2689469968446843">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2262997222646873" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="aBonus" sid="7958365208959298">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="Nickname" sid="3037420824789126">
+            <plugin id="Rex_Nickname" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Bullets" plugin-id="Sprite" sid="3722142017417203">
@@ -468,6 +491,7 @@
                 <instance-variable name="speed" sid="5843354487672234" type="number" />
                 <instance-variable name="scorePoints" sid="816615783073646" type="number" />
                 <instance-variable name="dead" sid="4947128842940831" type="boolean" />
+                <instance-variable comment="chance de voir apparaitre un bonus à la destruction" name="lootChance" sid="5200509063446831" type="number" />
             </instance-variables>
         </family>
         <family name="Weapons" plugin-id="Dictionary" sid="97892015379847">
@@ -506,6 +530,23 @@
                 <member>eUFO_01</member>
                 <member>eUFO_02</member>
             </members>
+        </family>
+        <family name="Bonus" plugin-id="Sprite" sid="2930058021122312">
+            <members>
+                <member>boScore1</member>
+                <member>boScore2</member>
+            </members>
+            <instance-variables>
+                <instance-variable name="nickname" sid="5724104303798053" type="string" />
+                <instance-variable name="type" sid="9073740732826125" type="string" />
+                <instance-variable name="value" sid="2420436735749211" type="number" />
+                <instance-variable comment="high value = common bonus" name="lootFrequency" sid="9248187019245029" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="MoveTo" sid="2945421373265506">
+                    <behavior id="Rex_MoveTo" />
+                </behavior-type>
+            </behaviors>
         </family>
     </families>
     <layout-folder expanded="1">
@@ -548,6 +589,7 @@
                 <doppler-factor>1</doppler-factor>
             </properties>
         </global-instance>
+        <global-instance type="Nickname" uid="55" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1">
