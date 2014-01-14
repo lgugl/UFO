@@ -89,16 +89,7 @@
                                     <conditions>
                                         <condition id="-2" name="On start of layout" sid="6305423715783821" type="System" />
                                     </conditions>
-                                    <actions>
-                                        <action id="1" name="Assign nickname" sid="9683819686900528" type="Nickname">
-                                            <param id="0" name="Nickname">&quot;boScore1&quot;</param>
-                                            <param id="1" name="Object">boScore1</param>
-                                        </action>
-                                        <action id="1" name="Assign nickname" sid="1720692920339942" type="Nickname">
-                                            <param id="0" name="Nickname">&quot;boScore2&quot;</param>
-                                            <param id="1" name="Object">boScore2</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
                                     <sub-events>
                                         <event-block sid="5129586506449669">
                                             <conditions>
@@ -123,6 +114,20 @@
                                                     </actions>
                                                 </event-block>
                                             </sub-events>
+                                        </event-block>
+                                        <event-block sid="7108123022709296">
+                                            <conditions />
+                                            <actions>
+                                                <action id="1" name="Assign nickname" sid="9683819686900528" type="Nickname">
+                                                    <param id="0" name="Nickname">&quot;boScore1&quot;</param>
+                                                    <param id="1" name="Object">boScore1</param>
+                                                </action>
+                                                <action id="1" name="Assign nickname" sid="1720692920339942" type="Nickname">
+                                                    <param id="0" name="Nickname">&quot;boScore2&quot;</param>
+                                                    <param id="1" name="Object">boScore2</param>
+                                                </action>
+                                                <action id="-9" name="Destroy" sid="7281508729921516" type="Bonus" />
+                                            </actions>
                                         </event-block>
                                     </sub-events>
                                 </event-block>
@@ -1497,7 +1502,6 @@
                                     <param id="0" name="Comparison">2</param>
                                     <param id="1" name="Y co-ordinate">cowsY</param>
                                 </condition>
-                                <condition id="-4" inverted="1" name="Is outside layout" sid="8247107425452206" type="Bonus" />
                             </conditions>
                             <actions>
                                 <action behavior="MoveTo" id="4" name="Move to XY" sid="2152908673718416" type="Bonus">
