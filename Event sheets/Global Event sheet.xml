@@ -4,7 +4,7 @@
     <name>Global Event sheet</name>
     <events>
         <variable constant="0" name="lineSelected" sid="2805800641813666" static="0" type="number">1</variable>
-        <variable constant="0" name="groupOnStart" sid="3210601281630885" static="0" type="number">1</variable>
+        <variable comment="pour n&apos;appliquer qu&apos;au on start" constant="0" name="groupOnStart" sid="3210601281630885" static="0" type="number">1</variable>
         <event-group description="" sid="1990023598011927" title="Global">
             <sub-events>
                 <variable constant="0" name="lineMax" sid="6322456440765764" static="1" type="number">0</variable>

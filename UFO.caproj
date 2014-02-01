@@ -8,29 +8,31 @@
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>15700</saved-with-version>
+    <saved-with-version>15900</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Nickname" version="0.100000001">Nickname</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Hash" version="0.5">Hash</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="NodeWebkit" version="1">Node-Webkit</plugin>
-        <plugin author="Rex.Rainbow" id="Rex_Nickname" version="0.100000001">Nickname</plugin>
-        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
-        <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
-        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -462,6 +464,18 @@
         <object-type name="Nickname" sid="3037420824789126">
             <plugin id="Rex_Nickname" />
         </object-type>
+        <object-type name="AJAX" sid="4654936835299711">
+            <plugin id="AJAX" />
+        </object-type>
+        <object-type global="1" name="Hash" sid="8249916884113273">
+            <plugin id="Rex_Hash" />
+        </object-type>
+        <object-type global="1" name="eUFO_01_ParamDic" sid="8478634668085052">
+            <plugin id="Dictionary" />
+        </object-type>
+        <object-type global="1" name="eUFO_02_ParamDic" sid="9573446771719377">
+            <plugin id="Dictionary" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Bullets" plugin-id="Sprite" sid="3722142017417203">
@@ -492,6 +506,7 @@
                 <instance-variable name="scorePoints" sid="816615783073646" type="number" />
                 <instance-variable name="dead" sid="4947128842940831" type="boolean" />
                 <instance-variable comment="chance de voir apparaitre un bonus à la destruction" name="lootChance" sid="5200509063446831" type="number" />
+                <instance-variable comment="temps entre chaque spawn" name="spawnTime" sid="1265943044329792" type="number" />
             </instance-variables>
         </family>
         <family name="Weapons" plugin-id="Dictionary" sid="97892015379847">
@@ -557,6 +572,7 @@
         <layout>Options.xml</layout>
         <layout>How to play.xml</layout>
         <layout>About.xml</layout>
+        <layout>Objects.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Title Event sheet.xml</event-sheet>
@@ -567,6 +583,7 @@
         <event-sheet>Options Event sheet.xml</event-sheet>
         <event-sheet>How to play Event sheet.xml</event-sheet>
         <event-sheet>About Event sheet.xml</event-sheet>
+        <event-sheet>Levels Event sheet.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Keyboard" uid="15" />
@@ -590,6 +607,7 @@
             </properties>
         </global-instance>
         <global-instance type="Nickname" uid="55" />
+        <global-instance type="AJAX" uid="58" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1">
@@ -604,5 +622,6 @@
             <file name="loading-logo.png" />
             <file name="icon-256.png" />
         </file-folder>
+        <file name="levels.conf.json" />
     </files-folder>
 </c2project>

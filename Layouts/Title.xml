@@ -146,6 +146,8 @@
                 <depth>1</depth>
             </properties>
         </instance>
+        <instance type="eUFO_01_ParamDic" uid="20" />
+        <instance type="eUFO_02_ParamDic" uid="39" />
     </nonworld-instances>
     <effects />
 </c2layout>

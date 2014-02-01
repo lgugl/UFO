@@ -4,7 +4,8 @@
     <name>Game Event sheet</name>
     <events>
         <include>Global Event sheet</include>
-        <variable constant="0" name="score" sid="2131043004181187" static="0" type="number">0</variable>
+        <include>Levels Event sheet</include>
+        <variable comment="player&apos;s current game score" constant="0" name="score" sid="2131043004181187" static="0" type="number">0</variable>
         <event-group description="" sid="5111063320157102" title="Game">
             <sub-events>
                 <variable constant="0" name="currentWeapon" sid="9559297127745932" static="1" type="text"></variable>
@@ -14,7 +15,11 @@
                 <variable constant="0" name="lives" sid="1411858114687103" static="1" type="number">0</variable>
                 <variable comment="coordonnée Y de base des vaches" constant="0" name="cowsY" sid="7747105720467489" static="1" type="number">0</variable>
                 <variable comment="coordonnée Y de la hauteur de chute mortelle des vaches" constant="0" name="deadFallY" sid="2119204343672286" static="1" type="number">0</variable>
-                <event-group description="" sid="6188615120386475" title="Start">
+                <variable comment="player&apos;s current level" constant="0" name="level" sid="39201426923281" static="1" type="number">1</variable>
+                <variable comment="nouveau niveau à init" constant="0" name="initLevelOk" sid="149709828247294" static="1" type="number">0</variable>
+                <variable comment="durée max du niveau avant changement" constant="0" name="maxTimeLevel" sid="1678372522677613" static="1" type="number">0</variable>
+                <variable comment="temps passé dans le niveau en cours" constant="0" name="timeLevel" sid="3198911803170423" static="1" type="number">0</variable>
+                <event-group description="" sid="6188615120386475" title="Init">
                     <sub-events>
                         <event-block sid="4339001097011007">
                             <conditions>
@@ -22,11 +27,11 @@
                             </conditions>
                             <actions>
                                 <action id="33" name="Stop all" sid="8944064334690327" type="Audio" />
-                                <action id="-9" name="Destroy" sid="2076570983371339" type="Bullets" />
-                                <action id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
-                                <action id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
-                                <action id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
-                                <action id="-9" name="Destroy" sid="2433110721045744" type="straw" />
+                                <action disabled="1" id="-9" name="Destroy" sid="2076570983371339" type="Bullets" />
+                                <action disabled="1" id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
+                                <action disabled="1" id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
+                                <action disabled="1" id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
+                                <action disabled="1" id="-9" name="Destroy" sid="2433110721045744" type="straw" />
                                 <action id="-9" name="Set value" sid="2777576573844807" type="System">
                                     <param id="0" name="Variable">defaultWeapon</param>
                                     <param id="1" name="Value">&quot;potato&quot;</param>
@@ -64,6 +69,10 @@
                                     <param id="1" name="State">0</param>
                                 </action>
                                 <action id="-9" name="Destroy" sid="2833495396043119" type="pauseScreenBckg" />
+                                <action id="1" name="Request project file" sid="9368914228137759" type="AJAX">
+                                    <param id="0" name="Tag">&quot;levels&quot;</param>
+                                    <param id="1" name="File">levels.conf.json</param>
+                                </action>
                             </actions>
                             <sub-events>
                                 <event-block sid="1160973327073361">
@@ -82,6 +91,22 @@
                                     </actions>
                                 </event-block>
                             </sub-events>
+                        </event-block>
+                        <event-block sid="1331276477017371">
+                            <conditions>
+                                <condition id="0" name="On completed" sid="6496065203931532" type="AJAX">
+                                    <param id="0" name="Tag">&quot;levels&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Load hash table from JSON string" sid="595241610467016" type="Hash">
+                                    <param id="0" name="JSON string">AJAX.LastData</param>
+                                </action>
+                                <action id="0" name="Call function" sid="9132645330127087" type="Function">
+                                    <param id="0" name="Name">&quot;initLevel&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
                         </event-block>
                         <event-group description="" sid="898080037016173" title="InitBonus">
                             <sub-events>
@@ -118,6 +143,7 @@
                                         <event-block sid="7108123022709296">
                                             <conditions />
                                             <actions>
+                                                <action id="-9" name="Destroy" sid="7281508729921516" type="Bonus" />
                                                 <action id="1" name="Assign nickname" sid="9683819686900528" type="Nickname">
                                                     <param id="0" name="Nickname">&quot;boScore1&quot;</param>
                                                     <param id="1" name="Object">boScore1</param>
@@ -126,7 +152,6 @@
                                                     <param id="0" name="Nickname">&quot;boScore2&quot;</param>
                                                     <param id="1" name="Object">boScore2</param>
                                                 </action>
-                                                <action id="-9" name="Destroy" sid="7281508729921516" type="Bonus" />
                                             </actions>
                                         </event-block>
                                     </sub-events>
@@ -202,11 +227,97 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
+                        <event-group description="" sid="5347864576949356" title="InitEnemies">
+                            <sub-events>
+                                <event-block sid="2723991585678879">
+                                    <conditions>
+                                        <condition id="-2" name="On start of layout" sid="8516360391637202" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="1" name="Assign nickname" sid="727164514320358" type="Nickname">
+                                            <param id="0" name="Nickname">&quot;eUFO_01&quot;</param>
+                                            <param id="1" name="Object">eUFO_01</param>
+                                        </action>
+                                        <action id="1" name="Assign nickname" sid="6366436271066385" type="Nickname">
+                                            <param id="0" name="Nickname">&quot;eUFO_02&quot;</param>
+                                            <param id="1" name="Object">eUFO_02</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="4544862375927531" title="InitLevel">
+                            <sub-events>
+                                <event-block sid="2040864488667438">
+                                    <conditions>
+                                        <condition id="0" name="On function" sid="2005081096053025" type="Function">
+                                            <param id="0" name="Name">&quot;initLevel&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="7056420442265456">
+                                            <conditions>
+                                                <condition id="-12" name="Repeat" sid="6425429912062708" type="System">
+                                                    <param id="0" name="Count">Hash.ItemCnt(level &amp;&quot;.enemies&quot;)</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="6718985438085922">
+                                                    <conditions>
+                                                        <condition id="-8" name="Compare two values" sid="73938996947432" type="System">
+                                                            <param id="0" name="First value">Hash.At( level &amp;&quot;.enemies.&quot;&amp; loopindex &amp; &quot;.0&quot;)</param>
+                                                            <param id="1" name="Comparison">0</param>
+                                                            <param id="2" name="Second value">&quot;eUFO_01&quot;</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="0" name="Add key" sid="319743227565097" type="eUFO_01_ParamDic">
+                                                            <param id="0" name="Key">&quot;spawnTime&quot;</param>
+                                                            <param id="1" name="Value">Hash.At( level &amp;&quot;.enemies.&quot;&amp; loopindex &amp; &quot;.1&quot;)</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                                <event-block sid="7352159235386221">
+                                                    <conditions>
+                                                        <condition id="-8" name="Compare two values" sid="923189194855801" type="System">
+                                                            <param id="0" name="First value">Hash.At( level &amp;&quot;.enemies.&quot;&amp; loopindex &amp; &quot;.0&quot;)</param>
+                                                            <param id="1" name="Comparison">0</param>
+                                                            <param id="2" name="Second value">&quot;eUFO_02&quot;</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="0" name="Add key" sid="3716380707209965" type="eUFO_02_ParamDic">
+                                                            <param id="0" name="Key">&quot;spawnTime&quot;</param>
+                                                            <param id="1" name="Value">Hash.At( level &amp;&quot;.enemies.&quot;&amp; loopindex &amp; &quot;.1&quot;)</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="9602326232530411">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="7315751353855673" type="System">
+                                                    <param id="0" name="Variable">maxTimeLevel</param>
+                                                    <param id="1" name="Value">Hash.At(level &amp;&quot;.time&quot;)</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="8616664887591445" type="System">
+                                                    <param id="0" name="Variable">initLevelOk</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
                     </sub-events>
                 </event-group>
                 <event-group collapsed="1" description="" sid="4002922252956018" title="Input">
                     <sub-events>
-                        <event-group collapsed="1" description="" sid="8521614036322924" title="Movement">
+                        <event-group description="" sid="8521614036322924" title="Movement">
                             <sub-events>
                                 <event-block sid="7293353535326637">
                                     <conditions>
@@ -410,7 +521,7 @@
                         <event-group description="" sid="7894246814155001" title="Miscellaneous" />
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="4820918851855756" title="General">
+                <event-group description="" sid="4820918851855756" title="General">
                     <sub-events>
                         <event-block sid="7101875705467223">
                             <conditions>
@@ -441,7 +552,7 @@
                                 <action id="-9" name="Destroy" sid="5025907036075087" type="Bullets" />
                             </actions>
                         </event-block>
-                        <event-block collapsed="1" sid="4260109070004518">
+                        <event-block sid="4260109070004518">
                             <conditions>
                                 <condition id="-7" name="Compare instance variable" sid="3770890171458288" type="Weapons">
                                     <param id="0" name="Instance variable">ammunition</param>
@@ -476,7 +587,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block collapsed="1" sid="3396940294713651">
+                        <event-block sid="3396940294713651">
                             <conditions>
                                 <condition id="-8" name="Is boolean instance variable set" sid="1366683595862882" type="Weapons">
                                     <param id="0" name="Instance variable">reload</param>
@@ -488,7 +599,7 @@
                                     <param id="1" name="Value">dt</param>
                                 </action>
                                 <action id="0" name="Set text" sid="59664250422972" type="reload">
-                                    <param id="0" name="Text">Weapons.reloadTime</param>
+                                    <param id="0" name="Text">round(Weapons.reloadTime*100)/100</param>
                                 </action>
                             </actions>
                             <sub-events>
@@ -588,15 +699,89 @@
                                 </action>
                             </actions>
                         </event-block>
+                        <event-block sid="7480387405580161">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8468196296786308" type="System">
+                                    <param id="0" name="Variable">initLevelOk</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="1732693826192704" type="System">
+                                    <param id="0" name="Variable">timeLevel</param>
+                                    <param id="1" name="Value">dt</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="6161251403151078">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="1624109590833167" type="System">
+                                            <param id="0" name="Variable">timeLevel</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">maxTimeLevel</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="5618731869050461" type="System">
+                                            <param id="0" name="Variable">initLevelOk</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="843594029759562" type="System">
+                                            <param id="0" name="Variable">timeLevel</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-10" name="Add to" sid="7652701201948167" type="System">
+                                            <param id="0" name="Variable">level</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="3796906060768323">
+                                            <conditions>
+                                                <condition id="2" name="Key exists" sid="7796781323616212" type="Hash">
+                                                    <param id="0" name="Key string">str(level)</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="14" name="Log" sid="1555180682563277" type="Browser">
+                                                    <param id="0" name="Type">0</param>
+                                                    <param id="1" name="Message">&quot;NEW LEVEL! START LEVEL &quot; &amp; level</param>
+                                                </action>
+                                                <action id="0" name="Call function" sid="1592697565214238" type="Function">
+                                                    <param id="0" name="Name">&quot;initLevel&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="957173246920176">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="1711292222159491" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-2" name="Go to layout" sid="3691230763640344" type="System">
+                                                    <param id="0" name="Layout">End Game</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="593834434841065" title="Enemies">
+                <event-group collapsed="1" description="" sid="593834434841065" title="Enemies">
                     <sub-events>
                         <variable constant="0" name="captureTolerance" sid="6428054404375282" static="0" type="number">50</variable>
                         <event-block sid="9161417591077772">
                             <conditions>
+                                <condition id="-14" name="Compare variable" sid="6221382375801802" type="System">
+                                    <param id="0" name="Variable">initLevelOk</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
                                 <condition id="-6" name="Every X seconds" sid="3721996492083176" type="System">
-                                    <param id="0" name="Interval (seconds)">2</param>
+                                    <param id="0" name="Interval (seconds)">eUFO_01_ParamDic.Get(&quot;spawnTime&quot;)</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -670,7 +855,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-group collapsed="1" description="" sid="585674923018483" title="eUFO_01">
+                        <event-group description="" sid="585674923018483" title="eUFO_01">
                             <sub-events>
                                 <event-block sid="4950871651049371">
                                     <conditions>
@@ -693,7 +878,7 @@
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block collapsed="1" sid="3277907608506295">
+                                <event-block sid="3277907608506295">
                                     <conditions>
                                         <condition id="-7" name="Compare instance variable" sid="2414709671992924" type="eUFO_01">
                                             <param id="0" name="Instance variable">state</param>
@@ -736,7 +921,7 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <event-block collapsed="1" sid="3241883719324708">
+                                <event-block sid="3241883719324708">
                                     <conditions>
                                         <condition id="-7" name="Compare instance variable" sid="1954005753879188" type="eUFO_01">
                                             <param id="0" name="Instance variable">state</param>
@@ -766,7 +951,7 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <event-block collapsed="1" sid="9971388849471899">
+                                <event-block sid="9971388849471899">
                                     <conditions>
                                         <condition id="-7" name="Compare instance variable" sid="2445024940891516" type="eUFO_01">
                                             <param id="0" name="Instance variable">state</param>
@@ -835,7 +1020,7 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <event-block collapsed="1" sid="8398968793433955">
+                                <event-block sid="8398968793433955">
                                     <conditions>
                                         <condition id="-7" name="Compare instance variable" sid="3626393257938511" type="eUFO_01">
                                             <param id="0" name="Instance variable">state</param>
@@ -871,7 +1056,7 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <event-block collapsed="1" sid="256877385673797">
+                                <event-block sid="256877385673797">
                                     <conditions>
                                         <condition id="-7" name="Compare instance variable" sid="145518102417955" type="eUFO_01">
                                             <param id="0" name="Instance variable">state</param>
@@ -1178,7 +1363,7 @@
                             </actions>
                         </event-block>
                         <comment>Chaque seconde, on prend une des vaches qui ne se déplacent pas, et on lui donne EVENTUELLEMENT une distance à parcourir (négative pour aller à gauche, positive à droite).</comment>
-                        <event-group collapsed="1" description="" disabled="1" sid="3273011372205513" title="without moveTo">
+                        <event-group description="" disabled="1" sid="3273011372205513" title="without moveTo">
                             <sub-events>
                                 <event-block disabled="1" sid="6145284520325428">
                                     <conditions>
@@ -1494,7 +1679,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="805026886919266" title="Bonus">
+                <event-group collapsed="1" description="" sid="805026886919266" title="Bonus">
                     <sub-events>
                         <event-block sid="482664392119839">
                             <conditions>
