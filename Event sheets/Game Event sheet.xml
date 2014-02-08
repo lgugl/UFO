@@ -5,6 +5,10 @@
     <events>
         <include>Global Event sheet</include>
         <include>Levels Event sheet</include>
+        <variable comment="1 when level&apos;s init is finished and player can play" constant="0" name="inGame" sid="149709828247294" static="0" type="number">0</variable>
+        <variable comment="durée max du niveau avant changement" constant="0" name="maxTimeLevel" sid="1678372522677613" static="0" type="number">0</variable>
+        <variable comment="temps passé dans le niveau en cours" constant="0" name="playTime" sid="3198911803170423" static="0" type="number">0</variable>
+        <variable comment="a boss is here !" constant="0" name="bossAlive" sid="1283173590620723" static="0" type="number">0</variable>
         <variable comment="player&apos;s current game score" constant="0" name="score" sid="2131043004181187" static="0" type="number">0</variable>
         <event-group description="" sid="5111063320157102" title="Game">
             <sub-events>
@@ -16,9 +20,6 @@
                 <variable comment="coordonnée Y de base des vaches" constant="0" name="cowsY" sid="7747105720467489" static="1" type="number">0</variable>
                 <variable comment="coordonnée Y de la hauteur de chute mortelle des vaches" constant="0" name="deadFallY" sid="2119204343672286" static="1" type="number">0</variable>
                 <variable comment="player&apos;s current level" constant="0" name="level" sid="39201426923281" static="1" type="number">1</variable>
-                <variable comment="nouveau niveau à init" constant="0" name="initLevelOk" sid="149709828247294" static="1" type="number">0</variable>
-                <variable comment="durée max du niveau avant changement" constant="0" name="maxTimeLevel" sid="1678372522677613" static="1" type="number">0</variable>
-                <variable comment="temps passé dans le niveau en cours" constant="0" name="timeLevel" sid="3198911803170423" static="1" type="number">0</variable>
                 <event-group description="" sid="6188615120386475" title="Init">
                     <sub-events>
                         <event-block sid="4339001097011007">
@@ -27,11 +28,6 @@
                             </conditions>
                             <actions>
                                 <action id="33" name="Stop all" sid="8944064334690327" type="Audio" />
-                                <action disabled="1" id="-9" name="Destroy" sid="2076570983371339" type="Bullets" />
-                                <action disabled="1" id="-9" name="Destroy" sid="2336293724095006" type="Enemies" />
-                                <action disabled="1" id="-9" name="Destroy" sid="3981373629716217" type="Cow" />
-                                <action disabled="1" id="-9" name="Destroy" sid="1184444494098414" type="CarrotAmmunition" />
-                                <action disabled="1" id="-9" name="Destroy" sid="2433110721045744" type="straw" />
                                 <action id="-9" name="Set value" sid="2777576573844807" type="System">
                                     <param id="0" name="Variable">defaultWeapon</param>
                                     <param id="1" name="Value">&quot;potato&quot;</param>
@@ -133,7 +129,7 @@
                                                     <actions>
                                                         <action id="5" name="Push" sid="5004922231873289" type="aBonus">
                                                             <param id="0" name="Where">0</param>
-                                                            <param id="1" name="Value">Bonus.nickname</param>
+                                                            <param id="1" name="Value">Bonus.name</param>
                                                             <param id="2" name="Axis">0</param>
                                                         </action>
                                                     </actions>
@@ -227,7 +223,7 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
-                        <event-group description="" sid="5347864576949356" title="InitEnemies">
+                        <event-group collapsed="1" description="" sid="5347864576949356" title="InitEnemies">
                             <sub-events>
                                 <event-block sid="2723991585678879">
                                     <conditions>
@@ -242,11 +238,15 @@
                                             <param id="0" name="Nickname">&quot;eUFO_02&quot;</param>
                                             <param id="1" name="Object">eUFO_02</param>
                                         </action>
+                                        <action id="1" name="Assign nickname" sid="1691622914209364" type="Nickname">
+                                            <param id="0" name="Nickname">&quot;eBOSS_01&quot;</param>
+                                            <param id="1" name="Object">eBOSS_01</param>
+                                        </action>
                                     </actions>
                                 </event-block>
                             </sub-events>
                         </event-group>
-                        <event-group description="" sid="4544862375927531" title="InitLevel">
+                        <event-group collapsed="1" description="" sid="4544862375927531" title="InitLevel">
                             <sub-events>
                                 <event-block sid="2040864488667438">
                                     <conditions>
@@ -303,8 +303,16 @@
                                                     <param id="0" name="Variable">maxTimeLevel</param>
                                                     <param id="1" name="Value">Hash.At(level &amp;&quot;.time&quot;)</param>
                                                 </action>
+                                                <action id="-9" name="Set value" sid="1452100037211229" type="System">
+                                                    <param id="0" name="Variable">playTime</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="8398023930526672" type="System">
+                                                    <param id="0" name="Variable">bossAlive</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
                                                 <action id="-9" name="Set value" sid="8616664887591445" type="System">
-                                                    <param id="0" name="Variable">initLevelOk</param>
+                                                    <param id="0" name="Variable">inGame</param>
                                                     <param id="1" name="Value">1</param>
                                                 </action>
                                             </actions>
@@ -523,6 +531,60 @@
                 </event-group>
                 <event-group description="" sid="4820918851855756" title="General">
                     <sub-events>
+                        <event-group collapsed="1" description="" sid="8158246304379821" title="GeneralFunctions">
+                            <sub-events>
+                                <event-block collapsed="1" sid="1798449498526679">
+                                    <conditions>
+                                        <condition id="0" name="On function" sid="852242452365344" type="Function">
+                                            <param id="0" name="Name">&quot;goToNextLevel&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="4704706875457882">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="8431673862768124" type="System">
+                                                    <param id="0" name="Variable">inGame</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                                <action id="-10" name="Add to" sid="1831904804826336" type="System">
+                                                    <param id="0" name="Variable">level</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="4930517697480911">
+                                            <conditions>
+                                                <condition id="2" name="Key exists" sid="96102249390499" type="Hash">
+                                                    <param id="0" name="Key string">str(level)</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="14" name="Log" sid="9721770946239678" type="Browser">
+                                                    <param id="0" name="Type">0</param>
+                                                    <param id="1" name="Message">&quot;NEW LEVEL! START LEVEL &quot; &amp; level</param>
+                                                </action>
+                                                <action id="0" name="Call function" sid="6759330572283379" type="Function">
+                                                    <param id="0" name="Name">&quot;initLevel&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="1958252229643701">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="6957111163466412" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-2" name="Go to layout" sid="4566073138778479" type="System">
+                                                    <param id="0" name="Layout">End Game</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
                         <event-block sid="7101875705467223">
                             <conditions>
                                 <condition id="0" name="On collision with another object" sid="7663679962005732" type="Bullets">
@@ -702,14 +764,14 @@
                         <event-block sid="7480387405580161">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="8468196296786308" type="System">
-                                    <param id="0" name="Variable">initLevelOk</param>
+                                    <param id="0" name="Variable">inGame</param>
                                     <param id="1" name="Comparison">0</param>
                                     <param id="2" name="Value">1</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-10" name="Add to" sid="1732693826192704" type="System">
-                                    <param id="0" name="Variable">timeLevel</param>
+                                    <param id="0" name="Variable">playTime</param>
                                     <param id="1" name="Value">dt</param>
                                 </action>
                             </actions>
@@ -717,52 +779,124 @@
                                 <event-block sid="6161251403151078">
                                     <conditions>
                                         <condition id="-14" name="Compare variable" sid="1624109590833167" type="System">
-                                            <param id="0" name="Variable">timeLevel</param>
+                                            <param id="0" name="Variable">playTime</param>
                                             <param id="1" name="Comparison">5</param>
                                             <param id="2" name="Value">maxTimeLevel</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action id="-9" name="Set value" sid="5618731869050461" type="System">
-                                            <param id="0" name="Variable">initLevelOk</param>
-                                            <param id="1" name="Value">0</param>
-                                        </action>
-                                        <action id="-9" name="Set value" sid="843594029759562" type="System">
-                                            <param id="0" name="Variable">timeLevel</param>
-                                            <param id="1" name="Value">0</param>
-                                        </action>
-                                        <action id="-10" name="Add to" sid="7652701201948167" type="System">
-                                            <param id="0" name="Variable">level</param>
-                                            <param id="1" name="Value">1</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
                                     <sub-events>
-                                        <event-block sid="3796906060768323">
+                                        <comment>No boss in this level</comment>
+                                        <event-block sid="3554421874817205">
                                             <conditions>
-                                                <condition id="2" name="Key exists" sid="7796781323616212" type="Hash">
-                                                    <param id="0" name="Key string">str(level)</param>
+                                                <condition id="2" inverted="1" name="Key exists" sid="4124961324601318" type="Hash">
+                                                    <param id="0" name="Key string">str(level) &amp; &quot;.boss&quot;</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="14" name="Log" sid="1555180682563277" type="Browser">
-                                                    <param id="0" name="Type">0</param>
-                                                    <param id="1" name="Message">&quot;NEW LEVEL! START LEVEL &quot; &amp; level</param>
-                                                </action>
-                                                <action id="0" name="Call function" sid="1592697565214238" type="Function">
-                                                    <param id="0" name="Name">&quot;initLevel&quot;</param>
+                                                <action id="0" name="Call function" sid="756201789635526" type="Function">
+                                                    <param id="0" name="Name">&quot;goToNextLevel&quot;</param>
                                                     <param id="1" name="Parameter {n}"></param>
                                                 </action>
                                             </actions>
                                         </event-block>
-                                        <event-block sid="957173246920176">
+                                        <comment>There is a boss !</comment>
+                                        <event-block sid="7230963914127071">
                                             <conditions>
-                                                <condition id="-22" name="Else" sid="1711292222159491" type="System" />
+                                                <condition id="-22" name="Else" sid="7930798687034879" type="System" />
                                             </conditions>
-                                            <actions>
-                                                <action id="-2" name="Go to layout" sid="3691230763640344" type="System">
-                                                    <param id="0" name="Layout">End Game</param>
-                                                </action>
-                                            </actions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="3782418765010915">
+                                                    <conditions>
+                                                        <condition id="-14" name="Compare variable" sid="6985780788244394" type="System">
+                                                            <param id="0" name="Variable">bossAlive</param>
+                                                            <param id="1" name="Comparison">0</param>
+                                                            <param id="2" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="2" name="Create instance" sid="5873251593674105" type="Nickname">
+                                                            <param id="0" name="Nickname">Hash.At(str(level)&amp;&quot;.boss&quot;)</param>
+                                                            <param id="1" name="X">LayoutWidth / 2 </param>
+                                                            <param id="2" name="Y">50</param>
+                                                            <param id="3" name="Layer">&quot;Main&quot;</param>
+                                                        </action>
+                                                        <action id="-9" name="Set value" sid="6871553897293188" type="System">
+                                                            <param id="0" name="Variable">bossAlive</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                                <event-block sid="4802343311210787">
+                                                    <conditions>
+                                                        <condition id="-22" name="Else" sid="4328783347434437" type="System" />
+                                                    </conditions>
+                                                    <actions />
+                                                    <sub-events>
+                                                        <comment>Le boss existe t il encore ? Oui : on ne fait rien, Non : fin du niveau</comment>
+                                                        <event-block disabled="1" sid="4316740131239667">
+                                                            <conditions>
+                                                                <condition id="-7" name="Compare instance variable" sid="2774928050889977" type="Enemies">
+                                                                    <param id="0" name="Instance variable">name</param>
+                                                                    <param id="1" name="Comparison">0</param>
+                                                                    <param id="2" name="Value">Hash.At(str(level)&amp;&quot;.boss&quot;)</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions />
+                                                        </event-block>
+                                                        <event-block disabled="1" sid="7068707132903801">
+                                                            <conditions>
+                                                                <condition id="-22" name="Else" sid="2039221677876349" type="System" />
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="14" name="Log" sid="8252417998976558" type="Browser">
+                                                                    <param id="0" name="Type">0</param>
+                                                                    <param id="1" name="Message">&quot;BOSS DEFEATED!&quot;</param>
+                                                                </action>
+                                                                <action id="0" name="Call function" sid="1504618928510532" type="Function">
+                                                                    <param id="0" name="Name">&quot;goToNextLevel&quot;</param>
+                                                                    <param id="1" name="Parameter {n}"></param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-block disabled="1" sid="5705671900922311">
+                                                            <conditions>
+                                                                <condition id="-19" name="On destroyed" sid="6513115107505621" type="Boss" />
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="14" name="Log" sid="3814425124042903" type="Browser">
+                                                                    <param id="0" name="Type">0</param>
+                                                                    <param id="1" name="Message">&quot;BOSS DEFEATED!&quot;</param>
+                                                                </action>
+                                                                <action id="0" name="Call function" sid="2866634987012666" type="Function">
+                                                                    <param id="0" name="Name">&quot;goToNextLevel&quot;</param>
+                                                                    <param id="1" name="Parameter {n}"></param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-block sid="3995523054183851">
+                                                            <conditions>
+                                                                <condition id="-8" name="Compare two values" sid="9662190945561389" type="System">
+                                                                    <param id="0" name="First value">Boss.Count</param>
+                                                                    <param id="1" name="Comparison">0</param>
+                                                                    <param id="2" name="Second value">0</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="14" name="Log" sid="3302494040109376" type="Browser">
+                                                                    <param id="0" name="Type">0</param>
+                                                                    <param id="1" name="Message">&quot;BOSS DEFEATED!&quot;</param>
+                                                                </action>
+                                                                <action id="0" name="Call function" sid="2865455587659662" type="Function">
+                                                                    <param id="0" name="Name">&quot;goToNextLevel&quot;</param>
+                                                                    <param id="1" name="Parameter {n}"></param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                    </sub-events>
+                                                </event-block>
+                                            </sub-events>
                                         </event-block>
                                     </sub-events>
                                 </event-block>
@@ -770,18 +904,23 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="593834434841065" title="Enemies">
+                <event-group description="" sid="593834434841065" title="Enemies">
                     <sub-events>
                         <variable constant="0" name="captureTolerance" sid="6428054404375282" static="0" type="number">50</variable>
                         <event-block sid="9161417591077772">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="6221382375801802" type="System">
-                                    <param id="0" name="Variable">initLevelOk</param>
+                                    <param id="0" name="Variable">inGame</param>
                                     <param id="1" name="Comparison">0</param>
                                     <param id="2" name="Value">1</param>
                                 </condition>
                                 <condition id="-6" name="Every X seconds" sid="3721996492083176" type="System">
                                     <param id="0" name="Interval (seconds)">eUFO_01_ParamDic.Get(&quot;spawnTime&quot;)</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="937104998814123" type="System">
+                                    <param id="0" name="Variable">bossAlive</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -855,7 +994,8 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-group description="" sid="585674923018483" title="eUFO_01">
+                        <event-group description="" sid="1313041207575228" title="Boss" />
+                        <event-group collapsed="1" description="" sid="585674923018483" title="eUFO_01">
                             <sub-events>
                                 <event-block sid="4950871651049371">
                                     <conditions>

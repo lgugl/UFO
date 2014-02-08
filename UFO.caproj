@@ -8,31 +8,31 @@
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3om4fqck6p5en</unique-id>
-    <saved-with-version>15900</saved-with-version>
+    <saved-with-version>16002</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
-        <plugin author="Rex.Rainbow" id="Rex_Nickname" version="0.100000001">Nickname</plugin>
-        <plugin author="Rex.Rainbow" id="Rex_Hash" version="0.5">Hash</plugin>
-        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
-        <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
-        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="NodeWebkit" version="1">Node-Webkit</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Hash" version="0.5">Hash</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Nickname" version="0.100000001">Nickname</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
-        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
-        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -476,6 +476,14 @@
         <object-type global="1" name="eUFO_02_ParamDic" sid="9573446771719377">
             <plugin id="Dictionary" />
         </object-type>
+        <object-type name="eBOSS_01" sid="1803400564825514">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8682928043591196" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Bullets" plugin-id="Sprite" sid="3722142017417203">
@@ -495,10 +503,12 @@
         </family>
         <family name="Enemies" plugin-id="Sprite" sid="5480977275324818">
             <members>
+                <member>eBOSS_01</member>
                 <member>eUFO_01</member>
                 <member>eUFO_02</member>
             </members>
             <instance-variables>
+                <instance-variable name="name" sid="3668364277114825" type="string" />
                 <instance-variable name="health" sid="557595607820949" type="number" />
                 <instance-variable name="scale" sid="6788757056393752" type="number" />
                 <instance-variable name="state" sid="815766260512475" type="string" />
@@ -552,7 +562,7 @@
                 <member>boScore2</member>
             </members>
             <instance-variables>
-                <instance-variable name="nickname" sid="5724104303798053" type="string" />
+                <instance-variable name="name" sid="5724104303798053" type="string" />
                 <instance-variable name="type" sid="9073740732826125" type="string" />
                 <instance-variable name="value" sid="2420436735749211" type="number" />
                 <instance-variable comment="high value = common bonus" name="lootFrequency" sid="9248187019245029" type="number" />
@@ -562,6 +572,11 @@
                     <behavior id="Rex_MoveTo" />
                 </behavior-type>
             </behaviors>
+        </family>
+        <family name="Boss" plugin-id="Sprite" sid="3971280844911987">
+            <members>
+                <member>eBOSS_01</member>
+            </members>
         </family>
     </families>
     <layout-folder expanded="1">

@@ -55,7 +55,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
-                        <nickname>boScore1</nickname>
+                        <name>boScore1</name>
                         <type>score</type>
                         <value>100</value>
                         <lootFrequency>30</lootFrequency>
@@ -93,7 +93,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
-                        <nickname>boScore2</nickname>
+                        <name>boScore2</name>
                         <type>score</type>
                         <value>300</value>
                         <lootFrequency>10</lootFrequency>

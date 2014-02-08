@@ -1,12 +1,13 @@
 {
   "1":{
     "name":"level 1",
-    "time":10,
+    "time":4,
     "enemies":[["eUFO_01", 2]]
   },
   "2":{
     "name":"level 2",
-    "time":20,
-    "enemies":[["eUFO_01", 1],["eUFO_02", 5]]
+    "time":4,
+    "enemies":[["eUFO_01", 1],["eUFO_02", 5]],
+    "boss":"eBOSS_01"
   }
 }

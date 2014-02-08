@@ -113,6 +113,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
+                        <name>eUFO_01</name>
                         <health>100</health>
                         <scale>1</scale>
                         <state></state>
@@ -174,6 +175,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
+                        <name>eUFO_02</name>
                         <health>200</health>
                         <scale>1</scale>
                         <state></state>
@@ -322,7 +324,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
-                        <nickname>boScore1</nickname>
+                        <name>boScore1</name>
                         <type>score</type>
                         <value>100</value>
                         <lootFrequency>30</lootFrequency>
@@ -360,7 +362,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
-                        <nickname>boScore2</nickname>
+                        <name>boScore2</name>
                         <type>score</type>
                         <value>300</value>
                         <lootFrequency>10</lootFrequency>
@@ -484,6 +486,39 @@
                         <z>0</z>
                         <width>300</width>
                         <height>50</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="eBOSS_01" uid="40">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <instance-variables>
+                        <name>eBOSS_01</name>
+                        <health>1</health>
+                        <scale>1</scale>
+                        <state></state>
+                        <speed>0</speed>
+                        <scorePoints>1000</scorePoints>
+                        <dead>false</dead>
+                        <lootChance>0</lootChance>
+                        <spawnTime>0</spawnTime>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>260</x>
+                        <y>149</y>
+                        <z>0</z>
+                        <width>128</width>
+                        <height>128</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
