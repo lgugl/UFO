@@ -63,7 +63,7 @@
                 </event-block>
                 <event-block sid="5869304014715984">
                     <conditions>
-                        <condition behavior="Fade" id="0" name="On fade out finished" sid="4315430399362641" type="startMessage" />
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="4315430399362641" type="startMessage" />
                     </conditions>
                     <actions>
                         <action behavior="Fade" id="0" name="Restart fade" sid="6139868935217943" type="startMessage" />

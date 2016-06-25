@@ -4,7 +4,7 @@
     <name>How to play Event sheet</name>
     <events>
         <include>Global Event sheet</include>
-        <event-group collapsed="1" description="" sid="6926165134206028" title="How to play" />
+        <event-group description="" sid="6926165134206028" title="How to play" />
         <event-block sid="3271971697355487">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="9883830252955438" type="System" />

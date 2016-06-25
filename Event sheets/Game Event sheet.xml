@@ -154,7 +154,7 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
-                        <event-group collapsed="1" description="" sid="2958661493245346" title="InitWeapons">
+                        <event-group description="" sid="2958661493245346" title="InitWeapons">
                             <sub-events>
                                 <event-block sid="8333154621574713">
                                     <conditions>
@@ -223,7 +223,7 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
-                        <event-group collapsed="1" description="" sid="5347864576949356" title="InitEnemies">
+                        <event-group description="" sid="5347864576949356" title="InitEnemies">
                             <sub-events>
                                 <event-block sid="2723991585678879">
                                     <conditions>
@@ -246,7 +246,7 @@
                                 </event-block>
                             </sub-events>
                         </event-group>
-                        <event-group collapsed="1" description="" sid="4544862375927531" title="InitLevel">
+                        <event-group description="" sid="4544862375927531" title="InitLevel">
                             <sub-events>
                                 <event-block sid="2040864488667438">
                                     <conditions>
@@ -323,7 +323,7 @@
                         </event-group>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="4002922252956018" title="Input">
+                <event-group description="" sid="4002922252956018" title="Input">
                     <sub-events>
                         <event-group description="" sid="8521614036322924" title="Movement">
                             <sub-events>
@@ -341,6 +341,20 @@
                                             <param id="0" name="X">self.X - dt * self.speed</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="223567919677134">
+                                            <conditions>
+                                                <condition id="1" inverted="1" name="Is overlapping another object" sid="192436207352116" type="Player">
+                                                    <param id="0" name="Object">marklineViewportLimit</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-1" name="Set X" sid="533063471153798" type="TiledBackground">
+                                                    <param id="0" name="X">Self.X + dt * Player.speed / 2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="2023794891777697">
                                     <conditions>
@@ -356,6 +370,20 @@
                                             <param id="0" name="X">self.X + dt * self.speed</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="852582253736505">
+                                            <conditions>
+                                                <condition id="1" inverted="1" name="Is overlapping another object" sid="335235462954548" type="Player">
+                                                    <param id="0" name="Object">marklineViewportLimit</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-1" name="Set X" sid="922119059686590" type="TiledBackground">
+                                                    <param id="0" name="X">Self.X - dt * Player.speed / 2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-group>
@@ -531,9 +559,9 @@
                 </event-group>
                 <event-group description="" sid="4820918851855756" title="General">
                     <sub-events>
-                        <event-group collapsed="1" description="" sid="8158246304379821" title="GeneralFunctions">
+                        <event-group description="" sid="8158246304379821" title="GeneralFunctions">
                             <sub-events>
-                                <event-block collapsed="1" sid="1798449498526679">
+                                <event-block sid="1798449498526679">
                                     <conditions>
                                         <condition id="0" name="On function" sid="852242452365344" type="Function">
                                             <param id="0" name="Name">&quot;goToNextLevel&quot;</param>
@@ -995,7 +1023,7 @@
                             </sub-events>
                         </event-block>
                         <event-group description="" sid="1313041207575228" title="Boss" />
-                        <event-group collapsed="1" description="" sid="585674923018483" title="eUFO_01">
+                        <event-group description="" sid="585674923018483" title="eUFO_01">
                             <sub-events>
                                 <event-block sid="4950871651049371">
                                     <conditions>
@@ -1319,7 +1347,7 @@
                         </event-group>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="6538091107210889" title="Cows">
+                <event-group description="" sid="6538091107210889" title="Cows">
                     <sub-events>
                         <comment>chaque vache qui ne mange pas et qui a faim</comment>
                         <event-block sid="4091867021047634">
@@ -1819,7 +1847,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group collapsed="1" description="" sid="805026886919266" title="Bonus">
+                <event-group description="" sid="805026886919266" title="Bonus">
                     <sub-events>
                         <event-block sid="482664392119839">
                             <conditions>
@@ -1878,9 +1906,9 @@
                 </event-group>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="5005514630921527" title="Pause Screen">
+        <event-group description="" sid="5005514630921527" title="Pause Screen">
             <sub-events>
-                <event-group collapsed="1" description="" inactive="1" sid="1974073773351428" title="Pause Screen On">
+                <event-group description="" inactive="1" sid="1974073773351428" title="Pause Screen On">
                     <sub-events>
                         <event-block sid="3444067090207292">
                             <conditions>

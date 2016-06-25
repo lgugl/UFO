@@ -152,7 +152,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block collapsed="1" sid="4177930748929087">
+                        <event-block sid="4177930748929087">
                             <conditions>
                                 <condition id="0" name="On function" sid="51285655620047" type="Function">
                                     <param id="0" name="Name">&quot;menuChangeSelection&quot;</param>

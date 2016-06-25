@@ -10,11 +10,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout>Game</layout>
-        <layout>Objects</layout>
-        <event-sheet active="1">Game Event sheet</event-sheet>
-        <event-sheet>Global Event sheet</event-sheet>
-        <event-sheet>Levels Event sheet</event-sheet>
+        <layout order="0">Game</layout>
+        <layout active="1" order="1">Objects</layout>
+        <event-sheet order="2">Game Event sheet</event-sheet>
+        <event-sheet order="3">Global Event sheet</event-sheet>
+        <event-sheet order="4">Levels Event sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -31,4 +31,39 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <family expanded="1" name="Bonus" />
         <family expanded="1" name="Boss" />
     </families-expanded>
+    <folders-expanded>
+        <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="1" path="event-folder/" />
+        <folder expanded="1" path="file-folder/" />
+        <folder expanded="1" path="sound-folder/" />
+        <folder expanded="1" path="music-folder/" />
+        <folder expanded="0" path="file-folder/Icons/" />
+        <folder expanded="1" path="animation-folder/Player/" />
+        <folder expanded="1" path="animation-folder/bPotato/" />
+        <folder expanded="1" path="animation-folder/bCarrot/" />
+        <folder expanded="1" path="animation-folder/eUFO_01/" />
+        <folder expanded="1" path="animation-folder/marklineEnemyTarget/" />
+        <folder expanded="1" path="animation-folder/eUFO_02/" />
+        <folder expanded="1" path="animation-folder/CarrotAmmunition/" />
+        <folder expanded="1" path="animation-folder/Cow/" />
+        <folder expanded="1" path="animation-folder/straw/" />
+        <folder expanded="1" path="animation-folder/marklineDeadFall/" />
+        <folder expanded="1" path="animation-folder/marklineEnemyStart/" />
+        <folder expanded="1" path="animation-folder/btnClose/" />
+        <folder expanded="1" path="animation-folder/btnPlay/" />
+        <folder expanded="1" path="animation-folder/btnOptions/" />
+        <folder expanded="1" path="animation-folder/btnBack/" />
+        <folder expanded="1" path="animation-folder/musicVolumeCtrl/" />
+        <folder expanded="1" path="animation-folder/btnMusicVolume/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/btnResume/" />
+        <folder expanded="1" path="animation-folder/btnMenu/" />
+        <folder expanded="1" path="animation-folder/btnHowToPlay/" />
+        <folder expanded="1" path="animation-folder/btnAbout/" />
+        <folder expanded="1" path="animation-folder/boScore1/" />
+        <folder expanded="1" path="animation-folder/boScore2/" />
+        <folder expanded="1" path="animation-folder/eBOSS_01/" />
+        <folder expanded="1" path="animation-folder/marklineViewportLimit/" />
+    </folders-expanded>
 </c2uistate>
